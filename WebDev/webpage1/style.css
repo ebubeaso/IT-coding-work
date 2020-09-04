@@ -1,0 +1,28 @@
+h1 { font-style: italic; 
+    font-size: large;
+    text-align: center; 
+    color: pink;
+    font-size: 38px;
+}
+
+body {
+    background-color: black;
+}
+.the_body {
+    background-color: black;
+}
+p {
+    color: red;
+    font-size: 26px;
+
+}
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    color: red;
+    font-style: oblique;
+    text-decoration: underline;
+}
+h2 {
+    color: red;
+}
