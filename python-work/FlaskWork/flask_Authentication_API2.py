@@ -122,7 +122,7 @@ def login():
     if auth_ and auth_.username == 'ebube' and auth_.password == 'EbubeAso!':
         token = random.randint(100000000, 999999999)
         t[0] = token
-        return jsonify({'Authorization Token': token, 'List': t})
+        return jsonify({'Authorization Token': token})
     else:
         return make_response('Could not authenticate', 401, 
 				{'WWW-Authenticate': 'Basic realm="Login Required"'})
