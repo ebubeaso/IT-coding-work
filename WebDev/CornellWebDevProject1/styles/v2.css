@@ -1,0 +1,59 @@
+nav li {
+padding: 18px;
+font-style: oblique;
+display: inline;
+}
+
+body {
+font-family: Georgia, Times, sans-serif;
+background-color: steelblue;
+}
+
+a:link {
+font-family: Georgia, Times, serif;
+color: silver;
+font-style: normal;
+text-decoration: none;
+}
+
+a:visited {
+color: black;
+}
+
+h1 {
+font-style: oblique;
+font-size: 50px;
+color: red;
+text-align: center;
+text-shadow: 3px 4px 4px black;
+text-transform: uppercase;
+}
+
+h2 {
+font-size: 42px;
+color: red;
+margin-right: 30px;
+margin: 10px;
+text-shadow: 3px 4px 4px black;
+}
+
+p, li {
+font-size: 26px;
+padding-right: 30px;
+}
+
+video {
+width: 480px;
+height: relative;
+padding-top: 25px; padding-right: auto; padding-bottom: 10px; padding-left: auto;
+}
+
+em {
+font-weight: bold;
+}
+
+footer {
+color: darkred;
+font-style: oblique;
+font-size: 22px;
+}

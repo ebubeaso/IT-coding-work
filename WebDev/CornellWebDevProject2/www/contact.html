@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>WELCOME!!</title>
+  <!-- <link rel="stylesheet" type="text/css" href="styles/v1.css" media="all"> -->
+  <link rel="stylesheet" type="text/css" href="styles/v2.css" media="all">
+  <script src="scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+  <script src="scripts/jquery-3.3.1.min.js"></script>
+  <script src="scripts/validation.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="menu7">
+      <ul>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="about.html">About Me</a></li>
+      </ul>
+    </div>
+    <div class="menu8">
+      <ul>
+      <li><a href="content.html">My Content</a></li>
+      <li><a href="contact.html">Contact Me</a></li>
+      </ul>
+    </div>
+  </nav>
+  <h1>EBUBE'S DANCE PERSPECTIVE: Growing As A Dancer</h1>
+  <h2>Contact</h2>
+    <p>
+    If you have any questions for me, feel free to shoot me an email My email is <a href="mailto:aso.ebube1@outlook.com">aso.ebube1@outlook.com</a>. I will be able to reach out to you as soon as possible!
+    </p>
+  <div class="an_image">
+  <figure>
+    <img src="images/just-cooling.jpg" alt="Just cooling outside in the evening">
+  </figure>
+<!-- This is an original photo -->
+  </div>
+
+  <p>Want to connect to me faster as well as stay posted on the latest content? Fill out your information below to get started!</p>
+
+  <h2>Fill Your Information Here</h2>
+
+  <form id="yourInfo" method="post" action="https://www.cs.cornell.edu/courses/cs1300/2018fa/submit.php" novalidate>
+
+    <div id="yourNameError" class="hidden">Please enter your name.</div>
+    <div>
+      <label for="yourName">Name (required): </label>
+      <input id="yourName" name="yourName" placeholder="Enter Your Name" required/>
+    </div>
+
+      <div id="yourEmailError" class="hidden1">Please enter a valid email address.</div>
+    <div>
+      <label for="yourEmail">Email (required): </label>
+      <input type="email" id="yourEmail" name="yourEmail" placeholder="Enter Your Email" required/>
+    </div>
+
+    <div id="yourAgeError" class=" hidden2">Please enter your age.</div>
+    <div>
+      <label for="userAge">Age (required): </label>
+      <select id="userAge" name="userAge" required>
+        <option value="" disabled selected>Choose your age/age range</option>
+        <option value="<18">under 18</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="over25">over 25</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="danceExperience">Dance Experience: </label>
+      <input type="number" id="danceExperience" name="danceExperience" value="0" min="0" max="50">
+    </div>
+
+    <div>
+      <p>Leave a Message:</p>
+      <textarea name="message" cols="30" rows="5">Your Message</textarea>
+    </div>
+
+    <div>
+      <div class="receiveMessages">
+      <p>Would you like to receive weekly inspirational messages? (Choose one):
+      <br />
+      <div id="messageError" class="hidden3">Please choose an option.</div>
+      <input id="yes" type="radio" name="choice" value="y"> <label for="yes">Yes</label>
+      <input id="no" type="radio" name="choice" value="n">
+      <label for="no">No</label>
+      </div>
+    </div>
+    <button type="submit" class="submit">Submit</button>
+  </form>
+
+    <p>
+      <strong><em>Through dance, the space around me is my canvas, my body is the paintbrush and the music is the paint. With these components I am capable of creating my unique form of visual art to showcase to the world! Whether I inspire one person or a multitude of people, it will be an honor to have my dance perspective mean a lot to another dancer working on their craft.</em></strong>
+    </p>
+
+</body>
+
+</html>

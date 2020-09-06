@@ -1,0 +1,41 @@
+nav li {
+padding: 18px;
+font-style: oblique;
+display: inline;
+}
+
+body {
+background-color: darkgray;
+}
+
+h1 {
+font-style: italic;
+font-size: 48px;
+color: steelblue;
+text-align: center;
+text-shadow: 1px 2px 2px gray;
+text-decoration: underline;
+}
+
+h2 {
+font-size: 38px;
+margin: 25px, 30px, 10px 30px;
+text-shadow: 0px 4px 4px gray;
+}
+
+p, li {
+font-size: 24px;
+padding-right: 30px;
+}
+
+video {
+width: 480px;
+height: relative;
+padding-top: 25px; padding-right: auto; padding-bottom: 10px; padding-left: auto;
+}
+
+footer {
+color: darkred;
+font-style: italic;
+font-size: 22px;
+}
