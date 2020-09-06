@@ -27,7 +27,7 @@ def diff_squares(d):
 	print('calculating the difference in squares...')
 	time.sleep(2.0)
 	print('The difference of squares is: ' + str(difference))
-	
+
 if __name__ == "__main__":
 	print("Enter in the number you want for your circle's diameter:")
 	number = input('==> ')
