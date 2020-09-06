@@ -35,11 +35,6 @@ def require_token(f):
 	#return the decorator function
 	return decorated
 
-@app.before_request
-def before_request():
-	session.permanent = True
-	app.permanent_session_lifetime = datetime.timedelta(seconds=15)
-
 @app.route('/')
 def index():
 	return """ <h1>Welcome to this Flask page</h1>
