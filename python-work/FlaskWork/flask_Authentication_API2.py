@@ -107,7 +107,8 @@ def user_info_by_ID(ID):
         conn = mariadb.connect(**db_config)
         cur = conn.cursor()
         sql = f"delete from ActiveDirectoryUsers where id = {ID}"
-        reset_increment = "ALTER TABLE ActiveDirectoryUsers auto_increment=1"
+        next_id = str(int(ID) + 1)
+        reset_increment = f"alter table ActiveDirectoryUsers AUTO_INCREMENT={next_id}"
         cur.execute(sql)
         cur.execute(reset_increment)
         conn.commit()
