@@ -1,0 +1,52 @@
+
+body {
+    background-color: lavender;
+}
+h1, h2 {
+    color: crimson;
+    font-style: oblique;
+    font-family: Georgia, serif;
+}
+h3, h4 {
+    color: darkgreen;
+}
+th {
+    color: steelblue;
+    font-weight: lighter;
+    font-style: italic;
+}
+
+/* These are the styling settings for positioning some of the data 
+in the table on the Sales webpage, except the temp class which is 
+used in the weather webpage*/
+.temp, .pos {
+    text-align: center;
+}
+.Days {
+    position: relative;
+    left: 100px;
+}
+#ThursFri {
+    position: relative;
+    left: 110px;
+}
+#Tuesday {
+    position: relative;
+    left: 90px;
+}
+#revenue {
+    font-size: 10pt;
+    text-align: center;
+}
+#TF {
+    text-align: right;
+}
+.money {
+    position: relative;
+    left: 30px;
+}
+#friday {
+    font-size: 10pt;
+    position: relative;
+    left: 40px;
+}
