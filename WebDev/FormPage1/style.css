@@ -12,6 +12,9 @@ page using document.write in JavaScript*/
     font-style: oblique;
     font-size: 16pt;
 }
+p {
+    font-size: 16pt;
+}
 /* CSS specific to the form page*/
 .form{
     display: flex;
