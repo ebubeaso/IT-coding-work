@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="./jquery-3.5.1.min.js"></script>
+    <script src="./jquery-3.5.1.js"></script>
+    <!--<script src="submitValidator.js"></script>-->
+    <script src="events.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".theTitle").hide().slideDown(800);
+            $(".form").before($(".theTitle")).hide().fadeIn(2800);
+            $(".theButton").before($(".form")).hide().fadeIn(2800);
+        });
+    </script>
+    <h1 class="theTitle">Fill out the form below:</h1>
+    <div class="form">
+        <div>
+            <div id="firstNameError" class="hidden">Please enter your first name</div>
+            <label for="firstName">First Name <em>*</em></label> 
+            <input id="firstName" type="text" name="fName" placeholder="Enter your first name" required>
+        </div>
+        <div id="text">
+            <div id="firstNameError" class="hidden">Please enter your first name</div>
+            <label for="lastName">Last Name <em>*</em></label> 
+            <input id="lastName" type="text" name="lName" placeholder="Enter your last name" required>
+        </div>
+        <div id="text">
+            <label for="email">Email:</label>
+            <input id="email" type="text" name="mail" placeholder="Your email">
+        </div>
+        
+        <div id="text">
+            Your Message
+            <textarea name="message" cols="30" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="theButton">
+        <button id="return" class="option" type="button" onmouseover="changeColor('white', 'darkred', 'return')" onmouseout="changeColor('black', 'antiquewhite', 'return')" onclick="backHome()">Return to homepage</button>
+        <button id="submit" class="option" type="submit" onmouseover="changeColor('white', 'green', 'submit')" onmouseout="changeColor('black', 'antiquewhite', 'submit')" onclick="submitInfo()">Submit Form</button>
+    </div>
+</body>
+</html>

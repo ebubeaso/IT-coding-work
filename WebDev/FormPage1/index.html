@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="./jquery-3.5.1.min.js"></script>
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="events.js" onload="writeDoc()" type="text/javascript"></script>
+</head>
+<body>
+    <script>
+        //usng some jQuery to load the webpage smoothly.
+        $(document).ready(function () {
+            $(".JS").hide().slideDown(1500);
+            $(".jQ").hide().fadeIn(2500);
+            $("p").each(function() {
+                $(this).hide().fadeIn(2500);
+            });
+        });
+    </script>
+    <h2 class="jQ">Why I made this page:</h2>
+    <p>This web project is simply for me to practice making a form
+        web page, which will be used in taking in data from the user.
+        Once I get even more comfortable with Flask, APIs, and even 
+        using a bit of Django, I will use my skills in making forms to
+        then use to make API requests to a Flask web application that 
+        I decide to make for fun in the future.
+    </p>
+    <script>
+        document.write(`<p id="JS">I have written this paragraph using JavaScript as
+            well. I just wanted to get more comfortable in using this programming
+            language for web development. it is pretty cool if you ask me!</p>`);
+        document.write(`<p>Click the button below to head to the form page</p>`)
+    </script>
+    <button type="button" onclick="redirection()">Go to Form Page!</button>
+</body>
+</html>
