@@ -2,18 +2,21 @@
     color: red;
     text-align: center;
     font-size: 38px;
+    font-family: 'Times New Roman', Times, serif;
     background-color: mintcream;
     border: 2px solid black;
 }
 /*This id JS is for the paragraph that I have written on the web
 page using document.write in JavaScript*/
 #JS {
-    color: midnightblue;
+    color: navy;
     font-style: oblique;
     font-size: 16pt;
+    font-weight: bolder;
 }
 p {
     font-size: 16pt;
+    font-family: Helvetica;
 }
 /* CSS specific to the form page*/
 .form{
@@ -78,9 +81,10 @@ h1 {
 button {
     background-color: antiquewhite;
     color: black;
-    outline-color: black;
     padding: 10px;
     font-size: 14pt;
+    font-family: 'Times New Roman', Times;
     margin-top: 20px;
     margin-right: 15px;
+    border: 2px solid black;
 }
