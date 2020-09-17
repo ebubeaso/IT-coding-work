@@ -33,6 +33,7 @@ class Consoles(Resource):
 		cur.execute("select * from GameConsoles")
 		rows = cur.fetchall()
 		result = jsonify(rows)
+		conn.close()
 		return result
 	#making a post request to database
 	def post(self):
@@ -45,6 +46,7 @@ class Consoles(Resource):
 		sql += "values ('{}', '{}', '{}')".format(name, company, the_size)
 		cur.execute(sql)
 		conn.commit()
+		conn.close()
 		return {'Status': 201, 
 		'Message': 'The entry was added successfully!!'}
 
@@ -56,6 +58,7 @@ class DataStats(Resource):
 		cur.execute("select * from GameConsoles where id = "+entry_id)
 		rows = cur.fetchall()
 		result = jsonify(rows)
+		conn.close()
 		return result
 	
 	#update data (with put)	
@@ -70,6 +73,7 @@ class DataStats(Resource):
 		sql += entry_id
 		cur.execute(sql)
 		conn.commit()
+		conn.close()
 		return {'Status': 201, 
 		'Message': 'The entry was updated successfully!!'}
 		
@@ -84,6 +88,7 @@ class DataStats(Resource):
 		conn.commit()
 		cur.execute(redo_increment)
 		conn.commit()
+		conn.close()
 		return '', 204
 		
 api.add_resource(Consoles, '/consoles')

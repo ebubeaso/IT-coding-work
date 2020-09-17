@@ -53,6 +53,7 @@ def get_or_post_AD_info():
         cur.execute(sql)
         rows = cur.fetchall()
         result = jsonify(rows)
+        conn.close()
         return result
 
     if request.method == 'POST':
@@ -68,6 +69,7 @@ def get_or_post_AD_info():
         """.format(firstname, lastname, employeeID, admin, permissions)
         cur.execute(sql)
         conn.commit()
+        conn.close()
         return 'Message: New entry has been successfully added!', 201
 
 @app.route('/ADUsers/<ID>', methods=['GET', 'PUT', 'DELETE'])
@@ -82,6 +84,7 @@ def user_info_by_ID(ID):
         cur.execute(sql)
         rows = cur.fetchall()
         result = jsonify(rows)
+        conn.close()
         return result
 
     #Update the information about an existing AD user by their ID
@@ -99,6 +102,7 @@ def user_info_by_ID(ID):
         permissions, ID)
         cur.execute(sql)
         conn.commit()
+        conn.close()
         return f"""Message: AD user {firstname} {lastname} has been
          successfully updated!""",203
     
@@ -112,6 +116,7 @@ def user_info_by_ID(ID):
         cur.execute(sql)
         cur.execute(reset_increment)
         conn.commit()
+        conn.close()
         return '', 204
 
 #store the token after login

@@ -47,6 +47,7 @@ class Router(Resource):
 		cur.execute("select * from Routers")
 		rows = cur.fetchall()
 		result = jsonify(rows)
+		conn.close()
 		return result
 	
 	#POST request to add a new router
@@ -63,6 +64,7 @@ class Router(Resource):
 		'{}', '{}')""".format(name, ip, subnet, dept, the_type)
 		cur.execute(sql)
 		conn.commit()
+		conn.close()
 		return {"Response": 201, "Message": "New Router was added and online!"}
 
 class RouterStats(Resource):
@@ -75,6 +77,7 @@ class RouterStats(Resource):
 		cur.execute(sql)
 		rows = cur.fetchall()
 		result = jsonify(rows)
+		conn.close()
 		return result
 	
 	#PUT request to update data on a router
@@ -91,6 +94,7 @@ class RouterStats(Resource):
 		ip, subnet, dept, the_type, ID)
 		cur.execute(sql)
 		conn.commit()
+		conn.close()
 		return {"Response": 201, "Message": "Router stats has been updated!!"}
 		
 	#DELETE request on router stats
@@ -104,6 +108,7 @@ class RouterStats(Resource):
 		conn.commit()
 		cur.execute(redo_increment)
 		conn.commit()
+		conn.close()
 		return '', 204
 
 class Switch(Resource):
@@ -114,6 +119,7 @@ class Switch(Resource):
 		cur.execute("select * from Switches")
 		rows = cur.fetchall()
 		result = jsonify(rows)
+		conn.close()
 		return result
 	
 	#POST request to add a new switch
@@ -130,6 +136,7 @@ class Switch(Resource):
 		'{}', '{}')""".format(name, ip, dept, ports, the_type)
 		cur.execute(sql)
 		conn.commit()
+		conn.close()
 		return {"Response": 201, "Message": "New Switch was added and online!"}
 
 class SwitchStats(Resource):
@@ -142,6 +149,7 @@ class SwitchStats(Resource):
 		cur.execute(sql)
 		rows = cur.fetchall()
 		result = jsonify(rows)
+		conn.close()
 		return result
 	
 	#PUT request to update data on a switch
@@ -158,6 +166,7 @@ class SwitchStats(Resource):
 		dept, ports, the_type, ID)
 		cur.execute(sql)
 		conn.commit()
+		conn.close()
 		return {"Response": 201, "Message": "Switch stats has been updated!!"}
 		
 	#DELETE request on switch stats
@@ -171,6 +180,7 @@ class SwitchStats(Resource):
 		conn.commit()
 		cur.execute(redo_increment)
 		conn.commit()
+		conn.close()
 		return '', 204
 
 class Servers(Resource):
@@ -181,6 +191,7 @@ class Servers(Resource):
 		cur.execute("select * from Servers")
 		rows = cur.fetchall()
 		result = jsonify(rows)
+		conn.close()
 		return result
 	
 	#POST request to add a new server
@@ -197,6 +208,7 @@ class Servers(Resource):
 		'{}', '{}')""".format(name, ip, subnet, dept, the_type)
 		cur.execute(sql)
 		conn.commit()
+		conn.close()
 		return {"Response": 201, "Message": "New Server was added and online!"}
 
 class ServerStats(Resource):
@@ -209,6 +221,7 @@ class ServerStats(Resource):
 		cur.execute(sql)
 		rows = cur.fetchall()
 		result = jsonify(rows)
+		conn.close()
 		return result
 	
 	#PUT request to update data on a router
@@ -225,6 +238,7 @@ class ServerStats(Resource):
 		ip, subnet, dept, the_type, ID)
 		cur.execute(sql)
 		conn.commit()
+		conn.close()
 		return {"Response": 201, "Message": "Server stats has been updated!!"}
 		
 	#DELETE request on server stats
@@ -238,6 +252,7 @@ class ServerStats(Resource):
 		conn.commit()
 		cur.execute(redo_increment)
 		conn.commit()
+		conn.close()
 		return '', 204
 
 #the API links to use

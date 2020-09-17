@@ -46,6 +46,7 @@ class Employee(Resource):
         sql = 'select * from Employees'
         cur.execute(sql)
         rows = cur.fetchall()
+        conn.close()
         return {'Message': 'Success!', 'Data': rows}, 200
     
     @jwt_required()
@@ -64,6 +65,7 @@ class Employee(Resource):
         """.format(firstname, lastname, age, employee_id, role, dept)
         cur.execute(sql)
         conn.commit()
+        conn.close()
         return {'Message': 'New Employee has been added!!'}, 201
 
 
@@ -76,6 +78,7 @@ class EmployeeStats(Resource):
         sql = f"select * from Employees where id = {ID}"
         cur.execute(sql)
         row = cur.fetchone()
+        conn.close()
         return {'Message': 'Success!!', 'Data': row}, 200
 
     @jwt_required()
@@ -94,6 +97,7 @@ class EmployeeStats(Resource):
         """.format(firstname, lastname, age, employee_id, role, dept, ID)
         cur.execute(sql)
         conn.commit()
+        conn.close()
         return {'Message': f"Employee at id {ID} has been updated!!"}, 200
 
     @jwt_required()
@@ -103,6 +107,7 @@ class EmployeeStats(Resource):
         sql = f"delete from Employees where id = {ID}"
         cur.execute(sql)
         cur.commit()
+        conn.close()
         return {'Message': 'Delete Successful'}, 204
 
 api.add_resource(Employee, '/employees')
