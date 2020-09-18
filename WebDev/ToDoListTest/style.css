@@ -1,0 +1,97 @@
+body {
+    background-color: antiquewhite;
+}
+
+h1 {
+    color: maroon;
+    background-color: moccasin;
+    margin-left: 40%;
+    text-align: center;
+    width: 300px;
+    font-size: 38pt;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px solid black;
+}
+.page-content{
+    background-color: blanchedalmond;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+p {
+    color: midnightblue;
+    font-family: serif;
+    font-size: 16pt;
+}
+.disclaimer {
+    color: red;
+    font-size: 14pt;
+}
+
+/* This is the CSS that will style the panels */
+.day-panels, ul{
+    display: flex;
+    flex-direction: row;
+    background: lightgray;
+    flex-wrap: wrap;
+    flex: 2 2 100%;
+    width: 95%;
+}
+.tabs {
+    margin-right: 3%;
+    /*width: 100%;*/
+}
+li {
+    list-style-type: none;
+    border: 1px solid black;
+    margin-left: 10px;
+    text-align: center;
+    padding: 1%;
+    font-size: 11pt;
+    background-color: cadetblue;
+    color: white;
+    border-radius: 10px;
+    width: 10%;
+}
+.hidden{
+    display: none;
+}
+.hidden.active {
+    display: block;
+    font-size: 12pt;
+    margin-bottom: 10px;
+    padding-top: -20px;
+    background-color: beige;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/* This is to better align the todos  */
+#panel1 {
+    margin-left: 5%;
+}
+#panel2 {
+    margin-left: 10%;
+}
+#panel3 {
+    margin-left: 20%;
+}
+#panel4 {
+    margin-left: 30%;
+}
+#panel5 {
+    margin-left: 40%;
+}
+#panel6 {
+    margin-left: 60%;
+}
+#panel7 {
+    margin-left: 70%;
+}
+#panel1, #panel2, #panel3, #panel4, #panel5, #panel6, #panel7 {
+    width: 60%;
+}

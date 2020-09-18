@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="jquery-3.5.1.js"></script>
+</head>
+<body>
+<script src="script.js"></script>
+<h1 class="title">My Todo List</h1>
+<div class="page-content">
+    <p>This webpage is a simple to do list, where it is a way for me to 
+        get more practice with jQuery. It has panels representing each day 
+        of the week and whenever a panel is clicked, it will have a drop
+        down list of the tasks that I plan on getting done during the week.
+    </p>
+    <p class="disclaimer">Note: this is just a hypothetical Sunday through 
+        Saturday week. However, it will make a good agenda!
+    </p>
+
+    <!--These will control the panels-->
+    <div class="day-panels">
+        <ul class="tabs">
+            <li id="day1" rel="panel1" onmouseover="changeColor('green', 'day1')" onmouseout="changeColor('cadetblue', 'day1')">Sunday</li>
+            <li id="day2" rel="panel2" onmouseover="changeColor('green', 'day2')" onmouseout="changeColor('cadetblue', 'day2')">Monday</li>
+            <li id="day3" rel="panel3" onmouseover="changeColor('green', 'day3')" onmouseout="changeColor('cadetblue', 'day3')">Tuesday</li>
+            <li id="day4" rel="panel4" onmouseover="changeColor('green', 'day4')" onmouseout="changeColor('cadetblue', 'day4')">Wednesday</li>
+            <li id="day5" rel="panel5" onmouseover="changeColor('green', 'day5')" onmouseout="changeColor('cadetblue', 'day5')">Thursday</li>
+            <li id="day6" rel="panel6" onmouseover="changeColor('green', 'day6')" onmouseout="changeColor('cadetblue', 'day6')">Friday</li>
+            <li id="day7" rel="panel7" onmouseover="changeColor('green', 'day7')" onmouseout="changeColor('cadetblue', 'day7')">Saturday</li>
+        </ul>
+        <div id="panel1" class="hidden active">
+            - Clean the bedroom<br/>
+            - Get more cat food<br/>
+            - Do the dishes<br/>
+        </div>
+        <div id="panel2" class="hidden">
+            - Check all emails from the weekend<br/>
+            - Attend the meeting with the VP of tech<br/>
+            - Finish configuring VLANS on Nexus Switch<br/>
+            - Watch Python Flask video<br/>
+        </div>
+        <div id="panel3" class="hidden">
+            - Respond to trouble tickets<br/>
+            - Run health checks on primary application servers<br/>
+            - Update user data entries on Amazon Aurora database<br/>
+        </div>
+        <div id="panel4" class="hidden">
+            - Attend AWS Redshift meeting<br/>
+            - Read and analyze logs on Ubuntu server 57<br/>
+            - Go over the current AWS costs<br/>
+            - Practice more Web development<br/>
+            - Try out Node.js<br/>
+            - Cooking date with my wife<br/>
+        </div>
+        <div id="panel5" class="hidden">
+            - Monitor network traffic for any anomalies<br/>
+            - Start looking into Amazon Web Application Firewall<br/>
+            - Manage an SDN controller using APIs<br/>
+            - Finish watching Python Flask videos<br/>
+        </div>
+        <div id="panel6" class="hidden">
+            - Create new Bash scripts to automate maintenance<br/>
+            - Review IAM policies and roles<br/>
+            - Finish making practice web page<br/>
+        </div>
+        <div id="panel7" class="hidden">
+            - Creative date with my lovely wife<br/>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
