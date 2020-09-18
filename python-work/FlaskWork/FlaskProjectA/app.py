@@ -46,7 +46,7 @@ class Employee(Resource):
         sql = 'select * from Employees'
         cur.execute(sql)
         rows = cur.fetchall()
-        conn.close()
+	conn.close()
         return {'Message': 'Success!', 'Data': rows}, 200
     
     @jwt_required()
@@ -65,7 +65,7 @@ class Employee(Resource):
         """.format(firstname, lastname, age, employee_id, role, dept)
         cur.execute(sql)
         conn.commit()
-        conn.close()
+	conn.close()
         return {'Message': 'New Employee has been added!!'}, 201
 
 
@@ -78,7 +78,7 @@ class EmployeeStats(Resource):
         sql = f"select * from Employees where id = {ID}"
         cur.execute(sql)
         row = cur.fetchone()
-        conn.close()
+	conn.close()
         return {'Message': 'Success!!', 'Data': row}, 200
 
     @jwt_required()
@@ -97,7 +97,7 @@ class EmployeeStats(Resource):
         """.format(firstname, lastname, age, employee_id, role, dept, ID)
         cur.execute(sql)
         conn.commit()
-        conn.close()
+	conn.close()
         return {'Message': f"Employee at id {ID} has been updated!!"}, 200
 
     @jwt_required()
@@ -106,9 +106,32 @@ class EmployeeStats(Resource):
         cur = conn.cursor()
         sql = f"delete from Employees where id = {ID}"
         cur.execute(sql)
-        cur.commit()
-        conn.close()
+        sql2 = "select MAX(id) from Employees"
+        cur.execute(sql2)
+        conn.commit()
+        row = cur.fetchone()
+        num = int(ID)
+        reset_increment(num, row[0])
+	conn.close()
         return {'Message': 'Delete Successful'}, 204
+
+"""
+Used as a helper function for resetting the SQLite auto increment
+
+num: the id number of the deleted entry
+max_num: the biggest id number from the database
+"""
+def reset_increment(num, max_num):
+	count = num
+	while count < max_num:
+		conn = sqlite3.connect('Entreprise.db')
+		with conn:
+			cur = conn.cursor()
+			sql = """update Employees set id = {}
+			where id = {}""".format(count, count+1)
+			cur.execute(sql)
+			conn.commit()
+		count += 1
 
 api.add_resource(Employee, '/employees')
 api.add_resource(EmployeeStats, '/employees/<string:ID>')
