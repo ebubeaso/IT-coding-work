@@ -1,3 +1,9 @@
+//change the color of the day panels (similar to code used in FormPage1)
+function changeColor() {
+    document.getElementById(arguments[1]).style.backgroundColor = arguments[0];
+};
+
+
 //event listeners for the to do page
 let day1 = document.getElementById("day1");
 day1.addEventListener("mouseover", function() {

@@ -4,11 +4,6 @@ $(document).ready(function() {
     $(".page-content").hide().fadeIn(1000);
 });
 
-//change the color of the day panels (similar to code used in FormPage1)
-function changeColor() {
-    document.getElementById(arguments[1]).style.backgroundColor = arguments[0];
-};
-
 //handle the drop down of each task
 $(function() {
     //hides the first panel on to-do list that has classes hidden and active
