@@ -5,25 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script src="jquery-3.5.1.min.js"></script>
-    <script src="jquery-3.5.1.js"></script>
-    <!--<script src="submitValidator.js"></script>-->
-    <script src="events.js"></script>
+    <!-- <script src="jquery-3.5.1.js"></script> -->
+    <script src="submitValidator.js"></script>
 </head>
 <body>
-    <script src="pageEffects.js"></script>
+    <script type="text/javascript">
+        //This adds some animation to loading the page
+        $(document).ready(function () {
+            $(".theTitle").hide().slideDown(800);
+            $(".form").before($(".theTitle")).hide().fadeIn(2800);
+            $(".theButton").before($(".form")).hide().fadeIn(2800);
+        });
+    </script>
     <h1 class="theTitle">Fill out the form below:</h1>
     <div class="form">
-        <div>
+        <div id="text1">
             <div id="firstNameError" class="hidden">Please enter your first name</div>
             <label for="firstName">First Name <em>*</em></label> 
             <input id="firstName" type="text" name="fName" placeholder="Enter your first name" required>
         </div>
-        <div id="text">
-            <div id="firstNameError" class="hidden">Please enter your first name</div>
+        <div id="text2">
+            <div id="lastNameError" class="hidden2">Please enter your last name</div>
             <label for="lastName">Last Name <em>*</em></label> 
             <input id="lastName" type="text" name="lName" placeholder="Enter your last name" required>
         </div>
-        <div id="text">
+        <div id="text3">
+            <div id="emailError" class="hidden3">Please enter a valid email</div>
             <label for="email">Email:</label>
             <input id="email" type="text" name="mail" placeholder="Your email">
         </div>
@@ -34,8 +41,9 @@
         </div>
     </div>
     <div class="theButton">
-        <button id="return" class="option" type="button" onmouseover="changeColor('white', 'darkred', 'return')" onmouseout="changeColor('black', 'antiquewhite', 'return')" onclick="backHome()">Return to homepage</button>
-        <button id="submit" class="option" type="submit" onmouseover="changeColor('white', 'green', 'submit')" onmouseout="changeColor('black', 'antiquewhite', 'submit')" onclick="submitInfo()">Submit Form</button>
+        <button id="return" class="option" type="button">Return to homepage</button>
+        <button id="submit" class="option" type="submit">Submit Form</button>
     </div>
+    <script src="formEvents.js"></script>
 </body>
 </html>
