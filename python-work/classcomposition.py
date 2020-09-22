@@ -7,6 +7,11 @@ not necessarily in a hierarchial manner (like a book to a bookshelf or a
 smartphone to a computer). This script will have an inventory of switches, 
 routers and servers inside it and will let the user know how many of each item
 are in the inventory."""
+
+#######################################################################
+#I WILL REMOVE THIS COMMENT ONCE I AM FULLY FINISHED IMPLEMENTING THIS#
+#######################################################################
+
 from typing import List
 
 class Inventory:
