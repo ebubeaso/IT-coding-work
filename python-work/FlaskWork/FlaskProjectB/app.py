@@ -9,7 +9,8 @@ authorization token that gets generated when they login. They will also be
 able to register as well on this application.
 """
 from flask import Flask, request, render_template, jsonify
-import sqlite3
+#import sqlite3
+from flask_sqlalchemy import SQLAlchemy
 from flask_jwt import JWT, jwt_required
 from datetime import timedelta
 from app_security import authenticate, identity
