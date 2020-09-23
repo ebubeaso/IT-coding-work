@@ -11,11 +11,13 @@ able to register as well on this application.
 from flask import Flask, request, render_template, jsonify
 #import sqlite3
 from flask_sqlalchemy import SQLAlchemy
+from flask_restful import Resource, Api
 from flask_jwt import JWT, jwt_required
 from datetime import timedelta
 from app_security import authenticate, identity
 #initialize the application
 app = Flask(__name__)
+api = Api(app) #allows us to make API resources
 app.secret_key = "EbubeAso"
 jwt = JWT(app, authenticate, identity)
 #config the JWT token to expire at a later time (in seconds)
