@@ -10,4 +10,13 @@ able to register as well on this application.
 """
 from flask import Flask, request, render_template, jsonify
 import sqlite3
-import app_security
+from flask_jwt import JWT, jwt_required
+from datetime import timedelta
+from app_security import authenticate, identity
+#initialize the application
+app = Flask(__name__)
+app.secret_key = "EbubeAso"
+jwt = JWT(app, authenticate, identity)
+#config the JWT token to expire at a later time (in seconds)
+#this is also why I imported timedelta from datetime
+app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1200)
