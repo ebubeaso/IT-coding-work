@@ -42,7 +42,11 @@ class Data(db.Model):
     employeeID = db.Column(db.Integer, primary_key=True)
     role = db.Column(db.String(40))
     salary = db.Column(db.Integer)
-    
 
+class Employees(Resource):
+    def get(self):
+        pass
+
+api.add_resource(Employees, '/employees')
 if __name__ == "__main__":
     app.run()
