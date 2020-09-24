@@ -71,8 +71,27 @@ class Employees(Resource):
     def get(self):
         #same as running select * from Employees
         the_query = Data.query.all()
-        return {'data': [data.json() for data in the_query]}
+        return {'Data': [data.json() for data in the_query]}
+    def post(self):
+        data = Data(request.json['FirstName'], request.json['LastName'], 
+        request.json['Age'], request.json['employeeID'], 
+        request.json['Role'], request.json['Salary'])
+        db.session.add(data)
+        db.session.commit()
 
+class SpecificEmployee(Resource):
+    def get(self, employeeID):
+        the_query = Data.query.filter_by(employeeID=employeeID)
+        return {'Data': [data.json() for data in the_query]}
+    def put(self, employeeID):
+        pass
+    def patch(self, employeeID):
+        pass
+    def delete(self, employeeID):
+        the_query = Data.query.filter_by(employeeID=employeeID).delete()
+        db.session.commit()
+        return {"Message": "The employee has been deleted"}
 api.add_resource(Employees, '/employees')
+api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
 if __name__ == "__main__":
     app.run()
