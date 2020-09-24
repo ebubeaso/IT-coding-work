@@ -1,0 +1,61 @@
+#the-background {
+    color: azure;
+}
+h4 {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 28pt;
+    color: darkcyan;
+}
+#the-title {
+    font-size: 40pt;
+    font-style: oblique;
+    text-decoration: underline;
+    color: darkred;
+    background-color: aliceblue;
+    text-align: center;
+    width: 500px;
+    margin-left: 15%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.explanation {
+    color: black;
+    font-size: 16pt;
+    margin-left: 5%;
+    width: 95%;
+}
+#the-title, #explanation {
+    font-family: Helvetica;
+}
+
+/* This styling below is for the image slider */
+#slider{
+    width: 450px;
+    height: 650px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#the-slides {
+    display: block;
+    width: 4500px;
+    height: 650px;
+    margin: 0;
+    padding: 0;
+}
+
+.image-slide {
+    list-style-type: none; /*This is so our li elements dont look like lists*/
+    float: left;
+    width: 450px;
+    height: 650px;
+}
+img {
+    width: 450px;
+    height: 650px;
+}
+
+/* #the-slides li img.active {
+    display: inline-block;
+} */
