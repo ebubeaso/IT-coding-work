@@ -137,6 +137,8 @@ class SpecificEmployee(Resource):
         the_query = Data.query.filter_by(employeeID=employeeID).delete()
         db.session.commit()
         return {"Message": "The employee has been deleted"}, 204
+        
+        
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
 if __name__ == "__main__":
