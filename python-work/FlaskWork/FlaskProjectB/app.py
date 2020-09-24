@@ -24,9 +24,8 @@ jwt = JWT(app, authenticate, identity)
 #config the JWT token to expire at a later time (in seconds)
 #this is also why I imported timedelta from datetime
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1200)
+
 #set up SQLAlchemy
-path = """/home/pi/Documents/IT-coding-work/python-work/FlaskWork/
-FlaskProjectB/People.db"""
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///People.db"
 #turns off the flask SQLAlchemy tracker to save resources
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
@@ -36,7 +35,7 @@ db = SQLAlchemy(app)
 class Data(db.Model):
     #tells which table to look at
     __tablename__ = 'Employees'
-    #id = db.Column(db.Integer, primary_key=True)
+    #These variable names match the column names in the Employees table
     FirstName = db.Column(db.Text)
     LastName = db.Column(db.Text)
     Age = db.Column(db.Integer)
@@ -45,6 +44,7 @@ class Data(db.Model):
     Salary = db.Column(db.Integer)
 
     def __init__(self, firstname, lastname, age, employeeID, role, salary):
+        #Used the same capitalized names used in the columns of the table
         self.FirstName = firstname
         self.LastName = lastname
         self.Age = age
@@ -71,26 +71,72 @@ class Employees(Resource):
     def get(self):
         #same as running select * from Employees
         the_query = Data.query.all()
-        return {'Data': [data.json() for data in the_query]}
+        return { 'Response': 200, 'Data': [data.json() for data in the_query]}
+        
+    #same as running an INSERT into query
     def post(self):
         data = Data(request.json['FirstName'], request.json['LastName'], 
         request.json['Age'], request.json['employeeID'], 
         request.json['Role'], request.json['Salary'])
         db.session.add(data)
         db.session.commit()
+        return {"Response": 201, 
+        "Message": "New Employee was added to the database!"}
 
 class SpecificEmployee(Resource):
     def get(self, employeeID):
         the_query = Data.query.filter_by(employeeID=employeeID)
-        return {'Data': [data.json() for data in the_query]}
+        return { 'Response': 200, 'Data': [data.json() for data in the_query]}
+        
+    #updates or adds in data
     def put(self, employeeID):
-        pass
+        the_query = Data.query.get(employeeID)
+        if the_query is not None:
+            the_query.FirstName = request.json['FirstName']
+            the_query.LastName = request.json['LastName']
+            the_query.Age = request.json['Age']
+            the_query.employeeID = request.json['employeeID']
+            the_query.Role = request.json['Role']
+            the_query.Salary = request.json['Salary']
+            db.session.commit()
+            return { "Response": 200, 
+            "Message": f"Employee with ID {employeeID} was fully updated!"}
+        else:
+            data = Data(request.json['FirstName'], request.json['LastName'],
+            request.json['Age'], request.json['employeeID'],
+            request.json['Role'], request.json['Salary'])
+            db.session.add(data)
+            db.session.commit()
+            return {"Response": 201, 
+            "Message": f"Employee with ID {employeeID} was added!"}
+    
     def patch(self, employeeID):
-        pass
+        the_query = Data.query.get(employeeID)
+        if request.json['FirstName'] in request.json:
+            the_query.FirstName = request.json['FirstName']
+            
+        if request.json['LastName'] in request.json:
+            the_query.LastName = request.json['LastName']
+            
+        if request.json['Age'] in request.json:
+            the_query.Age = request.json['Age']
+            
+        if request.json['employeeID'] in request.json:
+            the_query.employeeID = request.json['employeeID']
+            
+        if request.json['Role'] in request.json:
+            the_query.Role = request.json['Role']
+            
+        if request.json['Salary'] in request.json:
+            the_query.Salary = request.json['Salary']
+        db.session.commit()
+        return {"Response": 203, 
+        "Message": f"Employee with ID {employeeID} has been updated!"}
+        
     def delete(self, employeeID):
         the_query = Data.query.filter_by(employeeID=employeeID).delete()
         db.session.commit()
-        return {"Message": "The employee has been deleted"}
+        return {"Message": "The employee has been deleted"}, 204
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
 if __name__ == "__main__":
