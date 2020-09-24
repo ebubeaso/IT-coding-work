@@ -27,7 +27,7 @@ app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1200)
 #set up SQLAlchemy
 path = """/home/pi/Documents/IT-coding-work/python-work/FlaskWork/
 FlaskProjectB/People.db"""
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////"+path
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///People.db"
 #turns off the flask SQLAlchemy tracker to save resources
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 db = SQLAlchemy(app)
@@ -36,16 +36,42 @@ db = SQLAlchemy(app)
 class Data(db.Model):
     #tells which table to look at
     __tablename__ = 'Employees'
-    first_name = db.Column(db.String(40))
-    last_name = db.Column(db.String(40))
-    age = db.Column(db.Integer)
+    #id = db.Column(db.Integer, primary_key=True)
+    FirstName = db.Column(db.Text)
+    LastName = db.Column(db.Text)
+    Age = db.Column(db.Integer)
     employeeID = db.Column(db.Integer, primary_key=True)
-    role = db.Column(db.String(40))
-    salary = db.Column(db.Integer)
+    Role = db.Column(db.Text)
+    Salary = db.Column(db.Integer)
+
+    def __init__(self, firstname, lastname, age, employeeID, role, salary):
+        self.FirstName = firstname
+        self.LastName = lastname
+        self.Age = age
+        self.employeeID = employeeID
+        self.Role = role
+        self.Salary = salary
+    
+    #Made this instance method so it can make the db model JSON serializable
+    def json(self):
+        return {
+            'firstname': self.FirstName,
+            'lastname': self.LastName,
+            'age': self.Age,
+            'employeeID': self.employeeID,
+            'role': self.Role,
+            'salary': self.Salary
+        }
+
+@app.route('/')
+def index():
+    return "<h1>Hellow and welcome to flask!!!</h1>"
 
 class Employees(Resource):
     def get(self):
-        pass
+        #same as running select * from Employees
+        the_query = Data.query.all()
+        return {'data': [data.json() for data in the_query]}
 
 api.add_resource(Employees, '/employees')
 if __name__ == "__main__":
