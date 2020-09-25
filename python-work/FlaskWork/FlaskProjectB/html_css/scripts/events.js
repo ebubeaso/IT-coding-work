@@ -1,1 +1,0 @@
-//This JS file will add some dynamic aspects to my Flask app

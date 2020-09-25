@@ -1,0 +1,30 @@
+nav li {
+    font-style: oblique;
+    font-family: Helvetica;
+    display: inline;
+    padding: 16px;
+    background-color: gray;
+    color: honeydew;
+}
+body {
+    color: lightcyan;
+}
+#title {
+    font-size: 40pt;
+    color: darkgreen;
+    margin-left: 25%;
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h2 {
+    font-size: 30pt;
+    color: darkgreen;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.explanation {
+    font-size: 18pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: midnightblue;
+}

@@ -69,7 +69,7 @@ class Data(db.Model):
 
 @app.route('/')
 def index():
-    return "<h1>Hellow and welcome to flask!!!</h1>"
+    return render_template("index.html")
 
 class Employees(Resource):
     def get(self):
