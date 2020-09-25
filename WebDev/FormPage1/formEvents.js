@@ -16,6 +16,13 @@ function backHome() {
     }
 };
 
+//This is to clear out the text in the text area to write your message
+$(function() {
+    $("textarea").on('click', function() {
+        $(this).val("").css('color', 'darkblue');
+    })
+});
+
 //My event listeners. It is considered bad practice to use HTML elements
 //These are the event listeners for the form page
 let returnButton = document.getElementById("return");
