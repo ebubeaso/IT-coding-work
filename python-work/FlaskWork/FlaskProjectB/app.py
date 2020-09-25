@@ -62,6 +62,10 @@ class Data(db.Model):
             'role': self.Role,
             'salary': self.Salary
         }
+    # @classmethod
+    # def find_by_id(cls, employeeID):
+    #     result = cls.query.filter_by(employeeID=employeeID)
+    #     return result
 
 @app.route('/')
 def index():
@@ -71,22 +75,28 @@ class Employees(Resource):
     def get(self):
         #same as running select * from Employees
         the_query = Data.query.all()
-        return { 'Response': 200, 'Data': [data.json() for data in the_query]}
+        return { 'Response': 200, 'Data': [data.json() for data in the_query]}, 200
         
     #same as running an INSERT into query
     def post(self):
-        data = Data(request.json['FirstName'], request.json['LastName'], 
-        request.json['Age'], request.json['employeeID'], 
-        request.json['Role'], request.json['Salary'])
-        db.session.add(data)
-        db.session.commit()
-        return {"Response": 201, 
-        "Message": "New Employee was added to the database!"}
+        the_query = Data.query.filter_by(employeeID=str(request.json['employeeID']))
+        query_list = [data.json() for data in the_query]
+        if len(query_list):
+            return {"Response": 400, "Message": "That employeeID already exists!"}, 400
+        else:
+            data = Data(request.json['FirstName'], request.json['LastName'], 
+            request.json['Age'], request.json['employeeID'], 
+            request.json['Role'], request.json['Salary'])
+            #Check if the employeeID used was taken
+            db.session.add(data)
+            db.session.commit()
+            return {"Response": 201, 
+            "Message": "New Employee was added to the database!"}, 201
 
 class SpecificEmployee(Resource):
     def get(self, employeeID):
         the_query = Data.query.filter_by(employeeID=employeeID)
-        return { 'Response': 200, 'Data': [data.json() for data in the_query]}
+        return { 'Response': 200, 'Data': [data.json() for data in the_query]}, 200
         
     #updates or adds in data
     def put(self, employeeID):
@@ -100,7 +110,7 @@ class SpecificEmployee(Resource):
             the_query.Salary = request.json['Salary']
             db.session.commit()
             return { "Response": 200, 
-            "Message": f"Employee with ID {employeeID} was fully updated!"}
+            "Message": f"Employee with ID {employeeID} was fully updated!"}, 200
         else:
             data = Data(request.json['FirstName'], request.json['LastName'],
             request.json['Age'], request.json['employeeID'],
@@ -108,33 +118,33 @@ class SpecificEmployee(Resource):
             db.session.add(data)
             db.session.commit()
             return {"Response": 201, 
-            "Message": f"Employee with ID {employeeID} was added!"}
+            "Message": f"Employee with ID {employeeID} was added!"}, 200
     
     def patch(self, employeeID):
         the_query = Data.query.get(employeeID)
-        if request.json['FirstName'] in request.json:
+        if 'FirstName' in request.json:
             the_query.FirstName = request.json['FirstName']
             
-        if request.json['LastName'] in request.json:
+        if 'LastName' in request.json:
             the_query.LastName = request.json['LastName']
             
-        if request.json['Age'] in request.json:
+        if 'Age' in request.json:
             the_query.Age = request.json['Age']
             
-        if request.json['employeeID'] in request.json:
+        if 'employeeID' in request.json:
             the_query.employeeID = request.json['employeeID']
             
-        if request.json['Role'] in request.json:
+        if 'Role' in request.json:
             the_query.Role = request.json['Role']
             
-        if request.json['Salary'] in request.json:
+        if 'Salary' in request.json:
             the_query.Salary = request.json['Salary']
         db.session.commit()
         return {"Response": 203, 
-        "Message": f"Employee with ID {employeeID} has been updated!"}
+        "Message": f"Employee with ID {employeeID} has been updated!"}, 203
         
     def delete(self, employeeID):
-        the_query = Data.query.filter_by(employeeID=employeeID).delete()
+        Data.query.filter_by(employeeID=employeeID).delete()
         db.session.commit()
         return {"Message": "The employee has been deleted"}, 204
         
