@@ -2,29 +2,58 @@ nav li {
     font-style: oblique;
     font-family: Helvetica;
     display: inline;
-    padding: 16px;
-    background-color: gray;
+    padding: 20px;
+    background-color: navy;
     color: honeydew;
 }
+nav li a:link {
+    color: white;
+    font-size: 14pt;
+}
+nav li a:visited {
+    color: white;
+    font-size: 14pt;
+}
+#menu {
+    padding-bottom: 20px;
+}
+li {
+    border: 2px solid black;
+    border-radius: 15px;
+}
 body {
-    color: lightcyan;
+    background-color: lightcyan;
 }
 #title {
     font-size: 40pt;
     color: darkgreen;
-    margin-left: 25%;
-    width: 500px;
+    margin-left: 5%;
+    text-align: center;
+    width: 800px;
+    text-decoration: underline;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: white;
     border: 1px solid black;
     border-radius: 15px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-bottom: 10px;
 }
 h2 {
-    font-size: 30pt;
-    color: darkgreen;
+    font-size: 24pt;
+    color: midnightblue;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    margin-left: 20px;
 }
 .explanation {
     font-size: 18pt;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: midnightblue;
+    margin-left: 20px;
+}
+#content {
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: lightgray;
+    width: 90%;
+    margin: auto;
 }

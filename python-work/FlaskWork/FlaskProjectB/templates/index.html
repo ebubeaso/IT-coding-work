@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
-        <script src="{{ url_for('static', filename='jquery-3.5.1.js') }}"></script>
-        <script src="{{ url_for('static', filename='jquery-3.5.1.min.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="static/style.css"/>
+        <script src="static/jquery-3.5.1.js"></script>
+        <script src="static/jquery-3.5.1.min.js"></script>
         <title>Salutations!</title>
     </head>
     <body>
@@ -18,12 +18,13 @@
             </ul>
             </div>
         </nav>
-        <hr>
-        <script src="{{ url_for('static', filename='events.js') }}"></script>
+        <div id="content">
+        <script src="static/events.js"></script>
         <h1 id="title">Welcome to my API Flask application!</h1>
         <h2 id="second-header">The purpose of this web application:</h2>
         <p class="explanation">I made this application to make a website
             using Flask. This is essentially a web user interface
         </p>
+        </div>
     </body>
 </html>
