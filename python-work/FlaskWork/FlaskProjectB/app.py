@@ -16,6 +16,7 @@ from datetime import timedelta
 # from app_security import authenticate, identity
 #from app_security import UserLogin
 from flask_sqlalchemy import SQLAlchemy
+import json
 from user import User
 from werkzeug.security import safe_str_cmp
 
@@ -58,7 +59,7 @@ class Data(db.Model):
         self.Salary = salary
     
     #Made this instance method so it can make the db model JSON serializable
-    def json(self):
+    def jsonize(self):
         return {
             'firstname': self.FirstName,
             'lastname': self.LastName,
@@ -76,12 +77,12 @@ class Employees(Resource):
     def get(self):
         #same as running select * from Employees
         the_query = Data.query.all()
-        return { 'Response': 200, 'Data': [data.json() for data in the_query]}, 200
+        return { 'Response': 200, 'Data': [data.jsonize() for data in the_query]}, 200
         
     #same as running an INSERT into query
     def post(self):
         the_query = Data.query.filter_by(employeeID=str(request.json['employeeID']))
-        query_list = [data.json() for data in the_query]
+        query_list = [data.jsonize() for data in the_query]
         if len(query_list):
             return {"Response": 400, "Message": "That employeeID already exists!"}, 400
         else:
@@ -97,7 +98,7 @@ class Employees(Resource):
 class SpecificEmployee(Resource):
     def get(self, employeeID):
         the_query = Data.query.filter_by(employeeID=employeeID)
-        return { 'Response': 200, 'Data': [data.json() for data in the_query]}, 200
+        return { 'Response': 200, 'Data': [data.jsonize() for data in the_query]}, 200
         
     #updates or adds in data
     def put(self, employeeID):
@@ -159,10 +160,11 @@ def signin():
         if credentials and safe_str_cmp(credentials.password, request.form['password']):
             access_token = create_access_token(identity=credentials.id, fresh=True)
             refresh_token = create_refresh_token(credentials.id)
-            return jsonify({
+            output = {
                 'access_token': access_token,
                 'refresh_token': refresh_token
-            }), 200
+            }
+            return render_template('tokens.html', jsonfile=json.dumps(output)), 200
         else:
             return jsonify({"Message": "Invalid credentials"}), 401
         

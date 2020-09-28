@@ -45,11 +45,22 @@ h2 {
     font-style: italic;
     margin-left: 20px;
 }
-.explanation {
+.explanation{
     font-size: 18pt;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: midnightblue;
     margin-left: 20px;
+}
+#token {
+    margin-left: 20px;
+    font-size: 12pt;
+    width: 80%;
+}
+#the-tokens {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 .content {
     border: 1px solid black;
@@ -61,6 +72,14 @@ h2 {
 a.quicklink {
     color: blue;
     font-style: italic;
+}
+nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+#menu2 {
+    position: relative;
+    left: 25%;
 }
 /* Form styling for the login page */
 

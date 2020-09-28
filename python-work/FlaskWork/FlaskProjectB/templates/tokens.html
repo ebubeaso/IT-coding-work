@@ -26,20 +26,8 @@
         </nav>
         <div class="content">
             <script src="{{url_for('static', filename='events.js')}}"></script>
-        <h1 class="title">Please Login Below</h1>
-        <form action="#" method="post">
-            <div class="form-section">
-                <label for="username">Username</label>
-                <input type="text" class="name-input" id="username" name="username" placeholder="Enter username">
-            </div>
-            <div class="form-section">
-                <label for="password">Password</label>
-                <input type="password" class="name-input" id="password" name="password" placeholder="Enter password">
-            </div>
-            <div id="login-button">
-                <input type="submit" id="submit" value="Login">
-            </div>
-        </form>
+            <p class="explanation">Here are your tokens below:</p>
+            <p id="token"><span id="the-tokens">{{ output }}</span></p>
         </div>
     </body>
-</html>
+    </html>
