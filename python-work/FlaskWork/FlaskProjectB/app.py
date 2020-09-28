@@ -11,18 +11,21 @@ able to register as well on this application.
 from flask import Flask, request, render_template, jsonify, redirect, url_for
 #import sqlite3
 from flask_restful import Resource, Api
-from flask_jwt import JWT, jwt_required
+from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token
 from datetime import timedelta
-from app_security import authenticate, identity
+# from app_security import authenticate, identity
+#from app_security import UserLogin
 from flask_sqlalchemy import SQLAlchemy
 from user import User
+from werkzeug.security import safe_str_cmp
 
 #initialize the application
 app = Flask(__name__)
 api = Api(app) #allows us to make API resources
 app.secret_key = "EbubeAso"
-jwt = JWT(app, authenticate, identity)
 
+#jwt = JWT(app, authenticate, identity)
+jwt = JWTManager(app)
 #config the JWT token to expire at a later time (in seconds)
 #this is also why I imported timedelta from datetime
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1200)
@@ -147,15 +150,24 @@ class SpecificEmployee(Resource):
         return {"Message": "The employee has been deleted"}, 204
 
 # This is for logging into the database
-@app.route('/login', methods=['GET', 'POST'])
-def sign_in():
-    error = None
-    credentials = str(User.find_username)
+@app.route('/login', methods = ['GET', 'POST'])
+def signin():
+    if request.method == 'GET':
+        return render_template('login.html')
     if request.method == 'POST':
-        if 
-    return render_template('login.html')
+        credentials = User.find_username(request.form['username'])
+        if credentials and safe_str_cmp(credentials.password, request.form['password']):
+            access_token = create_access_token(identity=credentials.id, fresh=True)
+            refresh_token = create_refresh_token(credentials.id)
+            return jsonify({
+                'access_token': access_token,
+                'refresh_token': refresh_token
+            }), 200
+        else:
+            return jsonify({"Message": "Invalid credentials"}), 401
         
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
+#api.add_resource(UserLogin, '/login')
 if __name__ == "__main__":
     app.run()

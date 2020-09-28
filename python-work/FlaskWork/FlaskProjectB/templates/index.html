@@ -12,9 +12,9 @@
         <nav>
             <div id="menu">
             <ul>
-                <li><a href="{{url_for ('index')}}">Home</a></li>
-                <li><a href="{{url_for ('search')}}">Search</a></li>
-                <li><a href="{{url_for ('login')}}">Login</a></li>
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="{{url_for('signin')}}">Login</a></li>
             </ul>
             </div>
         </nav>
@@ -25,7 +25,7 @@
         <p class="explanation">I made this application to make a website
             using Flask. This is essentially a web user interface
         </p>
-        <p class="explanation">Please login <a class="quicklink" href="{{url_for ('login')}}">Here</a> to be able to use this Flask application.</p>
+        <p class="explanation">Please login <a class="quicklink" href="{{url_for('signin')}}">Here</a> to be able to use this Flask application.</p>
         </div>
     </body>
 </html>
