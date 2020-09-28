@@ -8,13 +8,10 @@ with user data. However, a user can only have access to the data with an
 authorization token that gets generated when they login. They will also be
 able to register as well on this application.
 """
-from flask import Flask, request, render_template, jsonify, redirect, url_for
-#import sqlite3
+from flask import Flask, request, render_template, jsonify, redirect, url_for, session
 from flask_restful import Resource, Api
 from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token
 from datetime import timedelta
-# from app_security import authenticate, identity
-#from app_security import UserLogin
 from flask_sqlalchemy import SQLAlchemy
 import json
 from user import User
@@ -25,7 +22,6 @@ app = Flask(__name__)
 api = Api(app) #allows us to make API resources
 app.secret_key = "EbubeAso"
 
-#jwt = JWT(app, authenticate, identity)
 jwt = JWTManager(app)
 #config the JWT token to expire at a later time (in seconds)
 #this is also why I imported timedelta from datetime
@@ -61,12 +57,12 @@ class Data(db.Model):
     #Made this instance method so it can make the db model JSON serializable
     def jsonize(self):
         return {
-            'firstname': self.FirstName,
-            'lastname': self.LastName,
-            'age': self.Age,
+            'First Name': self.FirstName,
+            'Last Name': self.LastName,
+            'Age': self.Age,
             'employeeID': self.employeeID,
-            'role': self.Role,
-            'salary': self.Salary
+            'Role': self.Role,
+            'Salary': self.Salary
         }
 
 @app.route('/')

@@ -85,7 +85,6 @@ textarea {
     margin-bottom: 25px;
 }
 /* Form styling for the login page */
-
 form .form-section {
     display: flex;
     flex-direction: column;
@@ -102,4 +101,14 @@ div #login-button {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 50px;
+}
+/* End of styling specific to the login page */
+
+/* Start of styling specific to the Search page */
+#search-all {
+    margin-left: 45%;
+    padding: 20px;
+    font-size: 18pt;
+    color: whitesmoke;
+    background-color: cyan;
 }

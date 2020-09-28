@@ -3,21 +3,42 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <script src="scripts/jquery-3.5.1.js"></script>
-        <script src="scripts/jquery-3.5.1.min.js"></script>
-        <title>Salutations!</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"/>
+        <script src="{{url_for('static', filename='jquery-3.5.1.js')}}"></script>
+        <script src="{{url_for('static', filename='jquery-3.5.1.min.js')}}"></script>
+        <title>Login Page</title>
     </head>
     <body>
         <nav>
             <div id="menu">
             <ul>
-                <li><a href=index.html>Home</a></li>
+                <li><a href="{{url_for('index')}}">Home</a></li>
                 <li><a href="search.html">Search</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="{{url_for('signin')}}">Login</a></li>
+            </ul>
+            </div>
+            <div id="menu2">
+            <ul>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="logout.html">Logout</a></li>
             </ul>
             </div>
         </nav>
-        <h1>This page has yet to be implemented. Come back soon!!</h1>
+        <div class="content">
+            <script src="{{url_for('static', filename='events.js')}}"></script>
+            <h1 class="title">Search the Employee Data</h1>
+            <p>You can look at the employee data by clicking the Search All button</p>
+            <button class="search-button" id="search-all">Search All</button>
+            <table id="employee-table">
+            <tr class="table-headers">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>employeeID</th>
+                <th>Role</th>
+                <th>Salary</th>
+            </tr>
+            </table>
+        </div>
     </body>
-</html>
+    </html>
