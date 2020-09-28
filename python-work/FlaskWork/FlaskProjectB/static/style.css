@@ -24,7 +24,7 @@ li {
 body {
     background-color: lightcyan;
 }
-#title {
+.title {
     font-size: 40pt;
     color: darkgreen;
     text-align: center;
@@ -51,10 +51,33 @@ h2 {
     color: midnightblue;
     margin-left: 20px;
 }
-#content {
+.content {
     border: 1px solid black;
     border-radius: 15px;
     background-color: lightgray;
     width: 95%;
     margin: auto;
+}
+a.quicklink {
+    color: blue;
+    font-style: italic;
+}
+/* Form styling for the login page */
+
+form .form-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    width: 200px;
+}
+label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+div #login-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
 }

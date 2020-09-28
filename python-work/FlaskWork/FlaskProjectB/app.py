@@ -15,6 +15,8 @@ from flask_jwt import JWT, jwt_required
 from datetime import timedelta
 from app_security import authenticate, identity
 from flask_sqlalchemy import SQLAlchemy
+from user import User
+
 #initialize the application
 app = Flask(__name__)
 api = Api(app) #allows us to make API resources
@@ -62,10 +64,6 @@ class Data(db.Model):
             'role': self.Role,
             'salary': self.Salary
         }
-    # @classmethod
-    # def find_by_id(cls, employeeID):
-    #     result = cls.query.filter_by(employeeID=employeeID)
-    #     return result
 
 @app.route('/')
 def index():
@@ -147,7 +145,15 @@ class SpecificEmployee(Resource):
         Data.query.filter_by(employeeID=employeeID).delete()
         db.session.commit()
         return {"Message": "The employee has been deleted"}, 204
-        
+
+# This is for logging into the database
+@app.route('/login', methods=['GET', 'POST'])
+def sign_in():
+    error = None
+    credentials = str(User.find_username)
+    if request.method == 'POST':
+        if 
+    return render_template('login.html')
         
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')

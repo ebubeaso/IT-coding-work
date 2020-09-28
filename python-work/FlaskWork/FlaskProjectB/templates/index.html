@@ -12,19 +12,20 @@
         <nav>
             <div id="menu">
             <ul>
-                <li><a href=index.html>Home</a></li>
-                <li><a href="search.html">Search</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="{{url_for ('index')}}">Home</a></li>
+                <li><a href="{{url_for ('search')}}">Search</a></li>
+                <li><a href="{{url_for ('login')}}">Login</a></li>
             </ul>
             </div>
         </nav>
-        <div id="content">
+        <div class="content">
         <script src="{{url_for('static', filename='events.js')}}"></script>
-        <h1 id="title">Welcome to my API Flask application!</h1>
+        <h1 class="title">Welcome to my API Flask application!</h1>
         <h2 id="second-header">The purpose of this web application:</h2>
         <p class="explanation">I made this application to make a website
             using Flask. This is essentially a web user interface
         </p>
+        <p class="explanation">Please login <a class="quicklink" href="{{url_for ('login')}}">Here</a> to be able to use this Flask application.</p>
         </div>
     </body>
 </html>
