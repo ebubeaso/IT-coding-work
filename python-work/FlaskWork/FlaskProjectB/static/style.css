@@ -81,6 +81,9 @@ nav {
     position: relative;
     left: 25%;
 }
+textarea {
+    margin-bottom: 25px;
+}
 /* Form styling for the login page */
 
 form .form-section {

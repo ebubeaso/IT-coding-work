@@ -164,9 +164,9 @@ def signin():
                 'access_token': access_token,
                 'refresh_token': refresh_token
             }
-            return render_template('tokens.html', jsonfile=json.dumps(output)), 200
+            return render_template('tokens.html', output=json.dumps(output)), 200
         else:
-            return jsonify({"Message": "Invalid credentials"}), 401
+            return jsonify({"Message": "Invalid credentials, Go back and try again!!"}), 401
         
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
