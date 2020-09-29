@@ -43,14 +43,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr>
-                    <td>Paul</td>
-                    <td>Linemin</td>
-                    <td>34</td>
-                    <td>347623</td>
-                    <td>Business Analyst</td>
-                    <td>98000</td>
-                </tr> -->
                 {% for obj in result %}
                     <tr>
                     {% for value in obj.values() %}
@@ -61,5 +53,23 @@
             </tbody>
             </table>
         </div>
+        <script>
+            //used to change color of buttons (like the Search All button)
+            function changeColor() {
+                let element = document.getElementById(arguments[1]);
+                element.style.backgroundColor = arguments[0];
+            };
+            /*event listener to go along with this function
+            This is for the Search All button on the Search page */
+            let searchButton = document.getElementById("search-all");
+            searchButton.addEventListener("mouseover", function() {
+                changeColor('green', 'search-all');
+                searchButton.style.border = '4px solid black';
+            }, false);
+            searchButton.addEventListener("mouseout", function() {
+                changeColor('darkcyan', 'search-all');
+                searchButton.style.border = 'none';
+            }, false);
+        </script>
     </body>
     </html>

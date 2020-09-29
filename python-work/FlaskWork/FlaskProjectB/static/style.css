@@ -135,6 +135,7 @@ table {
 #employee-table {
     background-color: beige;
     color: black;
+    border: 2px solid black;
 }
 .hidden{
     display: none;
