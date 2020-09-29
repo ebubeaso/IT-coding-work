@@ -8,7 +8,7 @@ with user data. However, a user can only have access to the data with an
 authorization token that gets generated when they login. They will also be
 able to register as well on this application.
 """
-from flask import Flask, request, render_template, jsonify, redirect, url_for, session
+from flask import Flask, request, render_template, jsonify, redirect, url_for, session, make_response
 from flask_restful import Resource, Api
 from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token
 from datetime import timedelta
@@ -69,6 +69,11 @@ class Data(db.Model):
 def index():
     return render_template("index.html")
 
+# *** Start of requests using Web UI ***
+
+# *** End of application that uses the Web UI
+
+# ****Used for Postman or Python requests ****
 class Employees(Resource):
     def get(self):
         #same as running select * from Employees
@@ -145,6 +150,7 @@ class SpecificEmployee(Resource):
         Data.query.filter_by(employeeID=employeeID).delete()
         db.session.commit()
         return {"Message": "The employee has been deleted"}, 204
+# *** End of application that can be used in Postman or Python Requests ***
 
 # This is for logging into the database
 @app.route('/login', methods = ['GET', 'POST'])
@@ -163,9 +169,14 @@ def signin():
             return render_template('tokens.html', output=json.dumps(output)), 200
         else:
             return jsonify({"Message": "Invalid credentials, Go back and try again!!"}), 401
-        
+
+class Search(Resource):
+    def get(self):
+        headers = {'Content Type': 'text/html'}
+        return make_response(render_template('search.html'),200,headers)
+
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
-#api.add_resource(UserLogin, '/login')
+api.add_resource(Search, '/search')
 if __name__ == "__main__":
     app.run()

@@ -119,9 +119,31 @@ div #login-button {
 
 /* Start of styling specific to the Search page */
 #search-all {
-    margin-left: 45%;
+    margin-left: 35%;
+    margin-bottom: 20px;
     padding: 20px;
     font-size: 18pt;
     color: whitesmoke;
-    background-color: cyan;
+    font-weight: bold;
+    background-color: darkcyan;
+    text-transform: uppercase;
+}
+table {
+    margin: 20px;
+    border-spacing: 30px 10px;
+}
+#employee-table {
+    background-color: beige;
+    color: black;
+}
+.hidden{
+    display: none;
+}
+tbody {
+    background-color: white;
+    color: black;
+}
+td {
+    border: 1px solid black;
+    text-align: center;
 }
