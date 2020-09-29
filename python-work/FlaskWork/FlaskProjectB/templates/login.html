@@ -9,21 +9,23 @@
         <title>Login Page</title>
     </head>
     <body>
-        <nav>
-            <div id="menu">
-            <ul>
-                <li><a href="{{url_for('index')}}">Home</a></li>
-                <li><a href="search.html">Search</a></li>
-                <li><a href="{{url_for('signin')}}">Login</a></li>
-            </ul>
-            </div>
-            <div id="menu2">
-            <ul>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="logout.html">Logout</a></li>
-            </ul>
-            </div>
-        </nav>
+        <header>
+            <nav>
+                <div id="menu">
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="{{url_for('signin')}}">Login</a></li>
+                </ul>
+                </div>
+                <div id="menu2">
+                <ul>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+                </div>
+            </nav>
+        </header>
         <div class="content">
             <script src="{{url_for('static', filename='events.js')}}"></script>
         <h1 class="title">Please Login Below</h1>

@@ -2,7 +2,7 @@ nav li {
     font-style: oblique;
     font-family: Helvetica;
     display: inline;
-    padding: 20px;
+    padding: 15px;
     background-color: navy;
     color: honeydew;
 }
@@ -16,10 +16,22 @@ nav li a:visited {
 }
 #menu {
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
 }
 li {
     border: 2px solid black;
     border-radius: 15px;
+}
+header {
+    background-color: lightgray;
+    background-size: cover;
+    height: 70px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 body {
     background-color: lightcyan;
@@ -76,10 +88,11 @@ a.quicklink {
 nav {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 5px;
+    justify-content: space-between;
 }
 #menu2 {
-    position: relative;
-    left: 25%;
+    margin-right: 40px;
 }
 textarea {
     margin-bottom: 25px;
