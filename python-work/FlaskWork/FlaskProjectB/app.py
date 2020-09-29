@@ -54,7 +54,8 @@ class Data(db.Model):
         self.Role = role
         self.Salary = salary
     
-    #Made this instance method so it can make the db model JSON serializable
+    # Made this instance method so it can make the db model JSON serializable
+    # It turns each object into a dictionary to be JSON serializable
     def jsonize(self):
         return {
             'First Name': self.FirstName,
@@ -70,7 +71,12 @@ def index():
     return render_template("index.html")
 
 # *** Start of requests using Web UI ***
-
+class Search(Resource):
+    def get(self):
+        the_query = Data.query.all()
+        result = [data.jsonize() for data in the_query]
+        headers = {'Content Type': 'text/html'}
+        return make_response(render_template('search.html', result=result),200,headers)
 # *** End of application that uses the Web UI
 
 # ****Used for Postman or Python requests ****
@@ -169,11 +175,6 @@ def signin():
             return render_template('tokens.html', output=json.dumps(output)), 200
         else:
             return jsonify({"Message": "Invalid credentials, Go back and try again!!"}), 401
-
-class Search(Resource):
-    def get(self):
-        headers = {'Content Type': 'text/html'}
-        return make_response(render_template('search.html'),200,headers)
 
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')

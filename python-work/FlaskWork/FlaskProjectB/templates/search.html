@@ -14,7 +14,7 @@
                 <div id="menu">
                 <ul>
                     <li><a href="{{url_for('index')}}">Home</a></li>
-                    <li><a href="search.html">Search</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
                     <li><a href="{{url_for('signin')}}">Login</a></li>
                 </ul>
                 </div>
@@ -29,7 +29,7 @@
         <div class="content">
             <script src="{{url_for('static', filename='events.js')}}"></script>
             <h1 class="title">Search the Employee Data</h1>
-            <p>You can look at the employee data by clicking the Search All button</p>
+            <p class="explanation">You can look at the employee data by clicking the Search All button</p>
             <button class="search-button" id="search-all">Search All</button>
             <table id="employee-table" class="hidden">
             <thead>
@@ -43,14 +43,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td>Paul</td>
                     <td>Linemin</td>
                     <td>34</td>
                     <td>347623</td>
                     <td>Business Analyst</td>
                     <td>98000</td>
-                </tr>
+                </tr> -->
+                {% for obj in result %}
+                    <tr>
+                    {% for value in obj.values() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
             </tbody>
             </table>
         </div>
