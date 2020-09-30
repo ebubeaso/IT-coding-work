@@ -20,7 +20,7 @@
                 </div>
                 <div id="menu2">
                 <ul>
-                    <li><a href="register.html">Register</a></li>
+                    <li><a href="{{url_for('register')}}">Register</a></li>
                     <li><a href="logout.html">Logout</a></li>
                 </ul>
                 </div>
@@ -30,7 +30,7 @@
             <script src="{{url_for('static', filename='events.js')}}"></script>
             <h1 class="title">Search the Employee Data</h1>
             <p class="explanation">You can look at the employee data by clicking the Search All button</p>
-            <button class="search-button" id="search-all">Search All</button>
+            <button class="the-button" id="search-all">Search All</button>
             <table id="employee-table" class="hidden">
             <thead>
                 <tr class="table-headers">

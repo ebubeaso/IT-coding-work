@@ -77,6 +77,13 @@ class Search(Resource):
         result = [data.jsonize() for data in the_query]
         headers = {'Content Type': 'text/html'}
         return make_response(render_template('search.html', result=result),200,headers)
+
+class Register(Resource):
+    def get(self):
+        the_header = {'Content Type': 'text/html'}
+        return make_response(render_template('register.html'),200,the_header)
+    def post(self):
+        pass
 # *** End of application that uses the Web UI
 
 # ****Used for Postman or Python requests ****
@@ -179,5 +186,6 @@ def signin():
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
 api.add_resource(Search, '/search')
+api.add_resource(Register, '/register')
 if __name__ == "__main__":
     app.run()

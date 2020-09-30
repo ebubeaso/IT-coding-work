@@ -15,4 +15,17 @@ $(function() {
     $(".search-button").on('click', function() {
         $("#employee-table").fadeToggle(1000);
     });
+
+    //handling interactivity with the popup screens
+    
+    //This is for the register webpage:
+    $("#register").on('click', function() {
+
+        $(".popup-screen").css("display", "flex").fadeIn(1000);
+        $(".popup-content").fadeToggle(1000);
+    })
+    $("#close-popup").on('click', function() {
+        $(".popup-content").fadeToggle(1000);
+        $(".popup-screen").fadeOut(1000).css("display", "none");
+    });
 });

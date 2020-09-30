@@ -3,21 +3,67 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <script src="scripts/jquery-3.5.1.js"></script>
-        <script src="scripts/jquery-3.5.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"/>
+        <script src="{{url_for('static', filename='jquery-3.5.1.js')}}"></script>
+        <script src="{{url_for('static', filename='jquery-3.5.1.min.js')}}"></script>
         <title>Salutations!</title>
     </head>
     <body>
-        <nav>
-            <div id="menu">
-            <ul>
-                <li><a href=index.html>Home</a></li>
-                <li><a href="search.html">Search</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ul>
+        <header>
+            <nav>
+                <div id="menu">
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('signin')}}">Login</a></li>
+                </ul>
+                </div>
+                <div id="menu2">
+                <ul>
+                    <li><a href="{{url_for('register')}}">Register</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="content">
+        <script src="{{url_for('static', filename='events.js')}}"></script>
+        <h1 class="title">Sign Up Here!</h1>
+        <p class="explanation">Click the Sign Up button to register!!</p>
+        <button class="the-button" id="register">Sign Up!</button>
+        <div class="popup-screen">
+            <div class="popup-content">
+                <h3 id="close-popup" class="close">Close X</h3>
+                <h2>Sign Up</h2>
+                <div id="register-inputs">
+                <form action="#" method="POST">
+                    <label for="user">Enter A Userame</label>
+                    <input type="text" class="username" id="user" name="username">
+                    <label for="passwd">Enter A Password</label>
+                    <input type="password" class="password" id="passwd" name="password">
+                    <input type="submit" id="signup-submit" value="Register!">
+                </form>
+                </div>
             </div>
-        </nav>
-        <h1>This page has yet to be implemented. Come back soon!!</h1>
+        </div>
+        <script>
+            //used to change color of buttons (like the Search All button)
+            function changeColor() {
+                let element = document.getElementById(arguments[1]);
+                element.style.backgroundColor = arguments[0];
+            };
+            /*event listener to go along with this function
+            This is for the Search All button on the Search page */
+            let searchButton = document.getElementById("register");
+            searchButton.addEventListener("mouseover", function() {
+                changeColor('green', 'register');
+                searchButton.style.border = '4px solid black';
+            }, false);
+            searchButton.addEventListener("mouseout", function() {
+                changeColor('darkcyan', 'register');
+                searchButton.style.border = 'none';
+            }, false);
+        </script>
+        </div>
     </body>
 </html>
