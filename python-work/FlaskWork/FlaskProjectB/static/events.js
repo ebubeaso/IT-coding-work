@@ -12,7 +12,7 @@ $(function() {
     $("form").hide().slideDown(800);
 
     //handling the interactivity of showing and hiding the search table
-    $(".search-button").on('click', function() {
+    $("#search-all").on('click', function() {
         $("#employee-table").fadeToggle(1000);
     });
 
@@ -20,12 +20,11 @@ $(function() {
     
     //This is for the register webpage:
     $("#register").on('click', function() {
-
         $(".popup-screen").css("display", "flex").fadeIn(1000);
         $(".popup-content").fadeToggle(1000);
     })
     $("#close-popup").on('click', function() {
         $(".popup-content").fadeToggle(1000);
-        $(".popup-screen").fadeOut(1000).css("display", "none");
+        $(".popup-screen").fadeOut(1000);
     });
 });
