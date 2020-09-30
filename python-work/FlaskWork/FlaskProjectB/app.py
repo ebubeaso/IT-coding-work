@@ -84,7 +84,7 @@ class Register(Resource):
         return make_response(render_template('register.html'),200,the_header)
     def post(self):
         pass
-# *** End of application that uses the Web UI
+# *** End of application that uses the Web UI ***
 
 # ****Used for Postman or Python requests ****
 class Employees(Resource):
