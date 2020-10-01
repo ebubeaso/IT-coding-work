@@ -47,24 +47,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            //used to change color of buttons (like the Search All button)
-            function changeColor() {
-                let element = document.getElementById(arguments[1]);
-                element.style.backgroundColor = arguments[0];
-            };
-            /*event listener to go along with this function
-            This is for the Search All button on the Search page */
-            let searchButton = document.getElementById("register");
-            searchButton.addEventListener("mouseover", function() {
-                changeColor('green', 'register');
-                searchButton.style.border = '4px solid black';
-            }, false);
-            searchButton.addEventListener("mouseout", function() {
-                changeColor('darkcyan', 'register');
-                searchButton.style.border = 'none';
-            }, false);
-        </script>
         </div>
     </body>
 </html>
