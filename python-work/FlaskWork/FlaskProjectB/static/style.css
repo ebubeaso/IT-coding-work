@@ -93,7 +93,7 @@ textarea {
 }
 
 /* this is for hiding elements */
-.hidden{
+.hidden, .hidden2 {
     display: none;
 }
 
@@ -172,7 +172,6 @@ td {
     border: 2px solid black;
     border-radius: 15px;
     width: 50%;
-    height: 90%;
     position: relative;
 }
 .close {
@@ -202,6 +201,14 @@ td {
     display: flex;
     flex-direction: column;
     margin-left: 15px;
+}
+#passwordError, #userError, #passwordError ul li {
+    margin-left: 10px;
+}
+#passwordError ul li, #userError {
+    color: red;
+    font-size: 10px;
+    border: none;
 }
 #register-inputs #user, #register-inputs #passwd {
     width: 300px;

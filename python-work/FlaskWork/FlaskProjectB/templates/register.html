@@ -6,7 +6,8 @@
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"/>
         <script src="{{url_for('static', filename='jquery-3.5.1.js')}}"></script>
         <script src="{{url_for('static', filename='jquery-3.5.1.min.js')}}"></script>
-        <title>Salutations!</title>
+        <script src="{{url_for('static', filename='validate.js')}}"></script>
+        <title>Sign Up!</title>
     </head>
     <body>
         <header>
@@ -37,8 +38,17 @@
                 <h2>Sign Up</h2>
                 <div id="register-inputs">
                 <form action="#" method="POST">
+                    <div id="userError" class="hidden">Username is empty</div>
                     <label for="user">Enter A Userame</label>
                     <input type="text" class="username" id="user" name="username">
+                    <div id="passwordError" class="hidden2">
+                        <ul>
+                        <li>Password must be at least 8 characters long</li>
+                        <li>Needs at least 1 capital letter</li>
+                        <li>Needs at least 1 number</li>
+                        <li>Needs a special character like (!,?,$,@,%,^,&)</li>
+                        </ul>
+                    </div>
                     <label for="passwd">Enter A Password</label>
                     <input type="password" class="password" id="passwd" name="password">
                     <input type="submit" id="signup-submit" value="Register!">
