@@ -8,9 +8,11 @@ with user data. However, a user can only have access to the data with an
 authorization token that gets generated when they login. They will also be
 able to register as well on this application.
 """
-from flask import Flask, request, render_template, jsonify, redirect, url_for, session, make_response
+from flask import (Flask, request, render_template, jsonify, redirect, url_for, 
+session, make_response)
 from flask_restful import Resource, Api
-from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token
+from flask_jwt_extended import (JWTManager, create_access_token, 
+create_refresh_token)
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 import json
@@ -215,17 +217,37 @@ def signin():
     if request.method == 'GET':
         return render_template('login.html')
     if request.method == 'POST':
-        credentials = User.find_username(request.form['username'])
-        if credentials and safe_str_cmp(credentials.password, request.form['password']):
-            access_token = create_access_token(identity=credentials.id, fresh=True)
-            refresh_token = create_refresh_token(credentials.id)
-            output = {
-                'access_token': access_token,
-                'refresh_token': refresh_token
-            }
-            return render_template('tokens.html', output=json.dumps(output)), 200
+        
+        if request.form:
+            #when the admin logs in
+            credentials = User.find_username(request.form['username'])
+            if credentials and safe_str_cmp(credentials.password, request.form['password']) and request.form['username'] == 'ebubeaso':
+                access_token = create_access_token(identity=credentials.id, fresh=True)
+                refresh_token = create_refresh_token(credentials.id)
+                output = {
+                    'access_token': access_token,
+                    'refresh_token': refresh_token
+                }
+                return render_template('tokens.html', output=json.dumps(output)), 200
+            #when another user logs in
+            elif credentials and safe_str_cmp(credentials.password, request.form['password']):
+                return render_template('index.html'), 200
+            else:
+                return jsonify({"Message": "Invalid credentials, Go back and try again!!"}), 401
         else:
-            return jsonify({"Message": "Invalid credentials, Go back and try again!!"}), 401
+            credentials = User.find_username(request.json['username'])
+            #when admin logs in via Postman or Python requests
+            if credentials and safe_str_cmp(credentials.password, request.json['password']) and request.json['username'] == 'ebubeaso':
+                access_token = create_access_token(identity=credentials.id, fresh=True)
+                refresh_token = create_refresh_token(credentials.id)
+                tokens = {
+                    'Message': 'Here are your tokens, keep them safe!',
+                    'access_token': access_token,
+                    'refresh_token': refresh_token
+                }
+                return jsonify(tokens), 200
+            else:
+                return jsonify({"Message": "Invalid credentials, Go back and try again!!"}), 401
 
 
 api.add_resource(Employees, '/employees')
