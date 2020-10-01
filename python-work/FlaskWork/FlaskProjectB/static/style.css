@@ -68,12 +68,6 @@ h2 {
     font-size: 12pt;
     width: 80%;
 }
-#the-tokens {
-    display: flex;
-    width: 80%;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
 .content {
     border: 1px solid black;
     border-radius: 15px;
