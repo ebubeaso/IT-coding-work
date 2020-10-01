@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"/>
+        <script src="{{url_for('static', filename='jquery-3.5.1.js')}}"></script>
+        <script src="{{url_for('static', filename='jquery-3.5.1.min.js')}}"></script>
+        <title>Salutations!</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div id="menu">
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('signin')}}">Login</a></li>
+                </ul>
+                </div>
+                <div id="menu2">
+                <ul>
+                    <li><a href="{{url_for('register')}}">Register</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="content">
+        <script src="{{url_for('static', filename='events.js')}}"></script>
+        <h1 class="registered" style="margin-bottom: 20px;"></h1>
+        <div class="popup-screen-register">
+            <div class="popup-content-register">
+                <h3 id="close-register-popup" class="close">Close X</h3>
+                <p style="margin-left: 20px;">{{ output }}</p>
+            </div>
+        </div>
+        </div>
+        <script>
+            let closeButton = document.getElementById('close-register-popup');
+            closeButton.addEventListener('click', function() {
+                $("#close-register-popup").fadeOut(500);
+                $(".popup-screen-register").fadeOut(500);
+                $(".popup-content-register").fadeOut(500);
+            });
+        </script>
+    </body>
+</html>

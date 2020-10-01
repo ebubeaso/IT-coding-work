@@ -20,11 +20,11 @@ $(function() {
     
     //This is for the register webpage:
     $("#register").on('click', function() {
-        $(".popup-screen").css("display", "flex").fadeIn(1000);
-        $(".popup-content").fadeToggle(1000);
+        $(".popup-screen").css("display", "flex").fadeIn(700);
+        $(".popup-content").fadeToggle(700);
     })
     $("#close-popup").on('click', function() {
-        $(".popup-content").fadeToggle(1000);
-        $(".popup-screen").fadeOut(1000);
+        $(".popup-content").fadeToggle(700);
+        $(".popup-screen").fadeOut(700);
     });
 });

@@ -29,6 +29,7 @@ app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=1200)
 
 #set up SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///People.db"
+app.config['SQLALCHEMY_BINDS'] = {"users": "sqlite:///UserData.db"}
 #turns off the flask SQLAlchemy tracker to save resources
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
 db = SQLAlchemy(app)
@@ -66,6 +67,31 @@ class Data(db.Model):
             'Salary': self.Salary
         }
 
+# I am making a separate DB model for adding in users to the UserData database
+# I will keep the code above as the same for handling logins, this is for
+# SQLAlchemy practice
+class NewUser(db.Model):
+    #added the bind key so SQLAlchemy connects to the correct database
+    __bind_key__ = 'users'
+    __tablename__ = 'Users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.Text)
+    password = db.Column(db.Text)
+
+    def __init__(self, _id, user, passwd):
+        self.id = _id
+        self.username = user
+        self.password = passwd
+    
+    #This allows registered users to be JSON serializable
+    def new_user_json(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'password': self.password
+        }
+# *** End of DB models ***
+
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -82,8 +108,26 @@ class Register(Resource):
     def get(self):
         the_header = {'Content Type': 'text/html'}
         return make_response(render_template('register.html'),200,the_header)
+    
     def post(self):
-        pass
+        registered = [data.new_user_json() for data in NewUser.query.filter_by(
+            username=str(request.form['username'])
+            )]
+        if len(registered) == 1:
+            message = "There is already a user that has that username"
+            the_header = {'Content Type': 'text/html'}
+            return make_response(render_template('registered.html', output=message),400,the_header)
+    
+        user_table = [users.new_user_json() for users in NewUser.query.all()]
+        id_key = '' 
+        id_key += str(len(user_table)+1)
+        new_user = NewUser(id_key, request.form['username'], request.form['password'])
+        
+        db.session.add(new_user)
+        db.session.commit()
+        message = "You are now registered! Close this page and login"
+        the_header = {'Content Type': 'text/html'}
+        return make_response(render_template('registered.html', output=message),200,the_header)
 # *** End of application that uses the Web UI ***
 
 # ****Used for Postman or Python requests ****
@@ -182,6 +226,7 @@ def signin():
             return render_template('tokens.html', output=json.dumps(output)), 200
         else:
             return jsonify({"Message": "Invalid credentials, Go back and try again!!"}), 401
+
 
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
