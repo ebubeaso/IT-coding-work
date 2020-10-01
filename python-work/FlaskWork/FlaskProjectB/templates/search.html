@@ -15,18 +15,29 @@
                 <ul>
                     <li><a href="{{url_for('index')}}">Home</a></li>
                     <li><a href="{{url_for('search')}}">Search</a></li>
-                    <li><a href="{{url_for('signin')}}">Login</a></li>
+                    <li><a href="{{url_for('login')}}">Login</a></li>
                 </ul>
                 </div>
                 <div id="menu2">
                 <ul>
                     <li><a href="{{url_for('register')}}">Register</a></li>
-                    <li><a href="logout.html">Logout</a></li>
+                    <li><a href="{{url_for('logout')}}">Logout</a></li>
                 </ul>
                 </div>
             </nav>
         </header>
         <div class="content">
+            {% if session.get('user') != 'logged_in' %}
+            <div class="popup-screen-search">
+                <div class="popup-content-search">
+                    <h2>Sorry, but you are not logged in!!</h2>
+                    <p class="explanation">Only logged in users can use the 
+                        search feature. Click <a href="{{url_for('login')}}">Here</a>
+                        to login to the web application.
+                    </p>
+                </div>
+            </div>
+            {% endif %}
             <script src="{{url_for('static', filename='events.js')}}"></script>
             <h1 class="title">Search the Employee Data</h1>
             <p class="explanation">You can look at the employee data by clicking the Search All button</p>

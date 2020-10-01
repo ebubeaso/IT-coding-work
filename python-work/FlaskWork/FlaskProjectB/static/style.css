@@ -219,7 +219,7 @@ td {
     width: 170px;
 }
 /* This is when the registering fails */
-.popup-screen-register {
+.popup-screen-register, .popup-screen-search {
     display: flex;
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -230,7 +230,7 @@ td {
     justify-content: center;
     align-items: center;
 }
-.popup-content-register {
+.popup-content-register, .popup-content-search {
     display: flex;
     flex-direction: column;
     background-color: lightgray;
@@ -242,7 +242,7 @@ td {
     height: 90%;
     position: relative;
 }
-#close-register-popup {
+#close-register-popup, #close-search-popup {
     margin-left: 70%;
 }
 /* End of specific styling for register page */

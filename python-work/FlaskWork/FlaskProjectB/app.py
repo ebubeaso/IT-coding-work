@@ -212,12 +212,17 @@ class SpecificEmployee(Resource):
 # *** End of application that can be used in Postman or Python Requests ***
 
 # This is for logging into the database
-@app.route('/login', methods = ['GET', 'POST'])
-def signin():
-    if request.method == 'GET':
-        return render_template('login.html')
-    if request.method == 'POST':
-        
+# making some session data to handle the logins and logouts
+#session['user'] = None
+
+class Login(Resource):
+    def get(self):
+        the_header = {'Content Type': 'text/html'}
+        return make_response(render_template('login.html'),200,the_header)
+    
+    def post(self):
+        #will need this header for rendering the pages
+        the_header = {'Content Type': 'text/html'}
         if request.form:
             #when the admin logs in
             credentials = User.find_username(request.form['username'])
@@ -228,12 +233,15 @@ def signin():
                     'access_token': access_token,
                     'refresh_token': refresh_token
                 }
-                return render_template('tokens.html', output=json.dumps(output)), 200
+                session['user'] = 'logged_in'
+                return make_response(render_template('tokens.html', 
+                output=json.dumps(output)),200,the_header)
             #when another user logs in
             elif credentials and safe_str_cmp(credentials.password, request.form['password']):
-                return render_template('index.html'), 200
+                session['user'] = 'logged_in'
+                return make_response(render_template('index.html'), 200, the_header)
             else:
-                return jsonify({"Message": "Invalid credentials, Go back and try again!!"}), 401
+                return {"Message": "Invalid credentials, Go back and try again!!"}, 401
         else:
             credentials = User.find_username(request.json['username'])
             #when admin logs in via Postman or Python requests
@@ -245,14 +253,21 @@ def signin():
                     'access_token': access_token,
                     'refresh_token': refresh_token
                 }
-                return jsonify(tokens), 200
+                return tokens, 200
             else:
-                return jsonify({"Message": "Invalid credentials, Go back and try again!!"}), 401
+                return {"Message": "Invalid credentials, Go back and try again!!"}, 401
 
+class Logout(Resource):
+    def get(self):
+        the_header = {'Content Type': 'text/html'}
+        del session['user']
+        return make_response(render_template('logout.html'),200,the_header)
 
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
 api.add_resource(Search, '/search')
 api.add_resource(Register, '/register')
+api.add_resource(Login, '/login')
+api.add_resource(Logout, '/logout')
 if __name__ == "__main__":
     app.run()

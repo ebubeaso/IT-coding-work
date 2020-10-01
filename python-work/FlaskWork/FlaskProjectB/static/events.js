@@ -6,10 +6,12 @@ $(function() {
     $("#menu2").hide().slideDown(800);
     $("header").hide().fadeIn(600);
     $(".content").hide().slideDown(700);
-    $("h2").hide().fadeIn(2000);
-    $(".explanation").hide().fadeIn(2500);
-    $("#token").hide().fadeIn(2500);
+    $("h2").hide().fadeIn(1000);
+    $(".explanation").hide().fadeIn(1500);
+    $("#token").hide().fadeIn(1500);
     $("form").hide().slideDown(800);
+    $(".popup-screen-search").hide().fadeIn(1800);
+    $(".popup-screen-content").hide().slideDown(2000);
 
     //handling the interactivity of showing and hiding the search table
     $("#search-all").on('click', function() {
