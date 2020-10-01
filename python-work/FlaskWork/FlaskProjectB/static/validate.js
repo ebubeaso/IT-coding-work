@@ -35,7 +35,7 @@ $(function() {
                 charsCount++;
             }
         };
-        if (inputPassword.length < 0 || upperCaseCount == 0 || numberCount == 0 || charsCount == 0) {
+        if (inputPassword.length < 8 || upperCaseCount == 0 || numberCount == 0 || charsCount == 0) {
             validPassword = false;
             $("#passwordError").removeClass("hidden2");
         } else {
