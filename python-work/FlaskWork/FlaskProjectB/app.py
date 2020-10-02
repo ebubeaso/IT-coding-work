@@ -11,8 +11,8 @@ able to register as well on this application.
 from flask import (Flask, request, render_template, jsonify, redirect, url_for, 
 session, make_response)
 from flask_restful import Resource, Api
-from flask_jwt_extended import (JWTManager, create_access_token, 
-create_refresh_token)
+from flask_jwt_extended import (JWTManager, create_access_token, get_jwt_identity, 
+create_refresh_token, jwt_required, jwt_refresh_token_required)
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 import json
@@ -105,115 +105,25 @@ class Search(Resource):
         result = [data.jsonize() for data in the_query]
         headers = {'Content Type': 'text/html'}
         return make_response(render_template('search.html', result=result),200,headers)
-
-class Register(Resource):
-    def get(self):
-        the_header = {'Content Type': 'text/html'}
-        return make_response(render_template('register.html'),200,the_header)
     
+    # def post(self):
+    #     headers = {'Content Type': 'text/html'}
+    #     return make_response(redirect(url_for('/search-for-one-employee')),200,headers)
+
+class SearchEmployee(Resource):
     def post(self):
-        registered = [data.new_user_json() for data in NewUser.query.filter_by(
-            username=str(request.form['username'])
-            )]
-        if len(registered) == 1:
-            message = "There is already a user that has that username"
-            the_header = {'Content Type': 'text/html'}
-            return make_response(render_template('registered.html', output=message),400,the_header)
-    
-        user_table = [users.new_user_json() for users in NewUser.query.all()]
-        id_key = '' 
-        id_key += str(len(user_table)+1)
-        new_user = NewUser(id_key, request.form['username'], request.form['password'])
-        
-        db.session.add(new_user)
-        db.session.commit()
-        message = "You are now registered! Close this page and login"
-        the_header = {'Content Type': 'text/html'}
-        return make_response(render_template('registered.html', output=message),200,the_header)
-# *** End of application that uses the Web UI ***
-
-# ****Used for Postman or Python requests ****
-class Employees(Resource):
-    def get(self):
-        #same as running select * from Employees
-        the_query = Data.query.all()
-        return { 'Response': 200, 'Data': [data.jsonize() for data in the_query]}, 200
-        
-    #same as running an INSERT into query
-    def post(self):
-        the_query = Data.query.filter_by(employeeID=str(request.json['employeeID']))
-        query_list = [data.jsonize() for data in the_query]
-        if len(query_list):
-            return {"Response": 400, "Message": "That employeeID already exists!"}, 400
-        else:
-            data = Data(request.json['FirstName'], request.json['LastName'], 
-            request.json['Age'], request.json['employeeID'], 
-            request.json['Role'], request.json['Salary'])
-            #Check if the employeeID used was taken
-            db.session.add(data)
-            db.session.commit()
-            return {"Response": 201, 
-            "Message": "New Employee was added to the database!"}, 201
-
-class SpecificEmployee(Resource):
-    def get(self, employeeID):
-        the_query = Data.query.filter_by(employeeID=employeeID)
-        return { 'Response': 200, 'Data': [data.jsonize() for data in the_query]}, 200
-        
-    #updates or adds in data
-    def put(self, employeeID):
-        the_query = Data.query.get(employeeID)
-        if the_query is not None:
-            the_query.FirstName = request.json['FirstName']
-            the_query.LastName = request.json['LastName']
-            the_query.Age = request.json['Age']
-            the_query.employeeID = request.json['employeeID']
-            the_query.Role = request.json['Role']
-            the_query.Salary = request.json['Salary']
-            db.session.commit()
-            return { "Response": 200, 
-            "Message": f"Employee with ID {employeeID} was fully updated!"}, 200
-        else:
-            data = Data(request.json['FirstName'], request.json['LastName'],
-            request.json['Age'], request.json['employeeID'],
-            request.json['Role'], request.json['Salary'])
-            db.session.add(data)
-            db.session.commit()
-            return {"Response": 201, 
-            "Message": f"Employee with ID {employeeID} was added!"}, 200
-    
-    def patch(self, employeeID):
-        the_query = Data.query.get(employeeID)
-        if 'FirstName' in request.json:
-            the_query.FirstName = request.json['FirstName']
-            
-        if 'LastName' in request.json:
-            the_query.LastName = request.json['LastName']
-            
-        if 'Age' in request.json:
-            the_query.Age = request.json['Age']
-            
-        if 'employeeID' in request.json:
-            the_query.employeeID = request.json['employeeID']
-            
-        if 'Role' in request.json:
-            the_query.Role = request.json['Role']
-            
-        if 'Salary' in request.json:
-            the_query.Salary = request.json['Salary']
-        db.session.commit()
-        return {"Response": 203, 
-        "Message": f"Employee with ID {employeeID} has been updated!"}, 203
-        
-    def delete(self, employeeID):
-        Data.query.filter_by(employeeID=employeeID).delete()
-        db.session.commit()
-        return {"Message": "The employee has been deleted"}, 204
-# *** End of application that can be used in Postman or Python Requests ***
+        the_query = Data.query.filter_by(employeeID=str(request.form['employeeID']))
+        error = None
+        result = [data.jsonize() for data in the_query]
+        if len(result) == 0:
+            error = 'Sorry, there is no employee with that ID'
+            headers = {'Content Type': 'text/html'}
+            return make_response(render_template('manage-data.html', error=error),400,headers)
+        headers = {'Content Type': 'text/html'}
+        return make_response(render_template('manage-data.html', output=result),200,headers)
 
 # This is for logging into the database
 # making some session data to handle the logins and logouts
-#session['user'] = None
 
 class Login(Resource):
     def get(self):
@@ -263,11 +173,132 @@ class Logout(Resource):
         del session['user']
         return make_response(render_template('logout.html'),200,the_header)
 
+class Register(Resource):
+    def get(self):
+        the_header = {'Content Type': 'text/html'}
+        return make_response(render_template('register.html'),200,the_header)
+    
+    def post(self):
+        registered = [data.new_user_json() for data in NewUser.query.filter_by(
+            username=str(request.form['username'])
+            )]
+        if len(registered) == 1:
+            message = "There is already a user that has that username"
+            the_header = {'Content Type': 'text/html'}
+            return make_response(render_template('registered.html', output=message),400,the_header)
+    
+        user_table = [users.new_user_json() for users in NewUser.query.all()]
+        id_key = '' 
+        id_key += str(len(user_table)+1)
+        new_user = NewUser(id_key, request.form['username'], request.form['password'])
+        
+        db.session.add(new_user)
+        db.session.commit()
+        message = "You are now registered! Close this page and login"
+        the_header = {'Content Type': 'text/html'}
+        return make_response(render_template('registered.html', output=message),200,the_header)
+# *** End of application that uses the Web UI ***
+
+# ****Used for Postman or Python requests ****
+class Employees(Resource):
+    @jwt_required
+    def get(self):
+        #same as running select * from Employees
+        the_query = Data.query.all()
+        return { 'Response': 200, 'Data': [data.jsonize() for data in the_query]}, 200
+        
+    #same as running an INSERT into query
+    @jwt_required
+    def post(self):
+        the_query = Data.query.filter_by(employeeID=str(request.json['employeeID']))
+        query_list = [data.jsonize() for data in the_query]
+        if len(query_list):
+            return {"Response": 400, "Message": "That employeeID already exists!"}, 400
+        else:
+            data = Data(request.json['FirstName'], request.json['LastName'], 
+            request.json['Age'], request.json['employeeID'], 
+            request.json['Role'], request.json['Salary'])
+            #Check if the employeeID used was taken
+            db.session.add(data)
+            db.session.commit()
+            return {"Response": 201, 
+            "Message": "New Employee was added to the database!"}, 201
+
+class SpecificEmployee(Resource):
+    @jwt_required
+    def get(self, employeeID):
+        the_query = Data.query.filter_by(employeeID=employeeID)
+        return { 'Response': 200, 'Data': [data.jsonize() for data in the_query]}, 200
+        
+    #updates or adds in data
+    @jwt_required
+    def put(self, employeeID):
+        the_query = Data.query.get(employeeID)
+        if the_query is not None:
+            the_query.FirstName = request.json['FirstName']
+            the_query.LastName = request.json['LastName']
+            the_query.Age = request.json['Age']
+            the_query.employeeID = request.json['employeeID']
+            the_query.Role = request.json['Role']
+            the_query.Salary = request.json['Salary']
+            db.session.commit()
+            return { "Response": 200, 
+            "Message": f"Employee with ID {employeeID} was fully updated!"}, 200
+        else:
+            data = Data(request.json['FirstName'], request.json['LastName'],
+            request.json['Age'], request.json['employeeID'],
+            request.json['Role'], request.json['Salary'])
+            db.session.add(data)
+            db.session.commit()
+            return {"Response": 201, 
+            "Message": f"Employee with ID {employeeID} was added!"}, 200
+    
+    @jwt_required
+    def patch(self, employeeID):
+        the_query = Data.query.get(employeeID)
+        if 'FirstName' in request.json:
+            the_query.FirstName = request.json['FirstName']
+            
+        if 'LastName' in request.json:
+            the_query.LastName = request.json['LastName']
+            
+        if 'Age' in request.json:
+            the_query.Age = request.json['Age']
+            
+        if 'employeeID' in request.json:
+            the_query.employeeID = request.json['employeeID']
+            
+        if 'Role' in request.json:
+            the_query.Role = request.json['Role']
+            
+        if 'Salary' in request.json:
+            the_query.Salary = request.json['Salary']
+        db.session.commit()
+        return {"Response": 203, 
+        "Message": f"Employee with ID {employeeID} has been updated!"}, 203
+        
+    @jwt_required
+    def delete(self, employeeID):
+        Data.query.filter_by(employeeID=employeeID).delete()
+        db.session.commit()
+        return {"Message": "The employee has been deleted"}, 204
+
+class TokenRefresh(Resource):
+    @jwt_refresh_token_required
+    def post(self):
+        current_user = get_jwt_identity()
+        new_token = create_access_token(identity=current_user, fresh=False)
+        return {"New Token": new_token}, 200
+# *** End of application that can be used in Postman or Python Requests ***
+
+
 api.add_resource(Employees, '/employees')
 api.add_resource(SpecificEmployee, '/employees/<string:employeeID>')
 api.add_resource(Search, '/search')
+api.add_resource(SearchEmployee, '/search-for-one-employee')
 api.add_resource(Register, '/register')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
+api.add_resource(TokenRefresh, '/newtoken')
 if __name__ == "__main__":
     app.run()

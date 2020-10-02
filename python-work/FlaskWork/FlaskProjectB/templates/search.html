@@ -81,6 +81,17 @@
                 changeColor('darkcyan', 'search-all');
                 searchButton.style.border = 'none';
             }, false);
+
+            //event listener for the second button
+            let searchButton2 = document.getElementById("search-one");
+            searchButton2.addEventListener("mouseover", function() {
+                changeColor('green', 'search-one');
+                searchButton2.style.border = '4px solid black';
+            }, false);
+            searchButton2.addEventListener("mouseout", function() {
+                changeColor('darkcyan', 'search-one');
+                searchButton2.style.border = 'none';
+            }, false);
         </script>
     </body>
     </html>

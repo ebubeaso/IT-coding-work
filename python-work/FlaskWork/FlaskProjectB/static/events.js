@@ -13,20 +13,21 @@ $(function() {
     $(".popup-screen-search").hide().fadeIn(1800);
     $(".popup-screen-content").hide().slideDown(2000);
 
+    //handling interactivity with the popup screens
+    function popupShow() {
+        $(".popup-screen").css("display", "flex").fadeIn(700);
+        $(".popup-content").fadeToggle(700);
+    };
+    function popupHide() {
+        $(".popup-content").fadeToggle(700);
+        $(".popup-screen").fadeOut(700);
+    };
     //handling the interactivity of showing and hiding the search table
     $("#search-all").on('click', function() {
         $("#employee-table").fadeToggle(1000);
     });
 
-    //handling interactivity with the popup screens
-    
     //This is for the register webpage:
-    $("#register").on('click', function() {
-        $(".popup-screen").css("display", "flex").fadeIn(700);
-        $(".popup-content").fadeToggle(700);
-    })
-    $("#close-popup").on('click', function() {
-        $(".popup-content").fadeToggle(700);
-        $(".popup-screen").fadeOut(700);
-    });
+    $("#register").on('click', popupShow);
+    $("#close-popup").on('click', popupHide);
 });
