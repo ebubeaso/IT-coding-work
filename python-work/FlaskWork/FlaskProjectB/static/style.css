@@ -130,9 +130,11 @@ div #login-button {
 }
 table {
     margin: 20px;
-    border-spacing: 30px 10px;
+    border-spacing: 20px 10px;
 }
 #employee-table {
+    margin: auto;
+    margin-bottom: 15px;
     background-color: beige;
     color: black;
     border: 2px solid black;
