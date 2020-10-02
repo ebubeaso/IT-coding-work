@@ -105,10 +105,6 @@ class Search(Resource):
         result = [data.jsonize() for data in the_query]
         headers = {'Content Type': 'text/html'}
         return make_response(render_template('search.html', result=result),200,headers)
-    
-    # def post(self):
-    #     headers = {'Content Type': 'text/html'}
-    #     return make_response(redirect(url_for('/search-for-one-employee')),200,headers)
 
 class SearchEmployee(Resource):
     def post(self):
