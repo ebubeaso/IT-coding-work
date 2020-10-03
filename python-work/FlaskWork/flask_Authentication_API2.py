@@ -18,21 +18,21 @@ app = Flask(__name__)
 db_config = {'host': '172.17.0.2', 'port': '3306', 'user': 'ebube',
 'password': passwd, 'database': 'People'}
 
+#This decorator function is my custom one of verifying a token
 def token_required(f):
     @wraps(f)
-    def decorator(*args, **kwargs):
+    def inner_function(*args, **kwargs):
         token = request.args.get('token')
         print(token)
         if not token:
             return jsonify({'Message': 'Your token is missing!!',
             'Response': 403})
-        #data = t[0]
         if int(token) not in t:
             return jsonify({'Message': 'Invalid token, Login again!', 
             'token': token}), 403
         return f(*args, **kwargs)
     #return the decorator function
-    return decorator
+    return inner_function
 
 @app.route('/')
 def index():

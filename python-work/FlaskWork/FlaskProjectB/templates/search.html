@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"/>
+        <script src="{{url_for('static', filename='jquery-3.5.1.js')}}"></script>
+        <script src="{{url_for('static', filename='jquery-3.5.1.min.js')}}"></script>
+        <title>Search Page</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div id="menu">
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('login')}}">Login</a></li>
+                </ul>
+                </div>
+                <div id="menu2">
+                <ul>
+                    <li><a href="{{url_for('register')}}">Register</a></li>
+                    <li><a href="{{url_for('logout')}}">Logout</a></li>
+                </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="content">
+            {% if session.get('user') != 'logged_in' %}
+            <div class="popup-screen-search">
+                <div class="popup-content-search">
+                    <h2>Sorry, but you are not logged in!!</h2>
+                    <p class="explanation">Only logged in users can use the 
+                        search feature. Click <a href="{{url_for('login')}}">Here</a>
+                        to login to the web application.
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+            <script src="{{url_for('static', filename='events.js')}}"></script>
+            <h1 class="title">Search the Employee Data</h1>
+            <p class="explanation">You can look at the employee data by clicking the Search All button</p>
+            <button class="the-button" id="search-all">Search All</button>
+            <table id="employee-table" class="hidden">
+            <thead>
+                <tr class="table-headers">
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>employeeID</th>
+                    <th>Role</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in result %}
+                    <tr>
+                    {% for value in obj.values() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+        <script>
+            //used to change color of buttons (like the Search All button)
+            function changeColor() {
+                let element = document.getElementById(arguments[1]);
+                element.style.backgroundColor = arguments[0];
+            };
+            /*event listener to go along with this function
+            This is for the Search All button on the Search page */
+            let searchButton = document.getElementById("search-all");
+            searchButton.addEventListener("mouseover", function() {
+                changeColor('green', 'search-all');
+                searchButton.style.border = '4px solid black';
+            }, false);
+            searchButton.addEventListener("mouseout", function() {
+                changeColor('darkcyan', 'search-all');
+                searchButton.style.border = 'none';
+            }, false);
+
+            //event listener for the second button
+            let searchButton2 = document.getElementById("search-one");
+            searchButton2.addEventListener("mouseover", function() {
+                changeColor('green', 'search-one');
+                searchButton2.style.border = '4px solid black';
+            }, false);
+            searchButton2.addEventListener("mouseout", function() {
+                changeColor('darkcyan', 'search-one');
+                searchButton2.style.border = 'none';
+            }, false);
+        </script>
+    </body>
+    </html>

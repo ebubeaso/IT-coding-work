@@ -28,7 +28,7 @@ def require_token(f):
 		if not token:
 			return jsonify({'Message': 'Your token is missing!!'}), 403
 		try:
-			data = jwt.decode(token, app.config['SECRET_KEY'])
+			jwt.decode(token, app.config['SECRET_KEY'])
 		except:
 			return jsonify({'Message': 'Invalid token, Login again!'}), 403
 		return f(*args, **kwargs)

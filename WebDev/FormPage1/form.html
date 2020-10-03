@@ -13,8 +13,8 @@
         //This adds some animation to loading the page
         $(document).ready(function () {
             $(".theTitle").hide().slideDown(800);
-            $(".form").before($(".theTitle")).hide().fadeIn(2800);
-            $(".theButton").before($(".form")).hide().fadeIn(2800);
+            $(".form").hide().fadeIn(2800);
+            $(".theButton").hide().fadeIn(2800);
         });
     </script>
     <h1 class="theTitle">Fill out the form below:</h1>
@@ -32,12 +32,13 @@
         <div id="text3">
             <div id="emailError" class="hidden3">Please enter a valid email</div>
             <label for="email">Email:</label>
-            <input id="email" type="text" name="mail" placeholder="Your email">
+            <input id="email" type="text" name="mail" placeholder="Your email" required>
         </div>
         
         <div id="text">
             Your Message
-            <textarea name="message" cols="30" rows="5"></textarea>
+            <textarea id="textarea" name="message" cols="30" rows="5">Enter your message here
+            </textarea>
         </div>
     </div>
     <div class="theButton">
