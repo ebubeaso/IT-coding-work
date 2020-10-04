@@ -1,0 +1,8 @@
+Flask
+jsonify
+requests
+Flask-RESTful
+Flask-SQLAlchemy
+sqlite3
+Flask-JWT
+flask-jwt-extended
