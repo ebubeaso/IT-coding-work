@@ -32,7 +32,7 @@ def run():
 	#enable openflow and the ssl connection
 	s1 = net['s1']
 	s2 = net['s2']
-	CLI( net, script='/home/pi/Documents/SDN/setSSL.sh' )
+	CLI( net, script='./ManualFlows/setSSL.sh' )
 	CLI( net )
 	net.stop()
     
