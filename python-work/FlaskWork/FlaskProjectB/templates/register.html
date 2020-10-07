@@ -51,6 +51,9 @@
                     </div>
                     <label for="passwd">Enter A Password</label>
                     <input type="password" class="password" id="passwd" name="password">
+                    <div id="retypeError" class="hidden3">Passwords do not match</div>
+                    <label for="passwd-retype">Retype your password</label>
+                    <input type="password" class="password" id="passwd-retype" name="password-retype">
                     <input type="submit" id="signup-submit" value="Register!">
                 </form>
                 <p>{{ output }}</p>

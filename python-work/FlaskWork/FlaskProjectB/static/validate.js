@@ -6,11 +6,14 @@ $(function() {
         let validPassword = true;
         let inputUsername = $("#user").val();
         let inputPassword = $("#passwd").val();
+        let passwordRetyped = $("#passwd-retype").val();
+        
         //counts the number of uppercase letters
         let upperCaseCount = 0;
         //special characters to make password more secure
         let chars = ["!", "?", "$", "@", "%", "^", "&"];
         let charsCount = 0;
+        //counts how many numbers are in the password
         let numberCount = 0;
 
         if (inputUsername.length == 0) {
@@ -38,8 +41,12 @@ $(function() {
         if (inputPassword.length < 8 || upperCaseCount == 0 || numberCount == 0 || charsCount == 0) {
             validPassword = false;
             $("#passwordError").removeClass("hidden2");
+        }
+        else if (inputPassword != passwordRetyped) {
+            validPassword = false;
+            $("#retypeError").removeClass("hidden3");
         } else {
-            ("#passwordError").addClass("hidden2");
+            $("#passwordError").addClass("hidden2");
             validPassword = true;
         }
         formValid = (validUser && validPassword);
