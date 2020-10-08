@@ -1,0 +1,104 @@
+#the-background {
+    color: bisque;
+}
+#page-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 25px;
+    background-color: antiquewhite;
+    border: 2px solid darkgray;
+    border-radius: 15px;
+}
+#main-title {
+    display: flex;
+    align-self: center;
+    align-content: center;
+    font-size: 38px;
+    color: maroon;
+    padding: 10px;
+    width: 380px;
+    background-color: mintcream;
+    border: 2px solid darkgray;
+    border-radius: 15px;
+}
+.the-reason, .subtitle {
+    color: maroon;
+    margin-left: 20px;
+    margin-right: 15px;
+}
+.the-button {
+    margin-left: 30px;
+    width: 120px;
+    margin-bottom: 20px;
+    background-color: darkorange;
+    color: mintcream;
+    font-weight: bold;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+/* Styling for the popup screen */
+#popup-screen {
+    display: none;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+}
+#popup-content {
+    display: none;
+    padding: 10px;
+    background-color: antiquewhite;
+    color: maroon;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+#close-button {
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    width: 60px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+/* for the images */
+#slider-title {
+    text-align: center;
+}
+#image-slider {
+    width: 250px;
+    height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    /* margin-bottom: 10px;
+    margin-top: 15px;
+    margin-left: 15px; */
+}
+#the-slides {
+    display: flex;
+    width: 2500px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+li #image {
+    list-style-type: none; /*This is so our li elements dont look like lists*/
+    float: left;
+    width: 250px;
+    height: 400px;
+}
+img {
+    width: 250px;
+    height: 400px;
+}
+#prev-next {
+    margin-top: 15px;
+}
