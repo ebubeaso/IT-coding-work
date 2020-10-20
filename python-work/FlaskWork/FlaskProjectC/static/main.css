@@ -3,8 +3,10 @@
 }
 header {
     background-color: maroon;
-    width: 100%;
+    width: 96%;
+    margin-left: 20px;
     margin-bottom: 15px;
+    border: 2px solid black;
 }
 nav {
     display: flex;
@@ -28,17 +30,20 @@ li a, li a.visited {
     text-align: center;
     font-size: 40pt;
     font-style: oblique;
+    text-shadow: 4px 4px 3px black;
 }
 .content {
     background-color: burlywood;
     margin-left: 20px;
     margin-right: 20px;
+    border: 2px solid black;
 }
 .subtitle {
     margin-left: 20px;
     margin-top: 10px;
     color: maroon;
     font-size: 32pt;
+    text-shadow: 3px 3px 3px black;
 }
 hr{
     margin-left: 30px;
