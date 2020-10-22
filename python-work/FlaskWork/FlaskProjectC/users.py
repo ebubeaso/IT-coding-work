@@ -1,5 +1,5 @@
 """This file will handle the users that are saved in the 'TheUsers' database"""
-from app import db, ma
+from app import db
 
 class User(db.Model):
     __bind_key__ = "users"
@@ -12,10 +12,6 @@ class User(db.Model):
         self.id = _id
         self.username = username
         self.password = password
-
-#make schema using Marshmallow
-class UserSchema(ma.Schema):
-    class Meta:
-        model = User #the model to use
-
-user_schema = UserSchema()
+    
+    @classmethod
+    def find_username(cls, username):
