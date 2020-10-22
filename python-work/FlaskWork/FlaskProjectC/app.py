@@ -23,6 +23,7 @@ from flask_jwt_extended import (JWTManager, create_access_token, get_jwt_identit
 create_refresh_token, jwt_required, jwt_refresh_token_required)
 from werkzeug.security import safe_str_cmp
 from datetime import timedelta
+#from user import SavedUser, NewUser
 import random
 
 #Initialize everything
@@ -38,6 +39,41 @@ app.config["SQLALCHEMY_BINDS"] = {"users": "sqlite:///TheUsers.db"}
 #turns off the flask SQLAlchemy tracker to save resources
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+# ** Start of User models **
+
+class User(db.Model):
+    __bind_key__ = 'users'
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.Text)
+    password = db.Column(db.Text)
+
+    def __init__(self, _id, username, password):
+        self.id = _id
+        self.username = username
+        self.password = password
+    
+    def serialize(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'password': self.password
+        }
+    
+    #class methods for handling the usernames and passwords
+    @classmethod
+    def find_username(cls, username):
+        the_query = cls.query.filter_by(username=username).first()
+        return the_query
+    
+    @classmethod
+    def find_by_id(cls, _id):
+        the_query = cls.query.filter_by(id=_id).first()
+        return the_query
+
+# ** End of User models **
+
 # making the Notes model
 class TheNotes(db.Model):
     __tablename__ = 'Notes'
@@ -65,7 +101,23 @@ class TheNotes(db.Model):
 @app.route('/')
 def index():
     return render_template("index.html")
+
 # *** Routes through Postman/Python requests ***
+class SignIn(Resource):
+    def post(self):
+        #Check if user is in the database
+        check_query = User.find_username(request.json['username'])
+        #check for the password
+        if check_query and safe_str_cmp(check_query.password, request.json['password']):
+            tokens = {
+                'Message': 'Login Successful! Here are your tokens!',
+                'Access Token': create_access_token(
+                                identity=check_query.id, fresh=True),
+                'Refresh Token': create_refresh_token(identity=check_query.id)
+            }
+            return tokens, 200
+        else:
+            return {'Message': 'Invalid credentials, try again!'}, 400
 class CurrentNotes(Resource):
     def get(self):
         notes = TheNotes.query.order_by(TheNotes.date).all()
@@ -77,9 +129,35 @@ class CurrentNotes(Resource):
 
 # *** Code for the web user interface ***
 
+# For loggining, logging out and registering
+class Login(Resource):
+    def get(self):
+        pass
+    def post(self):
+        pass
+
+class Logout(Resource):
+    def get(self):
+        pass
+
+class Register(Resource):
+    def get(self):
+        pass
+    def post(self):
+        username_exists = User.find_username(request.form['username'])
+        if username_exists:
+            return {'Message': 'Sorry, that user exists already!'}, 400
+        pass
+
 # *** End of code for web user interface ***
+
 
 # API resources
 api.add_resource(CurrentNotes, '/notes')
+api.add_resource(Login, '/login')
+api.add_resource(Logout, '/logout')
+api.add_resource(Register, '/signup')
+#route used for signing in via Requests or Postman
+api.add_resource(SignIn, '/signin')
 if __name__ == "__main__":
     app.run()
