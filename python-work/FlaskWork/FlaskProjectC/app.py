@@ -129,7 +129,7 @@ class CurrentNotes(Resource):
 
 # *** Code for the web user interface ***
 
-# For loggining, logging out and registering
+# For loggining and logging out
 class Login(Resource):
     def get(self):
         pass
@@ -140,16 +140,36 @@ class Logout(Resource):
     def get(self):
         pass
 
+# *** End of code for web user interface ***
+
+# ** Registering (whether via web UI or through Postman/Python Requests or etc.) **
+
 class Register(Resource):
     def get(self):
         pass
     def post(self):
-        username_exists = User.find_username(request.form['username'])
-        if username_exists:
-            return {'Message': 'Sorry, that user exists already!'}, 400
-        pass
+        """This is when you are registering using Postman or Python 
+        Requests"""
+        if request.json:
+            username_exists = User.find_username(request.json['username'])
+            if username_exists:
+                return {'Message': 'Sorry, that user exists already!'}, 400
+            else:
+                #For getting the ID, get the total number of entries in users table
+                users_table = [user.serialize() for user in User.query.all()]
+                id_key = ''
+                id_key += str(len(users_table)+1) #makes the new ID
+                #make the new User object to add to user database
+                new_user = User(id_key, request.json['username'], 
+                                        request.json['password'])
+                db.session.add(new_user)
+                db.session.commit()
+                return {"Status": "Success!", 
+                            "Message": "You have registered!"}, 201
 
-# *** End of code for web user interface ***
+        """This is for when the user is registering on the web interface"""
+        if request.form:
+            pass
 
 
 # API resources
