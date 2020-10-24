@@ -132,6 +132,7 @@ class CurrentNotes(Resource):
 # For loggining and logging out
 class Login(Resource):
     def get(self):
+        the_header = {'Content Type': 'text/html'}
         pass
     def post(self):
         pass
@@ -173,11 +174,11 @@ class Register(Resource):
 
 
 # API resources
-api.add_resource(CurrentNotes, '/notes')
+api.add_resource(CurrentNotes, '/currentnotes')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(Register, '/signup')
 #route used for signing in via Requests or Postman
 api.add_resource(SignIn, '/signin')
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', ssl_context=('./SSLCertificates/sslcert.pem', './SSLCertificates/sslkey.pem'))

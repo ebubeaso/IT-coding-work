@@ -25,3 +25,19 @@ applications that I will be able to use with software-defined networking (SDN)
 where I can make web applications that configure and manage a network controller
 in an SDN environment, that way I can work to make modern computer networks more
 agile and programmable to fit the needs of an entreprise.
+
+
+SSL certificates:
+
+Before using this Notes application, it is important to know that it runs on 
+HTTPS instead of HTTP. It uses a self-signed certificate as a way to encrypt
+the API data that goes to and back from the web server to your computer.
+
+To trust the certificate:
+	When you use the web application, because you are using a self-
+	signed certificate, your browser will give a warning about it not
+	trusting the certificate. You get this warning because your browser
+	does not recognize where the certificate came from (me). You can go
+	ahead and click "Advanced" and then whatever option that says
+	"Continue" on your browser. The certificates are in the folder
+	SSLCertificates.
