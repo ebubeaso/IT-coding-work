@@ -133,7 +133,7 @@ class CurrentNotes(Resource):
 class Login(Resource):
     def get(self):
         the_header = {'Content Type': 'text/html'}
-        pass
+        return make_response( render_template("login.html"), 200, the_header )
     def post(self):
         pass
 
