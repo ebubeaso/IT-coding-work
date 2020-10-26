@@ -3,6 +3,7 @@
 }
 header {
     background-color: maroon;
+    /* background: linear-gradient(to right, maroon, brown); */
     width: 96%;
     margin-left: 20px;
     margin-bottom: 15px;
@@ -70,4 +71,21 @@ hr{
     font-style: italic;
     text-decoration: none;
     color: darkcyan;
+}
+/* This is for the auth page */
+.auth {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    background: lightgray;
+}
+.auth textarea {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 14pt;
 }

@@ -25,7 +25,7 @@ from werkzeug.security import safe_str_cmp
 from datetime import timedelta
 #from user import SavedUser, NewUser
 import random
-
+import json
 #Initialize everything
 app = Flask(__name__)
 api = Api(app)
@@ -133,9 +133,30 @@ class CurrentNotes(Resource):
 class Login(Resource):
     def get(self):
         the_header = {'Content Type': 'text/html'}
-        return make_response( render_template("login.html"), 200, the_header )
+        return make_response( render_template("login.html"), 200, the_header)
+    
     def post(self):
-        pass
+        the_header = {'Content Type': 'text/html'}
+        # Check if user's input is in the database
+        # If it is, they will get their tokens
+        check_user = User.find_username(request.form['username'])
+        if check_user and safe_str_cmp(check_user.password, request.form['password']):
+            access_token = create_access_token(identity=check_user.id, fresh=True)
+            refresh_token = create_refresh_token(identity=check_user.id)
+            tokens = {"Login": "Success! Here are your tokens!",
+                        "Your Access Token": access_token,
+                        "Your Refresh Token": refresh_token
+                    }
+            #making some session data to ensure that we are logged in
+            #session['user'] = 'online'
+            return make_response( render_template('auth.html', 
+                                output=json.dumps(tokens, indent=2, 
+                                sort_keys=True)), 200, the_header )
+        else:
+            output = {"Message":"Sorry, it looks like you typed the wrong credentials. Please try again!"}
+            return make_response( render_template('auth.html',
+                                output=json.dumps(output)),400, the_header )
+
 
 class Logout(Resource):
     def get(self):
