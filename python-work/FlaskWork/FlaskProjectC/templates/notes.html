@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/main.css">
-    <script src="../static/jquery-3.5.1.js"></script>
-    <script src="../static/jquery-3.5.1.min.js"></script>
-</head>
-<body id="the-background">
-<header>
-    <nav>
-    <div id="menu1">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="notes.html">Notes</a></li>
-        </ul>
-    </div>
-    <div id="menu2">
-        <ul>
-            <li><a href="login.html">Login/Sign Up</a></li>
-        </ul>
-    </div>
-    </nav>
-</header>
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='notes_styling.css') }}">
+{% endblock %}
+<body>
+{% block content %}
+    {{ super() }}
 <div class="content">
-<h1 class="title">Your Notes</h1>
-<hr/>
-    <br/>
-    <h2 class="subtitle">Manage your notes below</h2>
+<!-- Have to enter in the access token to use: -->
+<div class="popup-screen">
+    <div class="popup-content">
+        <h2 class="subtitle">Enter your access token to continue</h2>
+        <form class="token-form" action="#" method="POST">
+            <div class="token-div">
+                <label for="access-token">Your Token</label>
+                <input type="text" id="access-token" name="access-token" placeholder="Access Token" required>
+            </div>
+        </form>
+    </div>
 </div>
-<script src="../static/script.js"></script>
+
+<h1 class="title">Your Recent notes</h1>
+<!-- <table id="notes-table">
+<thead>
+    <tr class="table-headers">
+        <th>Entry ID</th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Note</th>
+    </tr>
+</thead>
+<tbody>
+
+</tbody>
+</table> -->
+
+</div>
+{% endblock %}
+<!-- <script src="../static/script.js"></script> -->
 </body>
 </html>

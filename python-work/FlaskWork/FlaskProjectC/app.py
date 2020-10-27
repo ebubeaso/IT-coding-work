@@ -22,7 +22,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import (JWTManager, create_access_token, get_jwt_identity, 
 create_refresh_token, jwt_required, jwt_refresh_token_required)
 from werkzeug.security import safe_str_cmp
-from datetime import timedelta
+from datetime import datetime, timedelta
 #from user import SavedUser, NewUser
 import random
 import json
@@ -123,6 +123,23 @@ class CurrentNotes(Resource):
         notes = TheNotes.query.order_by(TheNotes.date).all()
         result = [data.jsonize() for data in notes]
         return result, 200
+    def post(self):
+        the_header = {'Content Type': 'text/html'}
+        # Need a list of the ID numbers in database to prevent duplicates
+        id_list = []
+        id_numbers = [numbers for numbers in db.session.query(TheNotes.id)]
+        for num in id_numbers:
+            id_list.append(num[0])
+        new_id = random.randint(111111, 999999)
+        if new_id in id_list:
+            new_id = id_list[1] + 1
+        # make the new entry
+        new_entry = TheNotes(new_id, datetime.now(), request.json['name'], 
+                        request.json['note'])
+        db.session.add(new_entry)
+        db.session.commit()
+        return {"Message": "Successfully added a new note!"}, 201
+
 
 # *** End of code for Postman/Python requests ***
 
@@ -162,6 +179,28 @@ class Logout(Resource):
     def get(self):
         pass
 
+class MyNotes(Resource):
+    def get(self):
+        the_header = {'Content Type': 'text/html'}
+        # notes = TheNotes.query.order_by(TheNotes.date).all()
+        # result = [data.jsonize() for data in notes]
+        return make_response( render_template('notes.html'), 200, the_header )
+    def post(self):
+        the_header = {'Content Type': 'text/html'}
+        # Need a list of the ID numbers in database to prevent duplicates
+        id_list = []
+        id_numbers = [numbers for numbers in db.session.query(TheNotes.id)]
+        for num in id_numbers:
+            id_list.append(num[0])
+        new_id = random.randint(111111, 999999)
+        if new_id in id_list:
+            new_id = id_list[1] + 1
+        # make the new entry
+        new_entry = TheNotes(new_id, datetime.now(), request.json['name'], 
+                        request.json['note'])
+        db.session.add(new_entry)
+        db.session.commit()
+        return {"Message": "Successfully added a new note!"}, 201
 # *** End of code for web user interface ***
 
 # ** Registering (whether via web UI or through Postman/Python Requests or etc.) **
@@ -196,6 +235,7 @@ class Register(Resource):
 
 # API resources
 api.add_resource(CurrentNotes, '/currentnotes')
+api.add_resource(MyNotes, '/mynotes')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(Register, '/signup')

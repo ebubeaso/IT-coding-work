@@ -40,4 +40,4 @@ To trust the certificate:
 	does not recognize where the certificate came from (me). You can go
 	ahead and click "Advanced" and then whatever option that says
 	"Continue" on your browser. The certificates are in the folder
-	SSLCertificates.
+	SSLCertificates. (** The certificates used expire March 7, 2022!! **)
