@@ -19,3 +19,22 @@ label {
     font-size: 16pt;
     color: whitesmoke;
 }
+.auth {
+    display: flex;
+    justify-content: center;
+}
+#auth-title {
+    text-align: center;
+}
+.content .register-button {
+    margin-left: 20%;
+    margin-bottom: 25px;
+    font-size: 36pt;
+    font-weight: bold;
+    text-align: center;
+    color: whitesmoke;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: orange;
+}

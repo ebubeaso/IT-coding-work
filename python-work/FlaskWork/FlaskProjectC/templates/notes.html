@@ -12,6 +12,7 @@
 <!-- Have to enter in the access token to use: -->
 <div class="popup-screen">
     <div class="popup-content">
+        <h4 class="return-home"><a href="{{ url_for('index') }}">Go Back</a></h4>
         <h2 class="subtitle">Enter your access token to continue</h2>
         <form class="token-form" action="#" method="POST">
             <div class="token-div">
@@ -39,6 +40,8 @@
 
 </div>
 {% endblock %}
-<!-- <script src="../static/script.js"></script> -->
+{% block javascript %}
+    {{ super() }}
+{% endblock %}
 </body>
 </html>

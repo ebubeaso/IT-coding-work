@@ -28,8 +28,11 @@
         </div>
     </form>
     <h2 class="subtitle">Signup here if you do not have an account already</h2>
+    <button class="register-button" id="signup">Make An Account</button>
 </div>
 {% endblock %}
-<!-- <script src="../static/script.js"></script> -->
+{% block javascript %}
+    {{ super() }}
+{% endblock %}
 </body>
 </html>

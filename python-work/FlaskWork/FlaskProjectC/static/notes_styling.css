@@ -22,4 +22,21 @@
     height: 90%;
     position: relative;
 }
-
+.token-form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+}
+.popup-screen.return-home {
+    float: right;
+    margin-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: maroon;
+    width: 200px;
+}
+.popup-screen.return-home a, .popup-screen.return-home a:link, .popup-screen.return-home a:visited {
+    color: whitesmoke;
+    text-decoration: none;
+}

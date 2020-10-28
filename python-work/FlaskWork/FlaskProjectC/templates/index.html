@@ -29,6 +29,8 @@
     <br/>
 </div>
 {% endblock %}
-<!-- <script src="../static/script.js"></script> -->
+{% block javascript %}
+    {{ super() }}
+{% endblock %}
 </body>
 </html>

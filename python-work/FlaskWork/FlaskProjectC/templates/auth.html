@@ -23,13 +23,15 @@
 <h1 class="title">Invalid credentials!!</h1>
 <hr/>
     <br/>
-    <h2 class="subtitle">Authentication failed:</h2>
+    <h2 class="subtitle" id="auth-title">Authentication failed:</h2>
     <div class="auth">
     <textarea rows="6" cols="50">{{ output }}</textarea>
     </div>
     {% endif %}
 </div>
 {% endblock %}
-<!-- <script src="../static/script.js"></script> -->
+{% block javascript %}
+    {{ super() }}
+{% endblock %}
 </body>
 </html>
