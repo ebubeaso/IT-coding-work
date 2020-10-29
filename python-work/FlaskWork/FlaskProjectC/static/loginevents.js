@@ -1,4 +1,4 @@
-//using jQuery
+//using jQuery for handling the registration popup
 $(function() {
     let popupScreen = $('#signup-popup1');
     let popupContent = $('#signup-popup2');
