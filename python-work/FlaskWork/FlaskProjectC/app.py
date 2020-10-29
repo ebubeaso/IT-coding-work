@@ -242,4 +242,5 @@ api.add_resource(Register, '/signup')
 #route used for signing in via Requests or Postman
 api.add_resource(SignIn, '/signin')
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', ssl_context=('./SSLCertificates/sslcert.pem', './SSLCertificates/sslkey.pem'))
+    #app.run(host='0.0.0.0', ssl_context=('./SSLCertificates/sslcert.pem', './SSLCertificates/sslkey.pem'))
+    app.run()

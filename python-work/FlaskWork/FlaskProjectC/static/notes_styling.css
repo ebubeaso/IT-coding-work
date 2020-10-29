@@ -28,15 +28,15 @@
     align-self: center;
     justify-content: center;
 }
-.popup-screen.return-home {
-    float: right;
-    margin-right: 20px;
+h4.return-home {
     margin-top: 15px;
     margin-bottom: 15px;
+    margin-left: 85%;
+    padding: 10px;
     background-color: maroon;
-    width: 200px;
+    width: 80px;
 }
-.popup-screen.return-home a, .popup-screen.return-home a:link, .popup-screen.return-home a:visited {
+h4.return-home a:link, h4.return-home a:visited {
     color: whitesmoke;
     text-decoration: none;
 }
