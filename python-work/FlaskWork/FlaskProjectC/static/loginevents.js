@@ -1,3 +1,24 @@
+//using jQuery
+$(function() {
+    let popupScreen = $('#signup-popup1');
+    let popupContent = $('#signup-popup2');
+    let closeButton = $('#close-register-button');
+    let register = $('#signup');
+
+    //functions for showing and hiding popup
+    function showPopup() {
+        popupScreen.css('display', 'flex').fadeIn(700);
+        popupContent.fadeToggle(700);
+    };
+    function hidePopup() {
+        popupContent.fadeToggle(700);
+        popupScreen.fadeOut(700);
+    };
+
+    register.on('click', showPopup);
+    closeButton.on('click', hidePopup);
+});
+
 //using regular JavaScript here:
 function changeButtonColor() {
     /* This takes the id value of an HTML element and changes the color to what the second
