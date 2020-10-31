@@ -27,7 +27,7 @@ function changeButtonColor() {
     theButton.style.backgroundColor = arguments[1];
 }
 
-let registerButton = document.getElementById('signup');
+let registerButton = document.getElementById("signup");
 //adding event listeners to the register button
 registerButton.addEventListener("mouseover", function() {
     changeButtonColor('signup', 'green');

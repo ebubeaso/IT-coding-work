@@ -1,6 +1,6 @@
 //This is to validate the password entry for a registering user
 $(function() {
-    $("#signup-submit").on("click", function(){
+    $("#signup-submit").on("submit", function(){
         let formValid = true;
         let validUser = true;
         let validPassword = true;

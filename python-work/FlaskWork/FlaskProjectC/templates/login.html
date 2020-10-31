@@ -14,7 +14,7 @@
     <br/>
     <h2 class="subtitle">You can login below:</h2>
     <!-- Using the CSS from the login/signup CSS file -->
-    <form action="#" method="POST">
+    <form id="form-register" action="#" method="POST">
         <div class="login-form" id="login-username">
             <label for="username">Username</label>
             <input type="text" class="input-name" id="yourName" name="username" placeholder="Your Username">
@@ -36,12 +36,12 @@
             <button id="close-register-button">Close</button>
             
             <h2 class="subtitle" id="signup-title">Sign Up</h2>
+            
             <div class="register-div">
-            <form action="#" method="POST">
-                
+            <form id="register-form" action="#" method="POST">      
                 <div id="name-error" class="hide-error-username">Please enter a username</div>
                 <label for="new-user">Your Username</label>
-                <input type="text" id="new-user" name="new-user" required>
+                <input type="text" id="new-user" name="new-user">
                 
                 <div id="password-error" class="hide-error-password">
                     <ul>
@@ -52,20 +52,19 @@
                     </ul>
                 </div>
                 <label for="register-password">Your Password</label>
-                <input type="password" id="register-password" name="register-password" required>
+                <input type="password" id="register-password" name="register-password">
                 
-                <div id="retype-error" class="hide-error-password">Passwords do not match</div>
-                <label for="register-password">Retype Password</label>
-                <input type="password" id="register-password" name="register-password" required>
-                
+                <div id="retype-error" class="hide-error-retype">Passwords do not match</div>
+                <label for="password-retyped">Retype Password</label>
+                <input type="password" id="password-retyped" name="password-retyped">
+                <input type="submit" id="submit-register" value="Sign Up!">
             </form>
             </div>
         </div>
     </div>
-
+    <script src="{{ url_for('static', filename='loginevents.js') }}"></script>
+    <script src="{{ url_for('static', filename='validate.js') }}"></script>
 </div>
-<script src="{{ url_for('static', filename='loginevents.js') }}"></script>
-<script src="{{ url_for('static', filename='validate.js') }}"></script>
 {% endblock %}
 </body>
 </html>
