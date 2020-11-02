@@ -14,8 +14,12 @@ label {
     margin-bottom: 10px;
 }
 #submit-login {
-    margin-left: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 50px;
     padding: 10px;
+    width: 280px;
     font-size: 16pt;
     color: whitesmoke;
 }
@@ -38,8 +42,16 @@ label {
     border-radius: 15px;
     background-color: orange;
 }
-.popup-screen-signup {
+.content .register-button a:link, .content .register-button a:visited {
+    text-decoration: none;
+    color: whitesmoke;
+}
+.popup-screen-signup, .popup-content-signup {
     display: none;
+}
+
+.popup-screen-signup, .popup-screen-result {
+    display: flex;
     background: rgba(0, 0, 0, 0.5);
     background-size: cover;
     width: 100%;
@@ -50,8 +62,8 @@ label {
     justify-content: center;
     align-items: center;
 }
-.popup-content-signup {
-    display: none;
+.popup-content-signup, .popup-content-result {
+    display: flex;
     flex-direction: column;
     margin-bottom: 10px;
     background-color: burlywood;
@@ -61,6 +73,7 @@ label {
     border-radius: 15px;
     width: 70%;
     height: 90%;
+    overflow: auto;
     position: relative;
 }
 #close-register-button {
@@ -94,6 +107,14 @@ label {
 }
 .register-div label {
     color: whitesmoke;
+    text-shadow: 2px 2px 1px black;
+}
+.register-results {
+    color: maroon;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    font-size: 16pt;
+    font-family: sans-serif;
 }
 #submit-register {
     margin-top: 10px;

@@ -7,4 +7,8 @@ $(function() {
     //popup screen for the notes page
     $(".popup-screen").hide().fadeIn(1700);
     $(".popup-content").hide().fadeIn(1800);
+
+    //popup for the register page
+    $('#signup-popup1').hide().fadeIn(1700);
+    $('#signup-popup2').hide().fadeIn(1800);
 });

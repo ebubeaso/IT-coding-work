@@ -74,7 +74,7 @@ class User(db.Model):
 
 # ** End of User models **
 
-# making the Notes model
+# ** making the Notes model **
 class TheNotes(db.Model):
     __tablename__ = 'Notes'
     id = db.Column(db.Integer, primary_key=True)
@@ -96,6 +96,25 @@ class TheNotes(db.Model):
             'name': self.name,
             'note': self.note
         }
+# **end of notes model **
+
+# ** making the password recovery code model **
+class RecoveryPassword(db.Model):
+    __bind_key__ = 'users'
+    __tablename__ = 'RecoveryCodes'
+    name = db.Column(db.Text)
+    code = db.Column(db.Integer, primary_key=True)
+
+    def __init__(self, name, code):
+        self.name = name
+        self.code = code
+
+    def serialize_code(self):
+        return {
+            'name': self.name,
+            'code': self.code
+        }
+# ** end of recovery code model **
 
 # the Home API Route:
 @app.route('/')
@@ -207,11 +226,13 @@ class MyNotes(Resource):
 
 class Register(Resource):
     def get(self):
-        pass
+        the_header = {'Content Type': 'text/html'}
+        return make_response(render_template('register.html'), 200, the_header)
     def post(self):
         """This is when you are registering using Postman or Python 
         Requests"""
         if request.json:
+            print("I am using JSON!!!")
             username_exists = User.find_username(request.json['username'])
             if username_exists:
                 return {'Message': 'Sorry, that user exists already!'}, 400
@@ -228,17 +249,29 @@ class Register(Resource):
                 return {"Status": "Success!", 
                             "Message": "You have registered!"}, 201
 
-        """This is for when the user is registering on the web interface"""
+        # This is for when the user is registering on the web interface
         if request.form:
-            pass
+            print('I am using a form!!!!')
+            the_header = {'Content Type': 'text/html'}
+            username_exists = User.find_username(request.form['new-user'])
+            if username_exists:
+                output = "Sorry, the username that you used is already taken!"
+                return make_response(render_template('registered.html',
+                                    output=output),400, the_header)
+            else:
+                output = random.randint(11111, 99999)
+                return make_response(render_template('registered.html',
+                                    output=output),200, the_header)
+
+                
 
 
 # API resources
-api.add_resource(CurrentNotes, '/currentnotes')
-api.add_resource(MyNotes, '/mynotes')
+api.add_resource(CurrentNotes, '/currentnotes') # for Postman or Python Requests
+api.add_resource(MyNotes, '/mynotes') # for the web user interface
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
-api.add_resource(Register, '/signup')
+api.add_resource(Register, '/register')
 #route used for signing in via Requests or Postman
 api.add_resource(SignIn, '/signin')
 if __name__ == "__main__":
