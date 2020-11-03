@@ -40,3 +40,16 @@ h4.return-home a:link, h4.return-home a:visited {
     color: whitesmoke;
     text-decoration: none;
 }
+#notes-table {
+    margin: 20px auto;
+    border-spacing: 20px 10px;
+    background-color: lightgray;
+    border: 2px solid black;
+}
+#notes-table td {
+    background-color: burlywood;   
+    width: 200px;
+    overflow: auto;
+    text-align: center;
+    border: 2px solid black;
+}

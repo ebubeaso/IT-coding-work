@@ -159,9 +159,24 @@ class CurrentNotes(Resource):
         db.session.commit()
         return {"Message": "Successfully added a new note!"}, 201
 
+class SpecificNotes(Resource):
+    def get(self, ID):
+        the_query = TheNotes.query.filter_by(id=ID)
+        return {'Current Notes': [notes.jsonize() for notes in the_query]}
+    def put(self, ID):
+        
+    def patch(self, ID):
+        pass
+    def delete(self, ID):
+        pass
+
+# class NotesByName(Resource):
+#     def get(self, yourname):
+#         print('I ran!!!')
+#         the_query = TheNotes.query.filter_by(name=yourname)
+#         return {f"{yourname}'s Notes'": [note.jsonize() for note in the_query]}
 
 # *** End of code for Postman/Python requests ***
-
 
 # *** Code for the web user interface ***
 
@@ -201,9 +216,9 @@ class Logout(Resource):
 class MyNotes(Resource):
     def get(self):
         the_header = {'Content Type': 'text/html'}
-        # notes = TheNotes.query.order_by(TheNotes.date).all()
-        # result = [data.jsonize() for data in notes]
-        return make_response( render_template('notes.html'), 200, the_header )
+        notes = TheNotes.query.order_by(TheNotes.date).all()
+        result = [data.jsonize() for data in notes]
+        return make_response( render_template('notes.html', output=result), 200, the_header )
     def post(self):
         the_header = {'Content Type': 'text/html'}
         # Need a list of the ID numbers in database to prevent duplicates
@@ -278,14 +293,15 @@ class Register(Resource):
                 
 
 
-# API resources
-api.add_resource(CurrentNotes, '/currentnotes') # for Postman or Python Requests
-api.add_resource(MyNotes, '/mynotes') # for the web user interface
+# API resources (for Postman or Python Requests)
+api.add_resource(CurrentNotes, '/currentnotes')
+api.add_resource(SpecificNotes, '/currentnotes/<string:ID>')
+api.add_resource(SignIn, '/signin')
+# API resources (for the web user interface)
+api.add_resource(MyNotes, '/mynotes')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(Register, '/register')
-#route used for signing in via Requests or Postman
-api.add_resource(SignIn, '/signin')
 if __name__ == "__main__":
     #app.run(host='0.0.0.0', ssl_context=('./SSLCertificates/sslcert.pem', './SSLCertificates/sslkey.pem'))
     app.run(host='0.0.0.0')

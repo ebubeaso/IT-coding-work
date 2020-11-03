@@ -9,6 +9,7 @@
 {% block content %}
     {{ super() }}
 <div class="content">
+<h1 class="title">Your Recent notes</h1>
 <!-- Have to enter in the access token to use: -->
 <div class="popup-screen">
     <div class="popup-content">
@@ -22,22 +23,25 @@
         </form>
     </div>
 </div>
-
-<h1 class="title">Your Recent notes</h1>
-<!-- <table id="notes-table">
-<thead>
-    <tr class="table-headers">
-        <th>Entry ID</th>
-        <th>Date</th>
+<table id="notes-table">
+    <thead>
+    <tr>
+        <th>Notes ID</th>
+        <th>Date Added</th>
         <th>Name</th>
-        <th>Note</th>
+        <th>Note entry</th>
     </tr>
-</thead>
-<tbody>
-
-</tbody>
-</table> -->
-
+    </thead>
+    <tbody>
+        {% for note in output %}
+            <tr>
+            {% for value in note.values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 </div>
 {% endblock %}
 </body>
