@@ -259,7 +259,19 @@ class Register(Resource):
                 return make_response(render_template('registered.html',
                                     output=output),400, the_header)
             else:
-                output = random.randint(11111, 99999)
+                #For getting the ID, get the total number of entries in users table
+                users_table = [user.serialize() for user in User.query.all()]
+                id_key = ''
+                id_key += str(len(users_table)+1) #makes the new ID
+                #make the new User object to add to user database
+                new_user = User(id_key, request.form['new-user'], 
+                                        request.form['register-password'])
+                output = str(random.randint(11111, 99999))
+                recovery_code = RecoveryPassword(request.form['new-user'], output)
+                db.session.add(new_user)
+                db.session.commit()
+                db.session.add(recovery_code)
+                db.session.commit()
                 return make_response(render_template('registered.html',
                                     output=output),200, the_header)
 

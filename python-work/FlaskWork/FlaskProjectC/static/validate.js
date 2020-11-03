@@ -96,8 +96,10 @@ $(function() {
         passwordValid = checkPassword();
         retypeValid = confirmPassword();
         if (usernameValid == false || passwordValid == false || retypeValid == false) {
-            e.preventDefault();
+            validForm = false;
+            return validForm;
         } else {
+            validForm = true;
             return validForm;
         };
     });
