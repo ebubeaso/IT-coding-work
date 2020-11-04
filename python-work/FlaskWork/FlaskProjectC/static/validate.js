@@ -9,7 +9,7 @@ username. As for the password, this validation script checks for several things:
 
 $(function() {    
     //attempt to submit form
-    $("#register-form").on('click', function(e) {
+    $("#register-form").on('submit', function(e) {
         // Our booleans
         let validForm = true;
         let validUsername;

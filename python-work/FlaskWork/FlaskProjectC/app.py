@@ -116,6 +116,17 @@ class RecoveryPassword(db.Model):
         }
 # ** end of recovery code model **
 
+#helper function made to add a random entry ID for a note
+def id_generator():
+    id_list = []
+    id_numbers = [numbers for numbers in db.session.query(TheNotes.id)]
+    for num in id_numbers:
+        id_list.append(num[0])
+    new_id = random.randint(111111, 999999)
+    if new_id in id_list:
+        new_id = id_list[1] + 1         
+    return new_id
+
 # the Home API Route:
 @app.route('/')
 def index():
@@ -137,23 +148,19 @@ class SignIn(Resource):
             return tokens, 200
         else:
             return {'Message': 'Invalid credentials, try again!'}, 400
+
 class CurrentNotes(Resource):
     def get(self):
         notes = TheNotes.query.order_by(TheNotes.date).all()
         result = [data.jsonize() for data in notes]
         return result, 200
+    
     def post(self):
         the_header = {'Content Type': 'text/html'}
         # Need a list of the ID numbers in database to prevent duplicates
-        id_list = []
-        id_numbers = [numbers for numbers in db.session.query(TheNotes.id)]
-        for num in id_numbers:
-            id_list.append(num[0])
-        new_id = random.randint(111111, 999999)
-        if new_id in id_list:
-            new_id = id_list[1] + 1
+        entry_id = id_generator()
         # make the new entry
-        new_entry = TheNotes(new_id, datetime.now(), request.json['name'], 
+        new_entry = TheNotes(entry_id, datetime.now(), request.json['name'], 
                         request.json['note'])
         db.session.add(new_entry)
         db.session.commit()
@@ -161,21 +168,35 @@ class CurrentNotes(Resource):
 
 class SpecificNotes(Resource):
     def get(self, ID):
+        print('I ran today!!')
         the_query = TheNotes.query.filter_by(id=ID)
         return {'Current Notes': [notes.jsonize() for notes in the_query]}
+    
     def put(self, ID):
-        
-    def patch(self, ID):
-        pass
+        the_query = TheNotes.query.get(ID)
+        #You can only modify your notes
+        if the_query is not None:
+            the_query.note = request.json['note']
+            db.session.commit()
+            return {"Message": "Your note entry has been updated!!"}, 200
+        else:
+            #add in a new entry
+            data = TheNotes(ID, datetime.now(), request.json['name'], 
+            request.json['note'])
+            db.session.add(data)
+            db.session.commit()
+            return {"Message": "New entry has been added!"}, 201
+
     def delete(self, ID):
-        pass
+        TheNotes.query.filter_by(id=ID).delete()
+        db.session.commit()
+        return {"Message": f"entry {ID} has been deleted"}, 200
 
-# class NotesByName(Resource):
-#     def get(self, yourname):
-#         print('I ran!!!')
-#         the_query = TheNotes.query.filter_by(name=yourname)
-#         return {f"{yourname}'s Notes'": [note.jsonize() for note in the_query]}
-
+class NotesByName(Resource):
+    def get(self, yourname):
+        print('I ran!!!')
+        the_query = TheNotes.query.filter_by(name=yourname)
+        return {f"Notes from {yourname}": [note.jsonize() for note in the_query]}
 # *** End of code for Postman/Python requests ***
 
 # *** Code for the web user interface ***
@@ -290,12 +311,11 @@ class Register(Resource):
                 return make_response(render_template('registered.html',
                                     output=output),200, the_header)
 
-                
-
 
 # API resources (for Postman or Python Requests)
 api.add_resource(CurrentNotes, '/currentnotes')
 api.add_resource(SpecificNotes, '/currentnotes/<string:ID>')
+api.add_resource(NotesByName, '/yournotes/<string:yourname>')
 api.add_resource(SignIn, '/signin')
 # API resources (for the web user interface)
 api.add_resource(MyNotes, '/mynotes')
