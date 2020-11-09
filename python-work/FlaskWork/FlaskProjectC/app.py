@@ -139,7 +139,10 @@ the_header = {'Content Type': 'text/html'}
 # the Home API Route:
 @app.route('/')
 def index():
-    return render_template("index.html")
+    if 'user' in session:
+        return render_template("indexloggedin.html")
+    else:
+        return render_template("index.html")
 
 # *** Routes through Postman/Python requests ***
 class SignIn(Resource):
