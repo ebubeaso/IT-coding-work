@@ -33,7 +33,7 @@ app.secret_key = "EbubeAsoYoungITPro2020!!"
 jwt = JWTManager(app)
 
 # Configurations and connecting to databases
-app.config["JWT_EXPIRATION_DELTA"] = timedelta(seconds=1000)
+app.config["JWT_EXPIRATION_DELTA"] = timedelta(seconds=1200)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Notes.db"
 app.config["SQLALCHEMY_BINDS"] = {"users": "sqlite:///TheUsers.db"}
 #turns off the flask SQLAlchemy tracker to save resources
@@ -41,7 +41,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # ** Start of User models **
-
 class User(db.Model):
     __bind_key__ = 'users'
     __tablename__ = 'users'
@@ -54,6 +53,7 @@ class User(db.Model):
         self.username = username
         self.password = password
     
+    # Needed to serialize the object data into JSON format
     def serialize(self):
         return {
             'id': self.id,
@@ -64,11 +64,15 @@ class User(db.Model):
     #class methods for handling the usernames and passwords
     @classmethod
     def find_username(cls, username):
+        """Returns the row with the given username if in the database
+            or None if not in database"""
         the_query = cls.query.filter_by(username=username).first()
         return the_query
     
     @classmethod
     def find_by_id(cls, _id):
+        """Returns the row with the given id if in the database
+            or None if not in database"""
         the_query = cls.query.filter_by(id=_id).first()
         return the_query
 
@@ -88,6 +92,7 @@ class TheNotes(db.Model):
         self.name = name
         self.note = note
 
+    #Serialize the data into JSON format
     def jsonize(self):
         return {
             'id': self.id,
@@ -109,6 +114,7 @@ class RecoveryPassword(db.Model):
         self.name = name
         self.code = code
 
+    #Serialize the data into JSON format
     def serialize_code(self):
         return {
             'name': self.name,
@@ -126,6 +132,9 @@ def id_generator():
     if new_id in id_list:
         new_id = id_list[1] + 1         
     return new_id
+
+# The header tag we will use for my Web UI routes
+the_header = {'Content Type': 'text/html'}
 
 # the Home API Route:
 @app.route('/')
@@ -204,11 +213,9 @@ class NotesByName(Resource):
 # For loggining and logging out
 class Login(Resource):
     def get(self):
-        the_header = {'Content Type': 'text/html'}
-        return make_response( render_template("login.html"), 200, the_header)
+        return make_response(render_template("login.html"), 200, the_header)
     
     def post(self):
-        the_header = {'Content Type': 'text/html'}
         # Check if user's input is in the database
         # If it is, they will get their tokens
         check_user = User.find_username(request.form['username'])
@@ -220,7 +227,7 @@ class Login(Resource):
                         "Your Refresh Token": refresh_token
                     }
             #making some session data to ensure that we are logged in
-            #session['user'] = 'online'
+            session['user'] = request.form['username']
             return make_response( render_template('auth.html', 
                                 output=json.dumps(tokens, indent=2, 
                                 sort_keys=True)), 200, the_header )
@@ -232,27 +239,25 @@ class Login(Resource):
 
 class Logout(Resource):
     def get(self):
-        pass
+        del session['user']
+        return make_response( render_template("logout.html"), 200, the_header)
 
 class MyNotes(Resource):
     def get(self):
-        the_header = {'Content Type': 'text/html'}
-        notes = TheNotes.query.order_by(TheNotes.date).all()
-        result = [data.jsonize() for data in notes]
-        return make_response( render_template('notes.html', output=result), 200, the_header )
+        if 'user' in session:
+            notes = TheNotes.query.filter_by(name=session['user']).order_by(TheNotes.date).all()
+            result = [data.jsonize() for data in notes]
+            return make_response( render_template('notes.html', output=result), 200, the_header )
+        else:
+            output = {"Message":"You are not logged in, please login."}
+            return make_response( render_template('auth.html',
+                                output=json.dumps(output)),400, the_header )
+    
     def post(self):
-        the_header = {'Content Type': 'text/html'}
-        # Need a list of the ID numbers in database to prevent duplicates
-        id_list = []
-        id_numbers = [numbers for numbers in db.session.query(TheNotes.id)]
-        for num in id_numbers:
-            id_list.append(num[0])
-        new_id = random.randint(111111, 999999)
-        if new_id in id_list:
-            new_id = id_list[1] + 1
         # make the new entry
-        new_entry = TheNotes(new_id, datetime.now(), request.json['name'], 
-                        request.json['note'])
+        entry_id = id_generator()
+        new_entry = TheNotes(entry_id, datetime.now(), session['user'], 
+                        request.form['note'])
         db.session.add(new_entry)
         db.session.commit()
         return {"Message": "Successfully added a new note!"}, 201
@@ -262,13 +267,11 @@ class MyNotes(Resource):
 
 class Register(Resource):
     def get(self):
-        the_header = {'Content Type': 'text/html'}
         return make_response(render_template('register.html'), 200, the_header)
     def post(self):
         """This is when you are registering using Postman or Python 
         Requests"""
         if request.json:
-            print("I am using JSON!!!")
             username_exists = User.find_username(request.json['username'])
             if username_exists:
                 return {'Message': 'Sorry, that user exists already!'}, 400
@@ -287,8 +290,6 @@ class Register(Resource):
 
         # This is for when the user is registering on the web interface
         if request.form:
-            print('I am using a form!!!!')
-            the_header = {'Content Type': 'text/html'}
             username_exists = User.find_username(request.form['new-user'])
             if username_exists:
                 output = "Sorry, the username that you used is already taken!"

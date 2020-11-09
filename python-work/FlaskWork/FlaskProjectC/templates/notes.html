@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-{% extends "base.html" %}
+{% extends "usersession.html" %}
 {% block head %}
     {{ super() }}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='notes_styling.css') }}">
@@ -11,7 +11,7 @@
 <div class="content">
 <h1 class="title">Your Recent notes</h1>
 <!-- Have to enter in the access token to use: -->
-<div class="popup-screen">
+<!-- <div class="popup-screen">
     <div class="popup-content">
         <h4 class="return-home"><a href="{{ url_for('index') }}">Go Back</a></h4>
         <h2 class="subtitle">Enter your access token to continue</h2>
@@ -22,7 +22,7 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
 <table id="notes-table">
     <thead>
     <tr>
@@ -38,6 +38,12 @@
             {% for value in note.values() %}
                 <td>{{ value }}</td>
             {% endfor %}
+            <td>
+            <div class="action-buttons">
+                <button class="modify">Modify</button>
+                <button class="delete">Delete</button>
+            </div>
+            </td>
             </tr>
         {% endfor %}
     </tbody>
