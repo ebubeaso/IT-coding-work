@@ -9,6 +9,8 @@ from flask_jwt_extended import (JWTManager, create_access_token, get_jwt_identit
 create_refresh_token, jwt_required, jwt_refresh_token_required)
 from werkzeug.security import safe_str_cmp
 import random
+from datetime import datetime
+from db import db
 from flask_restful import Resource, Api
 from models.dbmodels import User, TheNotes, RecoveryPassword
 

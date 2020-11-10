@@ -1,16 +1,20 @@
 """ This is a separate python file to handle the resource APIs when using the
 web UI. This is to just shorten the main app.py code. """
 from flask import (Flask, jsonify, request, render_template, session, url_for,
-make_response)
+make_response, redirect)
 from flask_restful import Resource, Api
 from flask_jwt_extended import (JWTManager, create_access_token, get_jwt_identity, 
 create_refresh_token, jwt_required, jwt_refresh_token_required)
 from werkzeug.security import safe_str_cmp
 from db import db
 import random
+from datetime import datetime
 import json
 from models.dbmodels import User, TheNotes, RecoveryPassword
 
+# for saving the access and refresh tokens
+auth_token = ''
+token_refresh = ''
 # The header tag we will use for my Web UI routes
 the_header = {'Content Type': 'text/html'}
 
@@ -42,6 +46,8 @@ class Login(Resource):
                         "Your Access Token": access_token,
                         "Your Refresh Token": refresh_token
                     }
+            auth_token = access_token
+            token_refresh = refresh_token
             #making some session data to ensure that we are logged in
             session['user'] = request.form['username']
             return make_response( render_template('auth.html', 
@@ -72,9 +78,12 @@ class MyNotes(Resource):
     def post(self):
         # make the new entry
         entry_id = id_generator()
-        new_entry = TheNotes(entry_id, datetime.now(), session['user'], 
-                        request.form['note'])
+        username = session['user']
+        new_entry = TheNotes(entry_id, datetime.now(), username, 
+                        request.form['note-entry'])
+        print(type(request.form['note-entry']))
         db.session.add(new_entry)
+        print('I ran pretty good.')
         db.session.commit()
-        return {"Message": "Successfully added a new note!"}, 201
+        return make_response(redirect(url_for('mynotes')), 201, the_header)
 # *** End of code for web user interface ***
