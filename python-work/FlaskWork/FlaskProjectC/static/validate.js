@@ -33,7 +33,6 @@ $(function() {
                 usernameError.addClass("hide-error-username");
                 validUsername = true;
             }
-            console.log('Username check ran!');
             return validUsername;
         };
         // validate the password
@@ -76,7 +75,6 @@ $(function() {
                 passwordError.addClass("hide-error-password");
                 validPassword = true;
             }
-            console.log('Password check ran!');
             return validPassword;
         };
 
@@ -89,7 +87,6 @@ $(function() {
                 retypeError.addClass("hide-error-retype");
                 validRetype = true;
             }
-            console.log('Password confirmation check ran!');
             return validRetype;
         };
         usernameValid = checkUsername();

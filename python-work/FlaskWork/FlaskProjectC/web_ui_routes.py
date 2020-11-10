@@ -81,9 +81,7 @@ class MyNotes(Resource):
         username = session['user']
         new_entry = TheNotes(entry_id, datetime.now(), username, 
                         request.form['note-entry'])
-        print(type(request.form['note-entry']))
         db.session.add(new_entry)
-        print('I ran pretty good.')
         db.session.commit()
         return make_response(redirect(url_for('mynotes')), 201, the_header)
 # *** End of code for web user interface ***
