@@ -20,15 +20,15 @@
         <th>Action</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="table-body">
         {% for note in output %}
             <tr>
             {% for value in note.values() %}
                 <td>{{ value }}</td>
             {% endfor %}
             <td>
-            <div id="action-buttons">
-                <button class="modify">Modify</button>
+            <div class="action-buttons">
+                <button class="modify"><a href="/mynotes/{{note.id}}">Modify</a></button>
                 <button class="delete">Delete</button>
             </div>
             </td>
@@ -37,11 +37,25 @@
     </tbody>
 </table>
 <button id="add-note">Make a new Note</button>
-<form id="new-note-form" action="" method="POST">
-    <span>New Note Entry</span>
-    <textarea id="note-entry" name="note-entry" rows="10" cols="40"></textarea>
-    <input id="submit-note" type="submit" value="Add Note">
-</form>
+<!-- Form for adding a new note -->
+<div id="add-note-popup">
+    <button id="close-add" class="close-note">Close</button>
+    <form id="new-note-form" action="{{ url_for('mynotes') }}" method="POST">
+        <span>New Note Entry</span>
+        <textarea id="note-entry" name="note-entry" rows="10" cols="40"></textarea>
+        <input id="submit-note" type="submit" value="Add Note">
+    </form>
+</div>
+<!-- Form when modifying a new note 
+    action="{{ url_for('mynotes') }}" method="POST"-->
+<div id="change-note-popup">
+    <button id="close-update" class="close-note">Close</button>
+    <span>Modify Note Entry</span>
+    <form id="change-note-form">
+        <textarea id="modified-note" name="modified-note" rows="10" cols="40"></textarea>
+        <input id="submit-update" type="submit" value="Add Note">
+    </form>
+</div>
 <script src="{{ url_for('static', filename='notesEvents.js') }}"></script>
 </div>
 {% endblock %}

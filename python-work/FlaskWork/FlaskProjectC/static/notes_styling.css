@@ -1,6 +1,6 @@
 /* Styling the notes page */
 #notes-table {
-    margin: 30px auto;
+    margin: 30px 30px;
     border-spacing: 20px 10px;
     background-color: lightgray;
     border: 2px solid black;
@@ -14,7 +14,7 @@
 }
 
 /* The action buttons */
-#action-buttons {
+.action-buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -30,6 +30,14 @@ button.modify, button.delete, #add-note {
     font-family: sans-serif;
     border: 2px solid black;
     border-radius: 15px;
+    text-decoration: none;
+}
+button a:link, button a:visited{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: sans-serif;
 }
 #add-note {
     background-color: green;
@@ -43,15 +51,16 @@ button.modify, button.delete, #add-note {
     background-color: lightgray;
     border: 3px solid black;
 }
-#new-note-form span {
-    margin-top: 10px;
-    margin-left: 20px;
+span {
+    padding-top: 10px;
+    margin: 10px 20px;
     font-size: 16pt;
     font-style: oblique;
+    color: white;
     font-family: sans-serif;
 }
 textarea {margin: 20px 30px; padding: 10px;}
-#submit-note {
+#submit-note, #submit-update {
     margin-left: 30%;
     margin-bottom: 10px;
     background-color: green;
@@ -61,4 +70,44 @@ textarea {margin: 20px 30px; padding: 10px;}
     font-family: sans-serif;
     border: 2px solid black;
     border-radius: 15px;
+}
+#add-note-popup, #change-note-popup {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    margin-left: -30px;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+}
+form #new-note-form, form #change-note-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    color: white;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 70%;
+    height: 90%;
+    overflow: auto;
+    position: relative;
+}
+.close-note {
+    float: right;
+    margin-top: 5%;
+    margin-left: 70%;
+    background-color: red;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 24pt;
+    border: 2px solid white;
+    border-radius: 20px;
 }

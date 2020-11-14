@@ -24,7 +24,7 @@ from db import db
 from datetime import datetime, timedelta
 from models.dbmodels import User, TheNotes, RecoveryPassword
 from api_client_routes import SignIn, CurrentNotes, SpecificNotes, NotesByName
-from web_ui_routes import Login, Logout, MyNotes
+from web_ui_routes import Login, Logout, MyNotes, NoteActions
 
 #Initialize everything
 app = Flask(__name__)
@@ -108,6 +108,7 @@ api.add_resource(NotesByName, '/yournotes/<string:yourname>')
 api.add_resource(SignIn, '/signin')
 # API resources (for the web user interface)
 api.add_resource(MyNotes, '/mynotes')
+api.add_resource(NoteActions, '/mynotes/<string:ID>')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(Register, '/register')
