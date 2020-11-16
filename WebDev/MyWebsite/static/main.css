@@ -1,0 +1,51 @@
+header {
+    background-color: black;
+    width: 96%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}
+nav li {
+    font-family: sans-serif;
+    display: inline;
+    list-style-type: none;
+    margin-right: 30px;
+}
+li a, li a.visited {
+    color: mintcream;
+    font-size: 14pt;
+    text-decoration: none;
+}
+.title {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 42pt;
+    font-style: oblique;
+    text-shadow: 4px 4px 3px black;
+}
+.subtitle {
+    margin-left: 30px;
+    margin-top: 10px;
+    text-shadow: 3px 3px 2px black;
+}
+#menu1 {
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+#menu2 {
+    margin-right: 30px;
+}
+.title, nav li, .subtitle, .paragraph {
+    color: mintcream;
+    font-family: sans-serif;
+}
+.paragraph {
+    font-size: 16pt;
+}

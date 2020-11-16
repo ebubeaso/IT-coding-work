@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- This code is going to be reused on all my webpages -->
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <script src="{{ url_for('static', filename='jquery-3.5.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    {% endblock %}
+</head>
+
+<body id="the-background">
+    <!-- The navbar is going to be used on all the webpages -->
+    {% block content %}
+    <header>
+        <nav>
+        <div id="menu1">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Me</a></li>
+                <li><a href="{{ url_for('mywork') }}">My Work</a></li>
+            </ul>
+        </div>
+        <div id="menu2">
+            <ul>
+                <li><a href="{{ url_for('contact') }}">Contact Me</a></li>
+            </ul>
+        </div>
+        </nav>
+    </header>
+    {% endblock %}
+    </body>
+</html>
+
+

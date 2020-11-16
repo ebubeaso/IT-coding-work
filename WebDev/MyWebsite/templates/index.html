@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}
+<body>
+{% block content %}
+    {{ super() }}
+<div class="content">
+<h1 class="title">Welcome Fellow Internet User</h1>
+    <br/>
+    <h2 class="subtitle">My Website:</h2>
+    <br/>
+    <p class="paragraph">Hello! My name is Ebube Aso and I am very passionate about technology.
+        I love it so much so, that I decided to make my own personal website that will showcase
+        my work and personal IT and programming projects. Feel free to take a look around; if you
+        would like to know more about me, visit the <b>About Me</b> page. All of my work and
+        projects can be seen at the <b>My Work</b> page. I plan on taking my IT skills to the next
+        level and do big things!
+    </p>
+</div>
+{% endblock %}
+</body>
+</html>
