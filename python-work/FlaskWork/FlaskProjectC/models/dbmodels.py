@@ -56,8 +56,7 @@ class TheNotes(db.Model):
     def jsonize(self):
         return {
             'id': self.id,
-            'date': [self.date.strftime('%Y-%m-%d'), 
-                    self.date.strftime('%H-%M-%S')],
+            'date': [self.date.strftime('%a %b %d %Y at %I:%M %p')],
             'name': self.name,
             'note': self.note
         }

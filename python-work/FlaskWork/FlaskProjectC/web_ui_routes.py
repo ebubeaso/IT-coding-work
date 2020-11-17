@@ -86,10 +86,10 @@ class MyNotes(Resource):
         return make_response(redirect(url_for('mynotes')), 201, the_header)
 
 class NoteActions(Resource):
-    def patch(self, ID):
+    def put(self, ID):
         the_query = TheNotes.query.get(ID)
-        if 'modified-note' in request.form:
-            the_query.note = request.form['modified-note']
+        the_query.date = datetime.now()
+        the_query.note = request.form['modified-note']
         db.session.commit()
         return make_response(redirect(url_for('mynotes')), 203, the_header)
     def delete(self):
