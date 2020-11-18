@@ -49,3 +49,71 @@ li a, li a.visited {
 .paragraph {
     font-size: 16pt;
 }
+
+/* For mobile devices */
+@media screen and (max-width: 600px) {
+    nav {
+        justify-content: left;
+    }
+    br {display: none;}
+    .title {
+        font-size: 22pt;
+    }
+    .subtitle {
+        font-size: 18pt;
+    }
+    .paragraph {
+        font-size: 12pt;
+    }
+    #menu1, #menu2 {
+        margin-left: -30px;
+        display: flex;
+        font-size: 2pt;
+    }
+    nav li {
+        font-family: sans-serif;
+        display: inline;
+        list-style-type: none;
+        margin-right: 8px;
+    }
+    header {
+        background-color: black;
+        width: 100%;
+        margin-left: -10px;
+        margin-bottom: 10px;
+    }
+}
+
+/* For tablets and smartphones turned sideways */
+@media screen and (min-width: 630px) and (max-width: 1000px) {
+    nav {
+        justify-content: space-between;
+    }
+    br {display: none;}
+    .title {
+        font-size: 26pt;
+    }
+    .subtitle {
+        font-size: 20pt;
+    }
+    .paragraph {
+        font-size: 12pt;
+    }
+    #menu1, #menu2 {
+        margin-left: 0px;
+        display: flex;
+        font-size: 2pt;
+    }
+    nav li {
+        font-family: sans-serif;
+        display: inline;
+        list-style-type: none;
+        margin-right: 10px;
+    }
+    header {
+        background-color: black;
+        width: 100%;
+        margin-left: -10px;
+        margin-bottom: 10px;
+    }
+}
