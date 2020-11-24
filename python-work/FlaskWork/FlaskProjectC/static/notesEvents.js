@@ -10,15 +10,15 @@
 //     };
 // })
     
-//made this function for handling PUTrequests
+//made this function for handling PUT ssrequests
 let url = '';
-const updateNoteEntry = (u) => {
+function updateNoteEntry(u) {
+    console.log(u);
     let xhr = new XMLHttpRequest();
-    
-    xhr.open('put', u, true);
-    xhr.setRequestHeader("Content-Type",
-        "application/x-www-form-urlencoded")
-    let formData = new FormData(document.getElementById("change-note-form"));
+    xhr.open('PUT', u, true);
+    //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+    let form = document.getElementById("change-note-form");
+    let formData = new FormData(form);
     xhr.send(formData);
 }
 
@@ -61,10 +61,9 @@ $(function() {
         updateForm.slideUp(300);
         updatePopupScreen.fadeOut(600);
     });
-    updateForm.on("submit", function () {
-        updateNoteEntry(url);
-    });
-
     entryForm.on('submit', () => {return true;});
-    $("#submit-update").on('click', updateNoteEntry);
+    updateForm.on('submit', (event) => {
+        updateNoteEntry(url);
+        event.preventDefault();
+    } );
 });

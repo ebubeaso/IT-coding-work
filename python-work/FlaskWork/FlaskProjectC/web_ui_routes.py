@@ -91,7 +91,7 @@ class NoteActions(Resource):
         the_query.date = datetime.now()
         the_query.note = request.form['modified-note']
         db.session.commit()
-        return make_response(redirect(url_for('mynotes')), 203, the_header)
+        return make_response(render_template('notes.html'), 203, the_header)
     def delete(self):
         pass
 # *** End of code for web user interface ***
