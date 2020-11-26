@@ -40,19 +40,11 @@ class Login(Resource):
         # If it is, they will get their tokens
         check_user = User.find_username(request.form['username'])
         if check_user and safe_str_cmp(check_user.password, request.form['password']):
-            access_token = create_access_token(identity=check_user.id, fresh=True)
-            refresh_token = create_refresh_token(identity=check_user.id)
-            tokens = {"Login": "Success! Here are your tokens!",
-                        "Your Access Token": access_token,
-                        "Your Refresh Token": refresh_token
-                    }
-            auth_token = access_token
-            token_refresh = refresh_token
+            output = {"Login": "Success!"}
             #making some session data to ensure that we are logged in
             session['user'] = request.form['username']
             return make_response( render_template('auth.html', 
-                                output=json.dumps(tokens, indent=2, 
-                                sort_keys=True)), 200, the_header )
+                                output=output), 200, the_header )
         else:
             output = {"Message":"Sorry, it looks like you typed the wrong credentials. Please try again!"}
             return make_response( render_template('auth.html',
