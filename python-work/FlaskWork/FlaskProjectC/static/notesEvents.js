@@ -62,8 +62,10 @@ $(function() {
         updatePopupScreen.fadeOut(600);
     });
     entryForm.on('submit', () => {return true;});
-    updateForm.on('submit', (event) => {
+    $("#submit-update").on('click', (event) => {
         updateNoteEntry(url);
         event.preventDefault();
+        alert('The note entry has been updated!');
+        location.reload(); //refreshes the webpage
     } );
 });
