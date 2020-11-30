@@ -1,0 +1,28 @@
+form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 40px;
+    padding: 10px;
+    width: 350px;
+    background-color: lightgray;
+    border: solid 2px black;
+}
+.recovery-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.recovery-form input {
+    width: 150px;
+}
+.submit-code {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: solid 2px white;
+    border-radius: 15px;
+}

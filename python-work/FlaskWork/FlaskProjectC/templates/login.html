@@ -24,8 +24,10 @@
             <input type="password" class="input-password" id="password" name="password" placeholder="Your Password">
         </div>
         <div id="submit-login">
-            <input type="submit" id="submit" value="Login"> 
-            <input type="button" id="forgot-password" value="Forgot Password">
+            <input type="submit" id="submit" value="Login">
+            <a href="{{ url_for('recovery') }}">
+                <input type="button" id="forgot-password" value="Forgot Password">
+            </a>
         </div>
     </form>
     <h2 class="subtitle">Signup here if you do not have an account already</h2>

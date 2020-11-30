@@ -26,6 +26,7 @@ from datetime import datetime, timedelta
 from models.dbmodels import User, TheNotes, RecoveryPassword
 from api_client_routes import SignIn, CurrentNotes, SpecificNotes, NotesByName
 from web_ui_routes import Login, Logout, MyNotes, NoteActions
+from werkzeug.security import safe_str_cmp
 
 #Initialize everything
 app = Flask(__name__)
@@ -101,6 +102,20 @@ class Register(Resource):
                 return make_response(render_template('registered.html',
                                     output=output),200, the_header)
 
+# ** This handles the backend of when you forget your password **
+class Recovery(Resource):
+    def get(self):
+        return make_response(render_template('recoverpassword.html'), 200, the_header)
+    def post(self):
+        recovery_code = RecoveryPassword.find_code(request.form['your-code'])
+        if recovery_code:
+            account = User.find_username(request.form['your-username'])
+            passwd = account.password
+            return make_response(render_template('recovered.html', passwd=passwd), 200, the_header)
+        else:
+            passwd = "Sorry, you did not enter the correct information. Please get the correct info and try again."
+            return make_response(render_template('recovered.html', passwd=passwd), 200, the_header)
+
 
 # API resources (for Postman or Python Requests)
 api.add_resource(CurrentNotes, '/currentnotes')
@@ -113,6 +128,8 @@ api.add_resource(NoteActions, '/mynotes/<string:ID>')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(Register, '/register')
+# for recovering your password
+api.add_resource(Recovery, '/recovery')
 if __name__ == "__main__":
     #app.run(host='0.0.0.0', ssl_context=('./SSLCertificates/sslcert.pem', './SSLCertificates/sslkey.pem'))
     app.run(host='0.0.0.0')

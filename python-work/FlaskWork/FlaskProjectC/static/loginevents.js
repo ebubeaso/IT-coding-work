@@ -39,3 +39,8 @@ registerButton.addEventListener("mouseout", function() {
     registerButton.style.fontStyle = 'normal';
     registerButton.style.border = '1px solid white';
 }, false);
+
+// Event for when you forget your password
+forgot.addEventListener('click', () => {
+    window.location = "recoverpassword.html"
+}, false);

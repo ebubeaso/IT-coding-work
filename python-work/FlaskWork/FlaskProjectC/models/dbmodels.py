@@ -79,4 +79,9 @@ class RecoveryPassword(db.Model):
             'name': self.name,
             'code': self.code
         }
+    @classmethod
+    def find_code(cls, code):
+        """Returns the row that has the recovery code"""
+        the_code = cls.query.filter_by(code=code).first()
+        return the_code
 # ** end of recovery code model **

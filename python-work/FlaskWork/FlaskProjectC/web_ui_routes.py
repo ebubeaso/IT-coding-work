@@ -50,7 +50,6 @@ class Login(Resource):
             return make_response( render_template('auth.html',
                                 output=json.dumps(output)),400, the_header )
 
-
 class Logout(Resource):
     def get(self):
         del session['user']
@@ -61,7 +60,7 @@ class MyNotes(Resource):
         if 'user' in session:
             notes = TheNotes.query.filter_by(name=session['user']).order_by(TheNotes.date).all()
             result = [data.jsonize() for data in notes]
-            return make_response( render_template('notes.html', output=result), 200, the_header )
+            return make_response( render_template('notes.html', output=result[::-1]), 200, the_header )
         else:
             output = {"Message":"You are not logged in, please login."}
             return make_response( render_template('auth.html',
