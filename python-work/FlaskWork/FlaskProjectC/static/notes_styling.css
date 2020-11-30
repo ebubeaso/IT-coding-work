@@ -1,6 +1,6 @@
 /* Styling the notes page */
 #notes-table {
-    margin: 30px 30px;
+    margin: 30px auto;
     border-spacing: 20px 10px;
     background-color: lightgray;
     border: 2px solid black;
@@ -45,7 +45,7 @@ button a:link, button a:visited{
     margin-top: 20px;
     margin-bottom: 10px;
 }
-#new-note-form {
+#new-note-form, #change-note-form {
     margin: 10px auto;
     width: 400px;
     background-color: lightgray;
@@ -84,7 +84,7 @@ textarea {margin: 20px 30px; padding: 10px;}
     justify-content: center;
     align-items: center;
 }
-form #new-note-form, form #change-note-form {
+/* form #new-note-form, form #change-note-form {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -98,7 +98,7 @@ form #new-note-form, form #change-note-form {
     height: 90%;
     overflow: auto;
     position: relative;
-}
+} */
 .close-note {
     float: right;
     margin-top: 5%;

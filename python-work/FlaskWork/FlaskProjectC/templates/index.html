@@ -22,10 +22,30 @@
     </p>
     <p class="paragraph">You will be able to add notes from the site by first
         logging in <span class="span-home">(or signing up)</span> and then going to
-        the notes section, where you can add, modify or delete notes from there.
+        the notes section, where you can add, modify or delete notes from there. However,
+        you would need to have a registered account to access the Notes page.
     </p>
-    <p class="paragraph" id="home-paragraph2"><a class="to-login" href="{{ url_for('login') }}">Click here</a>
-    to login to the notes application.</p>
+    <h2 class="subtitle">Instructions</h2>
+    <hr>
+    <p class="paragraph"><b>To add a note: </b>click on 'Make a New Note' button, and a popup will come up.
+        in the popup, enter the new note that you would like to add in the text box. Once you are done, click
+        on the 'Add Note' button. If you are stuck on a page that says 'Redirecting...', simply click on the 
+        blue link on the page to go back onto the notes page.
+    </p>
+    <p class="paragraph"><b>To modify a note: </b>click on the 'Modify' button that is right next to the note
+        that you would like to modify. Once you do, a text box will pop up, and you will just enter in a new note.
+        Once you are done, click on 'Update Note'. A popup will appear confirming the note was updated. Click 'OK'
+        and you will be redirected to the notes page.
+    </p>
+    <p class="paragraph"><b>To delete a note: </b>click on the 'Delete' button that is right next to the note
+        that you would like to remove. Once you do, a popup will show, confirming if you would like to make the 
+        change. Click 'OK' and you will receive an alert that confirms that you deleted the note. Click 'OK'
+        and you will be redirected to the notes page.
+    </p>
+    <p class="paragraph" id="home-paragraph2">That is how you use this notes application!
+    <a class="to-login" href="{{ url_for('login') }}">Click here</a> to login to the notes application. 
+    You will also be able to sign up to make a new account. Be advised that you need an account to use 
+    the Notes section!!</p>
     <br/>
 </div>
 {% endblock %}
