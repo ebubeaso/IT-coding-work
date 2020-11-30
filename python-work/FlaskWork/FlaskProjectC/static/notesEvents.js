@@ -72,10 +72,14 @@ $(function() {
     // This event is what leads to the DELETE request (based off of PUT request)
     myTable.on('click', '.delete a', (event) => {
         url = event.target.href;
-        confirm("Are you sure you want to delete this note? Click 'OK' if you are.");
-        deleteNoteEntry(url);
-        alert('The note entry has been deleted!');
-        window.location = notesLocation;
-        event.preventDefault();
+        let confirmation = confirm("Are you sure you want to delete this note? Click 'OK' if you are.");
+        if (confirmation == true) {
+            deleteNoteEntry(url);
+            alert('The note entry has been deleted!');
+            window.location = notesLocation;
+            event.preventDefault();
+        } else {
+            return false;
+        };
     })
 });
