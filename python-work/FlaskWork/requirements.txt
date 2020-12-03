@@ -1,8 +1,6 @@
 Flask
-jsonify
-requests
+Flask-JWT
+Flask-JWT-Extended
 Flask-RESTful
 Flask-SQLAlchemy
-db-sqlite3
-Flask-JWT
-flask-jwt-extended
+requests
