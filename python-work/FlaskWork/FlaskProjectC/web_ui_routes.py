@@ -88,4 +88,21 @@ class NoteActions(Resource):
         TheNotes.query.filter_by(id=ID).delete()
         db.session.commit()
         return make_response(render_template('notes.html'), 204, the_header)
+
+class ChangePassword(Resource):
+    # updates the user's password
+    def get(self):
+        return make_response(render_template('changepassword.html'), 200, the_header)
+    def put(self):
+        username = session['user']
+        check_passwd = User.find_username(username)
+        # Checks if the old password matches the current password in database
+        if check_passwd and safe_str_cmp(check_passwd.password, request.form['old-password']):
+            check_passwd.password = request.form['new-password']
+            db.session.commit()
+            return make_response(render_template('indexloggedin.html'), 200, the_header)
+        else:
+            output = "Error! The current password that you entered was incorrect! Password wasn't changed."
+            return make_response(render_template('auth.html', output=output), 400, the_header)
+
 # *** End of code for web user interface ***

@@ -25,7 +25,7 @@ import random
 from datetime import datetime, timedelta
 from models.dbmodels import User, TheNotes, RecoveryPassword
 from api_client_routes import SignIn, CurrentNotes, SpecificNotes, NotesByName
-from web_ui_routes import Login, Logout, MyNotes, NoteActions
+from web_ui_routes import Login, Logout, MyNotes, NoteActions, ChangePassword
 from werkzeug.security import safe_str_cmp
 
 #Initialize everything
@@ -128,6 +128,7 @@ api.add_resource(NoteActions, '/mynotes/<string:ID>')
 api.add_resource(Login, '/login')
 api.add_resource(Logout, '/logout')
 api.add_resource(Register, '/register')
+api.add_resource(ChangePassword, '/changepassword')
 # for recovering your password
 api.add_resource(Recovery, '/recovery')
 if __name__ == "__main__":

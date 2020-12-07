@@ -25,6 +25,16 @@
     <textarea rows="6" cols="50">{{ output }}</textarea>
     </div>
 {% endif %}
+
+{% if "Error" in output %}
+<h1 class="title">Invalid credentials!!</h1>
+<hr/>
+    <br/>
+    <h2 class="subtitle" id="auth-title">Password change failed:</h2>
+    <div class="auth">
+    <textarea rows="6" cols="50">{{ output }}</textarea>
+    </div>
+{% endif %}
 </div>
 {% endblock %}
 </body>

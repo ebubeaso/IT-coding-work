@@ -36,7 +36,7 @@ $(function() {
             return validUsername;
         };
         // validate the password
-        function checkPassword() {
+        function checkPassword() { //using this function in changePassword.js (which is why I put export default)
             //setting up my counters
             let upperCaseCount = 0;
             let numberCount = 0;
