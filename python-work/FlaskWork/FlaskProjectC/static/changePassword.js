@@ -14,14 +14,15 @@ function updatePassword(u) {
 // the jQuery code
 $(function() {
     // get the values of the new password and retyped password to validate below
-    let newPassword = $("#new-password").val();
-    let passwordRetyped = $("#new-password-retyped").val();
-    let passwordError = $("#new-password-error");
-    let retypeError = $("#retype-new-error");
-            
+    let newPassword;
+    let passwordRetyped;
+    let passwordError;
+    let retypeError;
 
     // validate the new password
     function validatePassword() {
+        newPassword = $("#new-password").val();
+        passwordError = $("#new-password-error");
         let validPassword = true;
         //setting up my counters
         let upperCaseCount = 0;
@@ -69,12 +70,14 @@ $(function() {
     }
     function confirmPassword() {
         //validate the retyped password
+        passwordRetyped = $("#new-password-retyped").val();
+        retypeError = $("#retype-new-error");
         let validRetype = true;
         if (passwordRetyped != newPassword) {
             validRetype = false;
-            retypeError.removeClass("hide-error-retype");
+            retypeError.removeClass("hide-retype-error");
         } else {
-            retypeError.addClass("hide-error-retype");
+            retypeError.addClass("hide-retype-error");
             validRetype = true;
         }
         console.log(validRetype, "confirm Password");
@@ -92,7 +95,7 @@ $(function() {
             updatePassword(url);
             event.preventDefault()
             alert('Your password has been updated to your new one!');
-            window.location = '';
+            window.location = "/";
         } else {
             alert('Your update has failed!!')
             return false;
