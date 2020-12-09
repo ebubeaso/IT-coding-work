@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login_signup.css') }}">
+{% endblock %}
+<body>
+{% block content %}
+    {{ super() }}
+<div class="content">
+{% if 'Login' in output %}
+<h1 class="title">Your Login was Successful!!</h1>
+<hr/>
+    <br/>
+    <h2 class="subtitle">You can now use the notes application. Enjoy!!</h2>
+{% endif %}
+
+{% if "Message" in output %}
+<h1 class="title">Invalid credentials!!</h1>
+<hr/>
+    <br/>
+    <h2 class="subtitle" id="auth-title">Authentication failed:</h2>
+    <div class="auth">
+    <textarea rows="6" cols="50">{{ output }}</textarea>
+    </div>
+{% endif %}
+
+{% if "Error" in output %}
+<h1 class="title">Invalid credentials!!</h1>
+<hr/>
+    <br/>
+    <h2 class="subtitle" id="auth-title">Password change failed:</h2>
+    <div class="auth">
+    <textarea rows="6" cols="50">{{ output }}</textarea>
+    </div>
+{% endif %}
+</div>
+{% endblock %}
+</body>
+</html>

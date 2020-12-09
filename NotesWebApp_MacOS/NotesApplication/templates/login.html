@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login_signup.css') }}">
+{% endblock %}
+<body>
+{% block content %}
+    {{ super() }}
+<div class="content">
+<h1 class="title">Login/Signup</h1>
+<hr/>
+    <br/>
+    <h2 class="subtitle">You can login below:</h2>
+    <!-- Using the CSS from the login/signup CSS file -->
+    <form action="#" method="POST">
+        <div class="login-form">
+            <label for="username">Username</label>
+            <input type="text" class="input-name" id="yourName" name="username" placeholder="Your Username">
+        </div>
+        <div class="login-form">
+            <label for="password">Password</label>
+            <input type="password" class="input-password" id="password" name="password" placeholder="Your Password">
+        </div>
+        <div id="submit-login">
+            <input type="submit" id="submit" value="Login">
+            <a href="{{ url_for('recovery') }}">
+                <input type="button" id="forgot-password" value="Forgot Password">
+            </a>
+        </div>
+    </form>
+    <h2 class="subtitle">Signup here if you do not have an account already</h2>
+    <button class="register-button" id="signup"><a href="{{ url_for('register') }}">Make An Account</a></button>
+    <script src="{{ url_for('static', filename='loginevents.js') }}"></script>
+</div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login_signup.css') }}">
+{% endblock %}
+<body>
+{% block content %}
+    {{ super() }}
+<div class="content">
+<h1 class="title">Login/Signup</h1>
+<hr/>
+    <br/>
+    <div class="popup-screen-results">
+        <div class="popup-content-results">
+            
+        {% if 'Sorry' in output %}
+            <h2 class="subtitle">Sign Up Failed</h2>
+            <p class="register-results">{{ output }}</p>
+        {% endif %}
+
+        {% if 'Sorry' not in output %}
+        <h2 class="subtitle" id="signup-title">Sign Up Successful!</h2>
+            <p class="register-results">You have now registered! Your recovery pin is below.
+                Please keep that number on file so you can recover your password in case you
+                accidentally forget it.
+            </p>
+            <div class="auth">
+            <textarea rows="1" cols="10">{{ output }}</textarea>
+            </div>
+        {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

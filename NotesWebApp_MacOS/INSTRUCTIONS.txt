@@ -1,0 +1,43 @@
+This is a set of instructions that will help you get my notes web application
+to run smoothly on your computer. Since it is a web application, it needs to be
+run on a web server. This set of instructions will allow you to setup the web
+server on your machine to use. Without the web server, you won't be able to use
+this web application.
+
+Here are the steps to set it up on your Windows computer:
+
+1.) Run the Python installer to install Python (it is needed to run the
+web server, it is VERY IMPORTANT!!!!)
+   - When the Python installer pops up, click on "Continue" until you see the
+agreement popup. Once you see the popup, click "Agree" and then you will see
+the Install button. Click the install button to install Python.
+
+2.) Now you have Python, yayyy!! Next, open up the Terminal application by 
+searching for the Terminal app on your Mac. You will use the terminal to add 
+in the dependencies (extra components) to run the small Python web server
+(and yes, you get to feel like a computer whiz too!!). On the Terminal, type
+in the command "cd Desktop/NotesWebApp" and press enter. This command changes
+the current location of the Terminal to inside the NotesWebApp folder that 
+you saved on in your Desktop ("cd" is short for "change directory", which is
+telling your Mac to change the current folder that the Terminal is in to be in
+another folder).
+
+3. Next, type in the command "python3 webServerDependencies.py" into the 
+Terminal -> this automatically installs the additional software needed to run 
+the server without any problems.
+
+4.) Once that finishes, type in the terminal "python3 notes_server.py" -> You 
+would need to run this command in the terminal anytime you want to start up 
+the web server to access the notes app.
+
+***************************************************************************
+
+HURRAY!! You have now installed my notes application and you can use it
+whenever you like. To stop the web server, click on the command line window
+and press Ctrl + C to stop the server. You can start it back up by following 
+the steps listed in step 4 to run the web server on your computer. If you want 
+to get back on this notes application but you have closed the Terminal 
+application on your Mac, start up the Terminal application, run the command
+"cd Desktop/NotesWebApp" to move into the folder of the notes web app, and then 
+type in "python3 notes_server.py" since this is the command that starts up the
+web server with the notes application.

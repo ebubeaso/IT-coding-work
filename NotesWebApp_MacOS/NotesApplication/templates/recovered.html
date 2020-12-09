@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login_signup.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recovery.css') }}">
+{% endblock %}
+<body>
+{% block content %}
+    {{ super() }}
+<div class="content">
+    {% if 'Sorry' in passwd %}
+    <h2 class="subtitle">Recovery failed: Nice Try Though</h2>
+    <div class="auth">
+        <textarea rows="6" cols="50">{{ passwd }}</textarea>
+    </div>
+    {% endif %}
+
+    {% if 'Sorry' not in passwd %}
+    <h2 class="subtitle">Recovery successful: Here's Your Password</h2>
+    <div class="auth">
+        <textarea rows="6" cols="50">{{ passwd }}</textarea>
+    </div>
+    {% endif %}
+    <p class="paragraph"><a class="to-login" href="{{ url_for('login') }}">Click here</a> to go back 
+    to the login page of this application</p>
+{% endblock %}
+</body>
+</html>
