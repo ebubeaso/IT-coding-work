@@ -7,19 +7,25 @@ const path = require('path');
 const port = 9900;
 
 // For static files
-app.use('/webpage', express.static('public'));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+// View Engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 // Rendering the Home page HTML
 app.get('/', (req, res) => {
-    res.sendFile(__dirname+'/index.html');
+    //res.sendFile(__dirname+'/index.html');
+    res.render('index');
 });
 // The HTML page with CSS and client side JavaScript
 app.get('/webpage', (req, res) => {
-    res.sendFile(__dirname+'/webpage.html');
+    //res.sendFile(__dirname+'/webpage.html');
+    res.render('webpage');
 });
 
 // start the Express node server
-app.listen(port, () => {
+app.listen(port, (error) => {
+    if (error) throw error;
     console.log('');
     console.log('The Node js web server is listening on port '+ port);
     console.log('');
