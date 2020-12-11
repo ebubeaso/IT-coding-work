@@ -2,4 +2,4 @@
 
 import os
 
-os.system("python3 NotesApplication/app.py")
+os.system("python NotesApplication/app.py")

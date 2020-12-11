@@ -1,0 +1,91 @@
+#the-background {
+    background-color: navajowhite;
+}
+header {
+    background-color: maroon;
+    /* background: linear-gradient(to right, maroon, brown); */
+    width: 96%;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    border: 2px solid black;
+}
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}
+nav li {
+    font-family: sans-serif;
+    display: inline;
+    margin-right: 30px;
+}
+li a, li a.visited {
+    color: mintcream;
+    font-size: 14pt;
+    text-decoration: none;
+}
+.title {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 40pt;
+    font-style: oblique;
+    text-shadow: 4px 4px 3px black;
+}
+.content {
+    background-color: burlywood;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 2px solid black;
+}
+.subtitle {
+    margin-left: 20px;
+    margin-top: 10px;
+    color: maroon;
+    font-size: 32pt;
+    text-shadow: 3px 3px 3px black;
+}
+hr{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.paragraph {
+    margin-left: 30px;
+    font-size: 16pt;
+    width: 90%;
+}
+.title, nav li, .subtitle, .paragraph {
+    color: mintcream;
+    font-family: sans-serif;
+}
+#menu1 {
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+#menu2 {
+    margin-right: 30px;
+}
+.span-home {
+    font-style: italic;
+    text-decoration: none;
+    color: darkcyan;
+}
+/* This is for the auth page */
+.auth {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    background: lightgray;
+}
+.auth textarea {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 14pt;
+}

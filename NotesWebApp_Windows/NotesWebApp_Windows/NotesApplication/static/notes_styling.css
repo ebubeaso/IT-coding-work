@@ -1,0 +1,113 @@
+/* Styling the notes page */
+#notes-table {
+    margin: 30px auto;
+    border-spacing: 20px 10px;
+    background-color: lightgray;
+    border: 2px solid black;
+}
+#notes-table td {
+    background-color: navajowhite;   
+    width: 200px;
+    overflow: auto;
+    text-align: center;
+    border: 2px solid black;
+}
+
+/* The action buttons */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+button.modify {background-color: orange;}
+button.delete {background-color: red;}
+button.modify, button.delete, #add-note {
+    padding: 10px;
+    margin: 5px 0px;
+    color: whitesmoke;
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: sans-serif;
+    border: 2px solid black;
+    border-radius: 15px;
+    text-decoration: none;
+}
+button a:link, button a:visited{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+#add-note {
+    background-color: green;
+    margin-left: 45%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+#new-note-form, #change-note-form {
+    margin: 10px auto;
+    width: 400px;
+    background-color: lightgray;
+    border: 3px solid black;
+}
+span {
+    padding-top: 10px;
+    margin: 10px 20px;
+    font-size: 16pt;
+    font-style: oblique;
+    color: white;
+    font-family: sans-serif;
+}
+textarea {margin: 20px 30px; padding: 10px;}
+#submit-note, #submit-update {
+    margin-left: 30%;
+    margin-bottom: 10px;
+    background-color: green;
+    color: whitesmoke;
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: sans-serif;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+#add-note-popup, #change-note-popup {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    margin-left: -30px;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+}
+/* form #new-note-form, form #change-note-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    color: white;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 70%;
+    height: 90%;
+    overflow: auto;
+    position: relative;
+} */
+.close-note {
+    float: right;
+    margin-top: 5%;
+    margin-left: 70%;
+    background-color: red;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 24pt;
+    border: 2px solid white;
+    border-radius: 20px;
+}

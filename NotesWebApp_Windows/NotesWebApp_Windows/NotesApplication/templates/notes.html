@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+{% extends "usersession.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='notes_styling.css') }}">
+{% endblock %}
+<body>
+{% block content %}
+    {{ super() }}
+<div class="content">
+<h1 class="title">Your Recent notes</h1>
+<table id="notes-table">
+    <thead>
+    <tr>
+        <th>Notes ID</th>
+        <th>Date Added</th>
+        <th>Name</th>
+        <th>Note entry</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody id="table-body">
+        {% for note in output %}
+            <tr>
+            {% for value in note.values() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            <td>
+            <div class="action-buttons">
+                <button class="modify"><a href="/mynotes/{{note.id}}">Modify</a></button>
+                <button class="delete"><a href="/mynotes/{{note.id}}">Delete</a></button>
+            </div>
+            </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<button id="add-note">Make a new Note</button>
+<!-- Form for adding a new note -->
+<div id="add-note-popup">
+    <button id="close-add" class="close-note">Close</button>
+    <span>New Note Entry</span>
+    <form id="new-note-form" action="{{ url_for('mynotes') }}" method="POST">
+        <textarea id="note-entry" name="note-entry" rows="10" cols="40"></textarea>
+        <input id="submit-note" type="submit" value="Add Note">
+    </form>
+</div>
+
+<!-- Form for updating a note -->
+<div id="change-note-popup">
+    <button id="close-update" class="close-note">Close</button>
+    <span>Modify Note Entry</span>
+    <form id="change-note-form">
+        <textarea id="modified-note" name="modified-note" rows="10" cols="40"></textarea>
+        <input id="submit-update" type="submit" value="Update Note">
+    </form>
+</div>
+<script src="{{ url_for('static', filename='notesEvents.js') }}"></script>
+</div>
+{% endblock %}
+</body>
+</html>
