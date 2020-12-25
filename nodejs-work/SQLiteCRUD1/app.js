@@ -42,11 +42,30 @@ app.get('/', (req, res) => {
 });
 
 app.get('/cars', (req, res) => {
-    db.run('select * from Exotics', (err, rows) => {
+    db.all('select * from Exotics order by price', (err, rows) => {
         if (err) {console.log(err);}
-        else {res.json({rows});}
+        else {
+            console.log(typeof(rows), rows);
+            return res.json(rows);
+        }
+    });
+    //db.close();
+});
+app.post('/cars', (req, res) => {
+    let sql = `INSERT INTO Exotics (id, brand, model, year, isAutomatic, price) 
+                values (?, ?, ?, ?, ?, ?)`
+    let the_ID = Math.floor(Math.random()*90000) + 10000;
+    let data = [the_ID, req.body.brand, req.body.model, req.body.year, 
+                req.body.isAutomatic, req.body.price];
+    db.run(sql, data, (err) => {
+        if (err) {
+            console.log(err);
+            return res.json("The data could not be added properly");
+        }
+        return res.json("Your data was entered successfully!")
     })
 });
+
 // Lets the server listen for connections
 app.listen(port, () => {
     console.log('');
