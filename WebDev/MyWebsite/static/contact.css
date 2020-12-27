@@ -57,6 +57,25 @@ form {
     margin-bottom: 5px;
     color: black;
 }
+#submit-contact {
+    margin-left: 30px;
+    width: 150px;
+}
+/* This is for the submitted page, when you submit the form */
+.submitted {
+    color: white;
+    text-align: center;
+    margin: 0 20%;
+    font-size: 40pt;
+    font-family: sans-serif;
+}
+.return {
+    margin: 10px 42%;
+    font-size: 24pt;
+    padding: 10pt;
+    border: 4px solid black;
+    border-radius: 15px;
+}
 
 @media screen and (min-width: 601px) and (max-width: 1280px) {
     body {
@@ -117,5 +136,20 @@ form {
     .form-input label, .form-input span {
         font-size: 12pt;
         font-family: sans-serif;
+    }
+    /* The CSS when you submit a form */
+    .submitted {
+        color: white;
+        text-align: center;
+        margin: 0 20%;
+        font-size: 16pt;
+        font-family: sans-serif;
+    }
+    .return {
+        margin: 10px 20%;
+        font-size: 24pt;
+        padding: 10pt;
+        border: 4px solid black;
+        border-radius: 15px;
     }
 }

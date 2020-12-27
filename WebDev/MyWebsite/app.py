@@ -34,6 +34,9 @@ class Contact(Resource):
     def get(self):
         return make_response( render_template('contact.html'), 200, the_header )
 
+    def post(self):
+        return make_response( render_template("submitted.html"), 200, the_header )
+        
 # The API routes
 api.add_resource(About, '/about')
 api.add_resource(MyWork, '/mywork')
