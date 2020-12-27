@@ -10,11 +10,25 @@ practice for people to see!!
 from flask import Flask, request, render_template, make_response, url_for
 from flask_restful import Resource, Api
 from flask_mail import Mail, Message
+from getpass import getpass
+
+# Get the email password
+passwd = getpass("enter the password for ebubeasonet@gmail.com: ")
 
 # Initialize the web application
 app = Flask(__name__)
 api = Api(app)
 app.secret_key = "EbubeAsoITPro2020!"
+
+# For the mailing feature
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USERNAME"] = "ebubeasonet@gmail.com"
+app.config["MAIL_PASSWORD"] = passwd
+app.config["MAIL_USE_TLS"] = True
+app.config["MAIL_USE_SSL"] = False
+
+mail = Mail(app)
 
 # The HTML header to render the HTML pages
 the_header = {'Content Type': 'text/html'}
@@ -35,6 +49,11 @@ class Contact(Resource):
         return make_response( render_template('contact.html'), 200, the_header )
 
     def post(self):
+        recipient = "aso.ebube1@outlook.com"
+        subject = "From: " + request.form["first-name"] + " " + request.form["last-name"] + ", email: " + request.form["email"]
+        msg = Message(subject=subject, sender="ebubeasonet@gmail.com", recipients=[recipient])
+        msg.body = request.form["message"]
+        mail.send(msg)
         return make_response( render_template("submitted.html"), 200, the_header )
         
 # The API routes
