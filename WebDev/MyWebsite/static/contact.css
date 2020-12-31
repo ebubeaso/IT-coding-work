@@ -77,6 +77,18 @@ form {
     border-radius: 15px;
 }
 
+/* Handling the form validation for the contact page */
+.hidden1, .hidden2, .hidden3 {
+    display: none;
+}
+#fname-error, #lname-error, #email-error {
+    color: darkred;
+    margin-left: 20px;
+    margin-top: 5px;
+    font-size: 12pt;
+    font-family: sans-serif;
+}
+
 @media screen and (min-width: 601px) and (max-width: 1280px) {
     body {
         background: url('./images/contact.JPG') no-repeat fixed;

@@ -16,17 +16,22 @@
         to you as soon as possible!
     </p>
     <form id="contact-form" action="#" method="POST">
+        <div id="fname-error" class="hidden1">Please enter your first name</div>
         <div class="form-input">
             <label for="first-name">Enter your first name</label>
             <input type="text" id="first-name" name="first-name" placeholder="First Name">
         </div>
+
+        <div id="lname-error" class="hidden2">Please enter your last name</div>
         <div class="form-input">
             <label for="last-name">Enter your last name</label>
             <input type="text" id="last-name" name="last-name" placeholder="Last Name">
         </div>
+
+        <div id="email-error" class="hidden3">Please enter an email address</div>
         <div class="form-input">
             <label for="email">Enter your email address</label>
-            <input type="text" id="email" name="email" placeholder="Your Email">
+            <input type="email" id="email" name="email" placeholder="Your Email">
         </div>
         <div class="form-input">
             <span>Enter your Message below</span>
@@ -36,6 +41,7 @@
             <input type="submit" id="submit-contact" value="Submit">
         </div>
     </form>
+    <script src="{{ url_for( 'static', filename='validation.js' ) }}"></script>
 </div>
 {% endblock %}
 </body>
