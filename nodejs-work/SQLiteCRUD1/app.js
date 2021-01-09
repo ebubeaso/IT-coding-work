@@ -43,9 +43,13 @@ app.get('/', (req, res) => {
 
 app.get('/cars', (req, res) => {
     db.all('select * from Exotics order by price', (err, rows) => {
-        if (err) {console.log(err);}
+        if (err) {
+            console.log(err);
+            console.log('');
+            console.log("Method: GET, /cars, Response: 500");
+        }
         else {
-            console.log(typeof(rows), rows);
+            console.log("Method: GET, /cars, Response: 200");
             return res.json(rows);
         }
     });
@@ -54,15 +58,58 @@ app.get('/cars', (req, res) => {
 app.post('/cars', (req, res) => {
     let sql = `INSERT INTO Exotics (id, brand, model, year, isAutomatic, price) 
                 values (?, ?, ?, ?, ?, ?)`
-    let the_ID = Math.floor(Math.random()*90000) + 10000;
+    let the_ID = Math.floor(Math.random()*90000) + 10000; //this makes a random 5 digit ID number
     let data = [the_ID, req.body.brand, req.body.model, req.body.year, 
                 req.body.isAutomatic, req.body.price];
     db.run(sql, data, (err) => {
         if (err) {
             console.log(err);
+            console.log('');
+            console.log("Method: POST, /cars, Response: 500");
             return res.json("The data could not be added properly");
         }
+        console.log("Method: POST, /cars, Response: 201");
         return res.json("Your data was entered successfully!")
+    })
+});
+app.put('/cars/:id', (req, res) => {
+    let sql = `UPDATE Exotics set brand=?, model=?, year=?, isAutomatic=?, price=?
+    where id = ?`;
+    let data = [req.body.brand, req.body.model, req.body.year,
+    req.body.isAutomatic, req.body.price, req.params.id];
+    db.run(sql, data, (err) => {
+        if (err) {
+            console.log(err); 
+            console.log('');
+            console.log("Method: PUT, /cars/" + data[data.length - 1] + ", Response: 500");
+            return res.json("Could not update the data for id " + (data.length -1) )
+        }
+        console.log("Method: PUT, /cars/" + data[data.length - 1] + ", Response: 200");
+        return res.json("update was successful!!")
+    })
+});
+app.get('/cars/:id', (req, res) => {
+    let sql = `SELECT * FROM Exotics where id = ?`;
+    db.get(sql, [req.params.id], (err, row) => {
+        if (err) {
+            console.log(err);
+            console.log('');
+            console.log("Method: GET, /cars/" + req.params.id + ", Response: 500");
+        }
+        else {console.log("Method: GET, /cars/" + req.params.id + ", Response: 200"); return res.json(row);}
+    })
+});
+app.delete('/cars/:id', (req, res) => {
+    let sql = `DELETE FROM Exotics where id = ?`;
+    db.run(sql, [req.params.id], (err) => {
+        if (err) {
+            console.log(err);
+            console.log('');
+            console.log("Method: DELETE, /cars/" + req.params.id + ", Response: 500");
+        }
+        else {
+            console.log("Method: DELETE, /cars/" + req.params.id + ", Response: 204"); 
+            return res.json("ID "+ req.params.id + " was deleted.")}
     })
 });
 
