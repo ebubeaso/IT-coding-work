@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% extends 'base.html' %}
+    {% block head %}
+        {{ super() }}
+        <link rel="stylesheet" href="{{ url_for('static', filename='work.css') }}">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+    {{ super() }}
+    <div class="intro">
+        <h1 class="title">My Projects</h1>
+        <div class="statement">
+            <p class="info">This page is where I show a variety of my completed mini projects. It is a variety of 
+                photos and video demos to showcase my skills in IT. I have had some practice in a variety of domains 
+                like computer networking, web/full stack development, DevOps, and Software Defined Networking, or SDN
+                for short. Take some time to look at the various things that I have done!
+            </p>
+        </div>
+    </div>
+    <div class="networking">
+        <h1 class="title">My Computer Network Projects</h1>
+    </div>
+{% endblock %}
+</body>
+</html>
