@@ -1,54 +1,42 @@
 #! /bin/bash
 
-# This script is made as a way to automate the process of adding a user
-# to the system. This is based off of a Udemy course on Shell scripting
+# This bash script is made to automate the process of adding in a user to the Linux system.
 
+# First, check to see if the user id, or UID is 0, for root
 if [[ ${UID} -ne 0 ]]
 then
-	echo "You need to be root or use sudo to run this script."
-	exit 1
+  echo "You need to run this as root or sudo" >&2
+  exit 1
 fi
 
-# make the username
-echo "Make a username for this new user:"
-read -p "==> " USERNAME
+echo "What is the username that you would like to pass in?"
+read -p "-> " USERNAME
 echo
-# give the account name
-echo "What is the name of the person using this account? "
-read -p "==> " FULLNAME
+echo "What is the full name of this user?"
+read -p "-> " FULLNAME
 echo
-# make the password for the acocunt
-echo "What will be their initial setup password?"
-read -p "==> " PASSWORD
-echo
-# create the user:
-useradd -c "${FULLNAME}" -m ${USERNAME} -s /bin/bash
-
-if [[ "${?}" -ne 0 ]]
+echo "Adding user..."
+sleep 2
+useradd -c "$FULLNAME" -m $USERNAME -s /bin/bash
+# Check if this was run properly
+if [[ "$?" -ne 0 ]]
 then
-	echo "Error: User could not be made, try again"
-	exit 1
+  echo "The user account could not be made at this time" >&2
+  exit 1
 fi
-# assign the password to the new user
-echo "${USERNAME}:${PASSWORD}" | chpasswd
-
-if [[ "${?}" -ne 0 ]]
+echo "setting up password..."
+PASSWORD=$(date +%s%N | sha512sum | head -c 12)
+echo
+echo "$USERNAME:$PASSWORD" | chpasswd
+# Check if the password was added successfully
+if [[ "$?" -ne 0 ]]
 then
-        echo "Error: Password was not set, try again"
-        exit 1
+  echo "Could not make the password at this time" >&2
+  exit 1
 fi
-# make their account expire after a period of time
-chage -E 2020-11-24 ${USERNAME}
-# force them to change their password
-passwd -e ${USERNAME}
-# display results
+passwd -e $USERNAME
 echo
-echo "Here are the results:"
+echo "Password all set!"
 echo
-echo "Username: ${USERNAME}"
-echo
-echo "Full name: ${FULLNAME}"
-echo
-echo "Password: ${PASSWORD}"
-echo
-echo "This account expires in November 24, 2020"
+echo "All done!"
+echo "username: ${USERNAME}, password: ${PASSWORD}"
