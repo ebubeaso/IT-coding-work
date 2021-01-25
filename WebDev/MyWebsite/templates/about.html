@@ -8,30 +8,43 @@
 <body>
 {% block content %}
     {{ super() }}
-<div class="content">
-<h1 class="title">About Me</h1>
-    <br/>
-    <p class="paragraph">Born and raised in Providence, Rhode Island, I feel like I have came a long way. I went to Cornell
-        University, but I had to withdraw after my junior year due to not having enough money to continue. However, I refused 
-        to let that stop me and decided to take my own path. I am very ambitious and I love to make a way when it seems 
-        impossible to make a way. Have I also mentioned that I am super passionate about technology? Yeah, I am a big tech nerd, 
-        especially for Information Technology.
-    </p>
-    <p class="paragraph">Ever since I got my first computer in middle school I was intrigued with how computers work. I would try 
-        out different ways that I could optimize my laptop to perform better and remain at its pristine condition. However, it was 
-        not until the summer of 2018 that I decided to get my first IT certification: CompTIA Network+. From there, I proceeded to 
-        acquire my first AWS certification (The Solutions Architect one) and my Linux+. Now, I currently work on strengthening my 
-        skills in IT and programming through a variety of personal projects. Feel free to check some of them out in the <b>My Work</b> 
-        page. 
-    </p>
-    <p class="paragraph">Here are some more fun facts: My favorite color is silver and I am also a freestyle urban dancer. I have 
-        been dancing since high school, and I have been self taught ever since. When I do not have my face in front of a computer,
-        I take the time to dance as a creative outlet and keep myself moving. In addition, I think Linux is better than Windows and 
-        I can speak French <i>(Vous ne vous attendez cela, hein?)</i> Enough about me, you can learn more about me by connecting with 
-        me on the <b>Contact</b> page, where you can send me an email or connect with me on my LinkedIn or my Instagram (that is where 
-        I have my dance videos).
-    </p>
-    <br/>
+<div class="about-me">
+    <div class="content">
+    <br>
+    <h1 class="title">About Me</h1>
+        <p class="paragraph">Born and raised in Providence, Rhode Island, I feel like I have came a long way. I went to Cornell
+            University, but I had to withdraw after my junior year due to not having enough money to continue. However, I refused 
+            to let that stop me and decided to take my own path. I am very ambitious and I love to make a way when it seems 
+            impossible to make a way. Have I also mentioned that I am super passionate about technology? Yeah, I am a big tech nerd, 
+            especially for Information Technology.
+        </p>
+        <p class="paragraph">Ever since I got my first computer in middle school I was intrigued with how computers work. I would try 
+            out different ways that I could optimize my laptop to perform better and remain at its pristine condition. However, it was 
+            not until the summer of 2018 that I decided to get my first IT certification: CompTIA Network+. From there, I proceeded to 
+            acquire my first AWS certification (The Solutions Architect one) and my Linux+. Now, I currently work on strengthening my 
+            skills in IT and programming through a variety of personal projects. Feel free to check some of them out in the <b>My Work</b> 
+            page. 
+        </p>
+        <p class="paragraph">Here are some more fun facts: My favorite color is silver and I am also a freestyle urban dancer. I have 
+            been dancing since high school, and I have been self taught ever since. When I do not have my face in front of a computer,
+            I take the time to dance as a creative outlet and keep myself moving. In addition, I think Linux is better than Windows and 
+            I can speak French <i>(Vous ne vous attendez cela, hein?)</i> Enough about me, you can learn more about me by connecting with 
+            me on the <b>Contact</b> page, where you can send me an email or connect with me on my LinkedIn or my Instagram (that is where 
+            I have my dance videos).
+        </p>
+        <br/>
+    </div>
 </div>
+<div class="achievements">
+    <h1 class="title">IT Certifications Achieved</h1>
+    <div class="certifications">
+        <img class="cert" src="{{ url_for('static', filename='images/NetworkCert.jpg') }}" alt="Network+ certification">
+        <img class="cert" src="{{ url_for('static', filename='images/AWScert.jpg') }}" alt="AWS certification">
+        <img class="cert" src="{{ url_for('static', filename='images/LinuxCert.jpg') }}" alt="Linux+ certification">
+        <img class="cert" src="{{ url_for('static', filename='images/LinuxNetworkCert.jpg') }}" alt="Linux-Networking certification">
+    </div>
+    <h1 class="title">Recent Udemy Courses Completed</h1>
+</div>
+<script src="{{ url_for('static', filename='aboutMe.js') }}"></script>
 {% endblock %}
 </body>
