@@ -23,12 +23,12 @@ body {
 .achievements {
     background-color: black;
 }
-.certifications {
+.certifications, .udemy {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-.certifications img {
+.certifications img, .udemy img {
     width: 40%;
     height: 20%;
     margin: 1%;
