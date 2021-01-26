@@ -1,6 +1,6 @@
 // Handling events that happen in the notes page
     
-//made this function for handling PUT ssrequests
+//made this function for handling PUT requests
 let url = '';
 function updateNoteEntry(u) {
     console.log(u);
@@ -11,7 +11,7 @@ function updateNoteEntry(u) {
     xhr.send(formData);
 };
 
-/* made this variable to help with refreshing tha page after 
+/* made this variable to help with refreshing the page after 
 doing a DELETE request (it is a nice workaround) */
 let notesLocation = window.location;
 
