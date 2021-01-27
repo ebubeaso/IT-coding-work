@@ -6,10 +6,13 @@ let contactValidator = function() {
     // The input values
     let fname = document.getElementById("first-name");
     let lname = document.getElementById("last-name");
+    let contactEmail = document.getElementById("email");
     // the error values
     let fnameError = document.getElementById("fname-error");
     let lnameError = document.getElementById("lname-error");
+    let emailError = document.getElementById("email-error");
 
+    // First name and last name validation
     if (fname.value.length === 0) {
         fnameError.classList.remove("hidden1");
         valid = false;
@@ -25,20 +28,15 @@ let contactValidator = function() {
         valid = true;
     }
     // check email validation
-    if (checkEmail == false) {
+    if (contactEmail.value.length == 0 || contactEmail.value.includes('@') == false) {
+        emailError.classList.remove("hidden3");
         valid = false;
     } else {
+        emailError.classList.add("hidden3");
         valid = true;
     }
-
     return valid;
 };
 
-let checkEmail = function() {
-    let contactEmail = document.getElementById("email");
-    let emailError = document.getElementById("email-error");
-    
-}
-
 let theForm = document.getElementById("contact-form");
-theForm.addEventListener("click", contactValidator, false);
+theForm.addEventListener("submit", contactValidator, false);

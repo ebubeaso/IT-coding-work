@@ -38,8 +38,16 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-.networks img {
+.networks figure {
     width: 45%;
     height: 20%;
     margin: 1%;
+}
+.networks figure img {
+    width: 100%;
+}
+figcaption {
+    color: white;
+    font-family: sans-serif;
+    font-size: 14pt;
 }

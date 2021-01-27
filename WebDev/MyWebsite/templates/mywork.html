@@ -25,10 +25,22 @@
     <div class="networking">
         <h1 class="title">My Computer Network Projects</h1>
         <div class="networks">
-            <img src="{{ url_for('static', filename='images/mywork/Tier2topology.png') }}" alt="Tier 2 topology">
-            <img src="{{ url_for('static', filename='images/mywork/VPNtopology.png') }}" alt="VPN topology">
-            <img src="{{ url_for('static', filename='images/mywork/MiniCallCenter.png') }}" alt="Call center topology">
-            <img src="{{ url_for('static', filename='images/mywork/HSRPtopology.png') }}" alt="HSRP topology">
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/Tier2topology.png') }}" alt="Tier 2 topology">
+                <figcaption>Tier 2 topology example</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/VPNtopology.png') }}" alt="VPN topology">
+                <figcaption>VPN topology example</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/MiniCallCenter.png') }}" alt="Call center topology">
+                <figcaption>Call center topology example</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/HSRPtopology.png') }}" alt="HSRP topology">
+                <figcaption>HSRP topology for redundancy</figcaption>
+            </figure>
         </div>
     </div>
     <script src="{{ url_for('static', filename='mywork.js') }}"></script>
