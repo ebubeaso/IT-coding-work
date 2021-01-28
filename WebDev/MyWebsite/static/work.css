@@ -19,7 +19,7 @@ body {
 .info {
     padding: 4% 6%;
     z-index: 150;
-    font-size: 28pt;
+    font-size: 24pt;
     color: white;
     font-family: sans-serif;
 }
@@ -31,23 +31,46 @@ h1 {
     padding-top: 1px;
     background-color: black;
     width: 100%;
-    height: 99vh;
 }
-.networks {
+.web-dev {
+    padding-top: 1px;
+    background-color: black;
+    width: 100%;
+}
+.devops {
+    padding-top: 1px;
+    background-color: black;
+    width: 100%
+}
+.networks, .fullstack, .automation, .sdn {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-.networks figure {
+figure {
     width: 45%;
     height: 20%;
     margin: 1%;
 }
-.networks figure img {
+iframe {
+    width: 45%;
+    height: 70vh;
+    margin: 1%;
+}
+figure img {
     width: 100%;
 }
 figcaption {
     color: white;
     font-family: sans-serif;
+    margin: 1% 10%;
+    text-align: center;
     font-size: 14pt;
+}
+.info-sdn {
+    margin: 1% 10%;
+    font-size: 20pt;
+    color: white;
+    font-family: sans-serif;
+    text-align: center
 }

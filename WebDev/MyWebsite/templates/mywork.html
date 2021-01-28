@@ -41,6 +41,71 @@
                 <img src="{{ url_for('static', filename='images/mywork/HSRPtopology.png') }}" alt="HSRP topology">
                 <figcaption>HSRP topology for redundancy</figcaption>
             </figure>
+            <iframe src="https://www.youtube.com/embed/2svivbIjwsY" title="VPN Demo" allowfullscreen></iframe>
+            <iframe src="https://youtube.com/embed/sh5Io4qQXec" title="ntopNG demo" allowfullscreen></iframe>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="web-dev">
+        <h1 class="title">Full Stack Development</h1>
+        <div class="fullstack">
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/FlaskApplication.jpg') }}">
+                <figcaption>My Flask Notes App</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/FirstWebDevProject.png') }}">
+                <figcaption>A Webpage to my wife. This was my first website project and I wanted to make it special, so I figured 
+                    to make something nice for my wife.</figcaption>
+            </figure>
+            <iframe src="https://youtube.com/embed/KBjiZYVH3zU" title="My First Flask App" allowfullscreen></iframe>
+            <iframe src="https://youtube.com/embed/90w8yRnI_KY" title="My Flask Web App" allowfullscreen></iframe>
+            <iframe src="https://youtube.com/embed/MsjS2HWDRew" title="Node.js CRUD API app" allowfullscreen></iframe>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="devops">
+        <h1 class="title">My DevOps Projects</h1>
+        <div class="automation">
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/AnsiblePlaybook.jpg') }}">
+                <figcaption>A screenshot of an Ansible playbook</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/Jenkins.jpg') }}">
+                <figcaption>Using Jenkins on my Raspberry Pi</figcaption>
+            </figure>
+            <iframe src="https://youtube.com/embed/8oBvX95C5rY" title="Ansible Ad-Hoc Commands" allowfullscreen></iframe>
+            <iframe src="https://youtube.com/embed/AfqSF6_QJ10" title="Ansible Playbook Demo" allowfullscreen></iframe>
+            <iframe src="https://youtube.com/embed/-XtAEV9LAww" title="Jenkins Report Demo" allowfullscreen></iframe>
+            <iframe src="https://youtube.com/embed/dcI5tC2Oj5k" title="Jenkins DSL Job Demo" allowfullscreen></iframe>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="software-defined-networking">
+        <h1 class="title">My Software Defined Networking Work</h1>
+        <p class="info-sdn">
+            Software defined networking has to be my favorite type of projects that I took some time
+            on. I really like being able to separate the control plane from the data plane and programmatically 
+            manage network infrastructure. This is the work that I am the most proud of!
+        </p>
+        <br>
+        <div class="sdn">
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/FlaskandRyu.png') }}">
+                <figcaption>My Flask server and Ryu controller topology. The switches connect to that firewall node which forwards 
+                    connections using IPTables to the Flask server to make API requests to the controller and the Ryu controller. The
+                    switches communicate to the controller via the network protocol OpenFlow.</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ url_for('static', filename='images/mywork/PostmanProject.jpg') }}">
+                <figcaption>Managing the network infrastructure using API requests to the Ryu controller</figcaption>
+            </figure>
+            <iframe src="https://youtube.com/embed/X1WWpveadmM" title="SDN Topology Web Visualizer" allowfullscreen></iframe>
+            <iframe src="https://youtube.com/embed/d7fNElMGjXk" title="Ryu Custom REST API Demo" allowfullscreen></iframe>
         </div>
     </div>
     <script src="{{ url_for('static', filename='mywork.js') }}"></script>

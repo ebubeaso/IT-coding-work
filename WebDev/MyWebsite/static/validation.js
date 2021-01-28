@@ -1,7 +1,8 @@
+
 // This JavaScript file is to do some client side validation for my website to ensure that the users
 // are putting in valid information to be contacted
 
-let contactValidator = function() {
+function contactValidator() {
     let valid = true;
     // The input values
     let fname = document.getElementById("first-name");
@@ -39,4 +40,12 @@ let contactValidator = function() {
 };
 
 let theForm = document.getElementById("contact-form");
-theForm.addEventListener("submit", contactValidator, false);
+theForm.addEventListener('submit', function(event) {
+    let contact = contactValidator();
+    console.log(contact);
+    if (contact == false) {
+        event.preventDefault();
+    } else {
+        return true;
+    }
+}, false);
