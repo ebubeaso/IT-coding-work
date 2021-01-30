@@ -74,3 +74,15 @@ figcaption {
     font-family: sans-serif;
     text-align: center
 }
+hr {
+    color: white;
+}
+.paragraph {
+    margin: 0 15%;
+}
+.paragraph a:link, .paragraph a:visited {
+    font-size: 16pt;
+    color: white;
+    font-style: oblique;
+    font-family: sans-serif;
+}
