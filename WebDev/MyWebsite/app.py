@@ -55,11 +55,16 @@ class Contact(Resource):
         msg.body = request.form["message"]
         mail.send(msg)
         return make_response( render_template("submitted.html"), 200, the_header )
-        
+
+class Submitted(Resource):
+    def get(self):
+        return make_response( render_template('submitted.html'), 200, the_header )
+
 # The API routes
 api.add_resource(About, '/about')
 api.add_resource(MyWork, '/mywork')
 api.add_resource(Contact, '/contact')
+api.add_resource(Submitted, '/submitted')
 
 # Run the backend
 if __name__ == "__main__":

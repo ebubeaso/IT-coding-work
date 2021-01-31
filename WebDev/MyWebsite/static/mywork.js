@@ -2,10 +2,17 @@
 
 $(function () {
     $(".intro").hide().fadeIn(1000);
-    $(".networking").hide().fadeIn(1100);
     $(".statement").hide().fadeIn(1700);
-
-
+    $(".networking").hide();
+    $(".web-dev").hide();
+    $(".devops").hide();
+    $(".software-defined-networking").hide();
+    window.addEventListener('scroll', function() {
+        $(".networking").fadeIn(700);
+        $(".web-dev").fadeIn(700);
+        $(".devops").fadeIn(700);
+        $(".software-defined-networking").fadeIn(700);
+    })
 });
 /* 
 *****************************************************************************************
@@ -19,34 +26,6 @@ let thePopup = document.getElementById("popup-image");
 let closeButton = document.getElementById("close-image");
 let theBody = document.querySelector("body");
 
-// Pure JavaScript for fading in
-function fadingIn(el) {
-    let i = 0;
-    let change = window.setInterval( () => {
-        if (i >= 10) {
-            clearInterval(change);
-            el.style.opacity = 1;
-        } else {
-            el.style.opacity = i/10;
-            i++;
-        }
-    }, 50)
-};
-// This is the fading out function that I have made using pure JavaScript
-function fadingOut(el) {
-    let i = 10;
-    el.style.opacity = 1;
-    let change = window.setInterval( () => {
-        if (i <= 0) {
-            clearInterval(change);
-            el.style.opacity = 0;
-        } else {
-            el.style.opacity = i / 10;
-            i = (i - 1);
-        }
-    }, 50 )
-}
-
 /* Added the event listener to the body due to event delegation and it
 will make the site slower if I add an event to every single image
 element*/
@@ -54,6 +33,9 @@ theBody.addEventListener('click', (event) => {
     // This event only reacts if you click on an image
     if(event.target.localName == "img" && event.target.classList.contains("image-clicked") == false) {
         let image = event.target;
+        if (window.innerWidth <= 800) {
+            closeButton.textContent = "  X  ";
+        }
         // Makes a clone of the original image element
         let imageClone = image.cloneNode();
         // Set up the class of the image and add it to the popup background

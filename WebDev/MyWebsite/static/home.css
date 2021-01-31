@@ -51,8 +51,12 @@ body {
         background-size: cover;
     }
     .content {
+        background: rgba(0, 0, 0, 0.8);
+        margin-left: 20px;
         margin-top: 10%;
+        max-width: 60%;
         max-height: 600px;
+        overflow: scroll;
     }
     .title {
         font-size: 40pt;

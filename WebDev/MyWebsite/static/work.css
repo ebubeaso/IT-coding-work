@@ -113,4 +113,5 @@ hr {
     color: white;
     padding: 1%;
     border-radius: 15px;
+    cursor: pointer;
 }

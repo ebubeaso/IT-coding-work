@@ -5,6 +5,7 @@
     {% block head %}
         {{ super() }}
         <link rel="stylesheet" href="{{ url_for('static', filename='work.css') }}">
+        <script src="{{ url_for('static', filename='fadeInOut.js') }}"></script>
     {% endblock %}
 </head>
 <body>
@@ -14,11 +15,11 @@
         <h1 class="title">My Projects</h1>
         <div class="statement">
             <p class="info">
-                This page is dedicated to showcase the different IT projects that I have completed in my free time. Below are 
-                photos and videos that demonstrate my skills and understanding of different technologies in IT. I have 
-                categorized my projects into four sections: computer networking, web/full stack development, DevOps and 
-                Software Defined Networking, or SDN for short. I made sure to put a lot of effort into these projects. 
-                Scroll down to look at some of the various IT projects that I done!
+                This page is dedicated to showcase the different IT projects that I have done during my free time. Below are 
+                photos and videos that demonstrate my practical skills and understanding of different technologies in IT. I have 
+                categorized my projects into four sections: computer networking, full stack development, DevOps and 
+                Software Defined Networking, or SDN for short. I made sure to put in a lot of effort into these projects. 
+                Scroll down to take a look at some of my many feats!
             </p>
         </div>
     </div>
@@ -27,7 +28,7 @@
         <button id="close-image">Close</button>
     </div>
     <div class="networking">
-        <h1 class="title">My Computer Network Projects</h1>
+        <h1 class="title">Computer Networking</h1>
         <div class="networks">
             <figure>
                 <img src="{{ url_for('static', filename='images/mywork/Tier2topology.png') }}" alt="Tier 2 topology">
@@ -72,7 +73,7 @@
     <br>
     <br>
     <div class="devops">
-        <h1 class="title">My DevOps Projects</h1>
+        <h1 class="title">DevOps</h1>
         <div class="automation">
             <figure>
                 <img src="{{ url_for('static', filename='images/mywork/AnsiblePlaybook.jpg') }}" alt="A screenshot of an Ansible playbook">
@@ -91,22 +92,23 @@
     <br>
     <br>
     <div class="software-defined-networking">
-        <h1 class="title">My Software Defined Networking Work</h1>
+        <h1 class="title">Software Defined Networking</h1>
         <p class="info-sdn">
-            Software defined networking has to be my favorite type of project so far. I took some serious time
-            to learn and understand this topic to the best of my ability. I like being able to separate the control 
-            plane from the data plane and to manage network infrastructure programmatically. This is some examples of 
-            the work that I am the most proud of showcasing!
+            Software defined networking has to be my favorite type of project so far. I took some serious time into learning 
+            and understanding this topic to the best of my ability. I like being able to separate the control plane from the 
+            data plane and to manage network infrastructure programmatically. Although I am still actively taking the time 
+            to get better in this field, here are some examples of the work that I am the most proud of showcasing so far!
         </p>
         <br>
         <div class="sdn">
             <figure>
                 <img src="{{ url_for('static', filename='images/mywork/FlaskandRyu.png') }}" alt="My Flask server and Ryu controller topology. 
-                The switches connect to that firewall node which forwards connections using IPTables to the Flask server to make API requests 
-                to the Ryu controller. The switches communicate to the controller via the network protocol known as OpenFlow.">
-                <figcaption>My Flask server and Ryu controller topology. The switches connect to that firewall node which forwards 
-                    connections using IPTables to the Flask server to make API requests to the Ryu controller. The
-                    switches communicate to the controller via the network protocol known as OpenFlow.</figcaption>
+                The switches connect to the firewall node which forwards connections using IPTables to the Flask server and Ryu controller. 
+                Only the Flask server can make direct API requests to the controller. The switches communicate to the controller via the network 
+                protocol known as OpenFlow.">
+                <figcaption>My Flask server and Ryu controller topology. The switches connect to the firewall node which forwards 
+                    connections using IPTables to the Flask server and Ryu controller. Only the Flask server can make direct API requests to the 
+                    controller. The switches communicate to the controller via the network protocol known as OpenFlow.</figcaption>
             </figure>
             <figure>
                 <img src="{{ url_for('static', filename='images/mywork/PostmanProject.jpg') }}" alt="Managing the network infrastructure using API 
@@ -118,12 +120,9 @@
         </div>
     </div>
     <br>
-    <hr>
-    <p class="paragraph">These are some examples of the many IT projects that I have worked on so far. I have put in a lot of time,
-        passion and care into my work and I continue to actively improve my skills. I understand that in IT, you are always going to 
-        be a student as there will always be some new technology, frameworks, service, protocol or best practice to discover and 
-        learn about! To keep up with the various hobbyist projects that I like to do in my free time, you can follow my GitHub. The 
-        information regarding to that is below.
+    <p class="paragraph">These are some examples of the many IT projects that I have worked on so far. I understand that in IT, you are 
+        always going to be a student as there will always be some new technology, frameworks, service, protocol or best practice to 
+        learn more about! To keep up with my various hobbyist projects, you can follow my GitHub. The link to my GitHub is provided below.
     </p>
     <br>
     <p class="paragraph">

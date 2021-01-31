@@ -15,11 +15,24 @@
         I will get your information in my email and I will make sure to reach out 
         to you no later than two business days.
     </p>
+    <br>
+    <p class="paragraph">You can also follow me on LinkedIn or Instagram below</p>
+    <p class="paragraph">
+        LinkedIn: <a target="_blank" rel="noopener noreferer" href="https://www.linkedin.com/in/ebube-aso/">
+            <img src="{{url_for('static', filename='images/linkedin.jpg')}}" alt="LinkedIn">
+        </a>
+    </p>
+    <p class="paragraph">
+        Instagram: <a target="_blank" rel="noopener noreferer" href="https://www.instagram.com/aso.ebube1/">
+            <img src="{{url_for('static', filename='images/instagram.jpg')}}" alt="Instagram">
+        </a>
+    </p>
     <p class="submitted">Take care and have a wonderful day!</p>
     <br>
     <p class="paragraph">Click the button below to return to the homepage</p>
-    <button class="return"><a href="{{url_for('index')}}">Return to Homepage</a></button>
+    <button id="return-button" class="return"><a id="return-home" href="{{url_for('index')}}">Return to Homepage</a></button>
 </div>
+<script src="{{ url_for('static', filename='buttonColor.js') }}"></script>
 {% endblock %}
 </body>
 </html>
