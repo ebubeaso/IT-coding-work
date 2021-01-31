@@ -22,6 +22,10 @@
             </p>
         </div>
     </div>
+    <!-- This is to add an image to show full screen when clicked on -->
+    <div id="popup-image" class="image-popup">
+        <button id="close-image">Close</button>
+    </div>
     <div class="networking">
         <h1 class="title">My Computer Network Projects</h1>
         <div class="networks">
@@ -51,11 +55,12 @@
         <h1 class="title">Full Stack Development</h1>
         <div class="fullstack">
             <figure>
-                <img src="{{ url_for('static', filename='images/mywork/FlaskApplication.jpg') }}">
+                <img src="{{ url_for('static', filename='images/mywork/FlaskApplication.jpg') }}" alt="My Flask Notes App">
                 <figcaption>My Flask Notes App</figcaption>
             </figure>
             <figure>
-                <img src="{{ url_for('static', filename='images/mywork/FirstWebDevProject.png') }}">
+                <img src="{{ url_for('static', filename='images/mywork/FirstWebDevProject.png') }}" alt="A Webpage to my wife. This was my first 
+                website project and I wanted to make it special, so I figured to make something nice for my wife.">
                 <figcaption>A Webpage to my wife. This was my first website project and I wanted to make it special, so I figured 
                     to make something nice for my wife.</figcaption>
             </figure>
@@ -70,11 +75,11 @@
         <h1 class="title">My DevOps Projects</h1>
         <div class="automation">
             <figure>
-                <img src="{{ url_for('static', filename='images/mywork/AnsiblePlaybook.jpg') }}">
+                <img src="{{ url_for('static', filename='images/mywork/AnsiblePlaybook.jpg') }}" alt="A screenshot of an Ansible playbook">
                 <figcaption>A screenshot of an Ansible playbook</figcaption>
             </figure>
             <figure>
-                <img src="{{ url_for('static', filename='images/mywork/Jenkins.jpg') }}">
+                <img src="{{ url_for('static', filename='images/mywork/Jenkins.jpg') }}" alt="Using Jenkins on my Raspberry Pi">
                 <figcaption>Using Jenkins on my Raspberry Pi</figcaption>
             </figure>
             <iframe src="https://youtube.com/embed/8oBvX95C5rY" title="Ansible Ad-Hoc Commands" allowfullscreen></iframe>
@@ -88,20 +93,24 @@
     <div class="software-defined-networking">
         <h1 class="title">My Software Defined Networking Work</h1>
         <p class="info-sdn">
-            Software defined networking has to be my favorite type of projects that I took some time
-            on. I really like being able to separate the control plane from the data plane and programmatically 
-            manage network infrastructure. This is the work that I am the most proud of!
+            Software defined networking has to be my favorite type of project so far. I took some serious time
+            to learn and understand this topic to the best of my ability. I like being able to separate the control 
+            plane from the data plane and to manage network infrastructure programmatically. This is some examples of 
+            the work that I am the most proud of showcasing!
         </p>
         <br>
         <div class="sdn">
             <figure>
-                <img src="{{ url_for('static', filename='images/mywork/FlaskandRyu.png') }}">
+                <img src="{{ url_for('static', filename='images/mywork/FlaskandRyu.png') }}" alt="My Flask server and Ryu controller topology. 
+                The switches connect to that firewall node which forwards connections using IPTables to the Flask server to make API requests 
+                to the Ryu controller. The switches communicate to the controller via the network protocol known as OpenFlow.">
                 <figcaption>My Flask server and Ryu controller topology. The switches connect to that firewall node which forwards 
-                    connections using IPTables to the Flask server to make API requests to the controller and the Ryu controller. The
-                    switches communicate to the controller via the network protocol OpenFlow.</figcaption>
+                    connections using IPTables to the Flask server to make API requests to the Ryu controller. The
+                    switches communicate to the controller via the network protocol known as OpenFlow.</figcaption>
             </figure>
             <figure>
-                <img src="{{ url_for('static', filename='images/mywork/PostmanProject.jpg') }}">
+                <img src="{{ url_for('static', filename='images/mywork/PostmanProject.jpg') }}" alt="Managing the network infrastructure using API 
+                requests to the Ryu controller">
                 <figcaption>Managing the network infrastructure using API requests to the Ryu controller</figcaption>
             </figure>
             <iframe src="https://youtube.com/embed/X1WWpveadmM" title="SDN Topology Web Visualizer" allowfullscreen></iframe>

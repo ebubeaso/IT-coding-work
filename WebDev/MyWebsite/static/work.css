@@ -59,6 +59,7 @@ iframe {
 }
 figure img {
     width: 100%;
+    cursor: pointer;
 }
 figcaption {
     color: white;
@@ -85,4 +86,31 @@ hr {
     color: white;
     font-style: oblique;
     font-family: sans-serif;
+}
+#popup-image {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.8);
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+#close-image {
+    margin-left: 85%;
+    background-color: red;
+    font-size: 150%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    font-family: sans-serif;
+    color: white;
+    padding: 1%;
+    border-radius: 15px;
 }
