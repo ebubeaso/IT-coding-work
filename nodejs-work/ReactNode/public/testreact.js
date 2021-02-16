@@ -2,24 +2,17 @@
 class MyTable extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: []
-        };
+        this.state = {d: []};
     };
     componentDidMount() {
-        fetch("http://localhost:8800/table", {
-            method: "GET",
-            mode: "cors",
-            headers: {"Content-Type": "application/json"}
-        }).then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            this.setState({data});
-        })
-        .then((err) => {console.log(err)});
-    }
+        axios.get("http://localhost:8800/table")
+            .then(response => {
+                let data = response.data;
+                this.setState({ data });
+            });
+    };
     render () {
-        var { data } = this.state;
+        var { d } = this.state;
         return (
             <div>
             <table>
@@ -32,7 +25,7 @@ class MyTable extends React.Component {
                 </tr>
                 </thead>
                 <tbody>
-                {data.map((car) => (
+                {d.map((car) => (
                     <tr key={car.id}>
                         <td>{car.BrandName}</td>
                         <td>{car.ModelName}</td>
