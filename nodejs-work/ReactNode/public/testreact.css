@@ -1,0 +1,17 @@
+table {
+    margin: 10px;
+    background-color: lightgray;
+    border-spacing: 20px 15px;
+}
+td {
+    border: 2px solid black;
+    background-color: antiquewhite;
+    text-align: center;
+    padding: 15px;
+}
+table, thead, tbody {
+    border: 2px solid black;
+}
+#root {
+    margin: 10px auto;
+}

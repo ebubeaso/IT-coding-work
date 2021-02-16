@@ -9,7 +9,16 @@
     <script type="text/javascript" src="babel.min.js"></script>
 </head>
 <body>
-    <div id="home"></div>
-    <script type="text/babel" src="welcome.js"></script>
+    <script type="text/javascript">
+        // Get the data
+        let query = () => {
+            fetch("http://localhost:8800/table")
+                .then(response => response.json())
+                .then(data => {console.log("here is the data: ", data); 
+                return data;})
+        };
+    </script>
+    <div id="root"></div>
+    <script type="text/babel" src="testreact.js"></script>
 </body>
 </html>
