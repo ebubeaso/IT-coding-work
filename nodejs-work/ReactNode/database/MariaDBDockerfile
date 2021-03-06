@@ -1,0 +1,5 @@
+FROM alpine
+
+RUN apk update && apk add --no-cache openssh openssl mariadb mariadb-client open
+rc nano && rc-update add mariadb default && rc default && /etc/init.d/mariadb se
+tup && chown -R mysql:mysql /var/lib/mysql
