@@ -1,0 +1,54 @@
+.MyTable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .Title {
+    text-align: center;
+    font-size: 34pt;
+    font-style: oblique;
+    text-decoration: underline;
+    font-family: serif;
+  }
+  .Subtitle {
+    text-align: center;
+    font-size: 24pt;
+    font-family: serif;
+    color: cyan; 
+  }
+  #root {
+    background-color: white;
+    padding: 20px;
+  }
+  body {
+    background-color: lavender;
+  }
+  table {
+    background-color: lightgray;
+    border-spacing: 20px 15px;
+    margin: 0 auto;
+  }
+  thead {
+    font-size: 16pt;
+  }
+  td {
+    font-size: 14pt;
+    text-align: center;
+    background-color: navajowhite;
+    font-family: serif;
+    font-weight: bold;
+    padding: 10px
+  }
+  table, td {
+    border: 2px solid black;
+  }
+  .Click {
+    background-color: lightgray;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    font-size: 18pt;
+    margin-left: 47%;
+  }
+  
