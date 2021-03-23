@@ -1,0 +1,15 @@
+#video {
+    /* makes a grid display to show multiple videos */
+    display: grid;
+    /* this will make the video 350 pixles long */
+    grid-template-columns: repeat(auto-fill, 350px);
+    /* This makes the videos 350 pixels wide */
+    grid-auto-rows: 350px; 
+}
+video {
+    /* width and height will fill up the video div */
+    width: 100%;
+    height: 100%;
+    /* going to zoom in the video to fill in the entire square */
+    object-fit: cover;
+}
