@@ -55,7 +55,7 @@ app.get("/:room", (req, res) => {
 
 // make the http server and have it fall in line with express
 var server = http.createServer(app);
-server.listen(port, (error) => {
+server.listen(port, "0.0.0.0", (error) => {
     if (error) throw error;
     console.log("The chat server is now online!");
 });
@@ -70,6 +70,6 @@ io.on("connection", (socket) => {
         // pass the room ID and user ID to the client
         // This makes the client join the room
         socket.join(roomID);
-        socket.broadcast.to(roomID).emit('user-connected', user); //send a message to the room (broadcast)
+        socket.broadcast.emit('user-connected', user); //send a message to the room (broadcast)
     })
 })

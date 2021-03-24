@@ -1,4 +1,4 @@
-#video {
+#video-grid {
     /* makes a grid display to show multiple videos */
     display: grid;
     /* this will make the video 350 pixles long */
