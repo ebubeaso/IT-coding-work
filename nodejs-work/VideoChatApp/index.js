@@ -1,8 +1,8 @@
 'use strict';
 // This is the server backend for the chat application
-const os = require("os");
+const cors = require("cors");
 const express = require("express");
-const http = require("http");
+const https = require("https");
 const theSocket = require("socket.io");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -11,6 +11,10 @@ const { v4: uuidV4 } = require("uuid");
 // This is going to verify the room access key
 const crypto = require("crypto");
 const fs = require("fs");
+
+// make the peer server
+// const { ExpressPeerServer } = require('peer');
+// var peerServer = ExpressPeerServer({path: '/', port: 9001});
 
 const app = express();
 // this pulls in the hashed version of the secret phrase to use for the room
@@ -25,6 +29,8 @@ below gets rid of the extra character space
 */
 let accessKey = secretWord.substring(0, (secretWord.length - 1))
 
+// set up CORS
+app.use(cors());
 // process URL-encoded bodies, like HTML forms
 app.use(bodyParser.urlencoded({extended: true}));
 //render the static files
@@ -40,9 +46,10 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
     let input = req.body["room-input"];
+    let roomName = 'privateroom';
     let hashed = crypto.createHash("sha256").update(input).digest("hex");
     if (hashed.normalize() == accessKey.normalize()) {
-        res.redirect(`/${uuidV4()}`)
+        res.redirect(`/${roomName}`)
     } else {
         res.send("You did not enter in the valid room code");
     }
@@ -53,8 +60,12 @@ app.get("/:room", (req, res) => {
     res.render("room", { roomID: req.params.room })
 })
 
-// make the http server and have it fall in line with express
-var server = http.createServer(app);
+// make the https server and have it fall in line with express
+var server = https.createServer({
+    key: fs.readFileSync("ssl/node-server.key"),
+    cert: fs.readFileSync("ssl/node-cert.pem"),
+    rejectUnauthorized: false
+}, app);
 server.listen(port, "0.0.0.0", (error) => {
     if (error) throw error;
     console.log("The chat server is now online!");
@@ -70,6 +81,10 @@ io.on("connection", (socket) => {
         // pass the room ID and user ID to the client
         // This makes the client join the room
         socket.join(roomID);
-        socket.broadcast.emit('user-connected', user); //send a message to the room (broadcast)
+        socket.to(roomID).emit('user-connected', user); //send a message to the room (broadcast)
+        // handle server disconnect events
+        socket.on('disconnect', () => {
+            socket.to(roomID).emit("user-disconnected", user); //sends the user-disconnect event
+        })
     })
 })
