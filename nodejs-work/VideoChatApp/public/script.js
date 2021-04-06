@@ -3,7 +3,7 @@ const socket = io('/');
 console.log(ROOM_ID);
 
 //make the peer (for connecting to the peer server)
-const peer = new Peer( undefined, {host: '/', port: 9001} );
+const peer = new Peer( undefined, {host: '/', port: 9001, secure: true} );
 peer.on('open', uid => {
     socket.emit("join-room", ROOM_ID, uid);
     console.log("Entered room!!", ROOM_ID, uid);

@@ -62,9 +62,9 @@ app.get("/:room", (req, res) => {
 
 // make the https server and have it fall in line with express
 var server = https.createServer({
-    key: fs.readFileSync("ssl/nodevideo.key"),
-    cert: fs.readFileSync("ssl/nodevideo.crt"),
-    ca: fs.readFileSync("ssl/ca-cert.crt"),
+    key: fs.readFileSync("ssl/nodetest.key"),
+    cert: fs.readFileSync("ssl/videocert.crt"),
+    ca: fs.readFileSync("ssl/ca-test.pem"),
     rejectUnauthorized: false
 }, app);
 server.listen(port, "0.0.0.0", (error) => {
