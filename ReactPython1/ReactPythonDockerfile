@@ -1,0 +1,15 @@
+FROM alpine:latest
+
+RUN apk update && apk add --no-cache python3 py3-pip nano curl openrc nginx gcc && \
+apk add --no-cache py3-greenlet py3-gevent py3-cryptography mariadb-dev musl-dev python3-dev&& \
+mkdir -p /home/ebube/Documents/PythonBackendPractice && rc-update add nginx default
+
+COPY ReactPython1/PythonBackendPractice /home/ebube/Documents/PythonBackendPractice
+COPY add-nginx-user.sh /home/ebube/Documents
+COPY requirements.txt /home/ebube/Documents/PythonBackendPractice
+COPY reactPython.conf /etc/nginx/conf.d/
+
+RUN chmod 775 -R /home/ebube/Documents/PythonBackendPractice && rm /etc/nginx/conf.d/default.conf \
+mkdir -p /etc/nginx/sites-enabled && ln -s /etc/nginx/conf.d/reactPython.conf /etc/nginx/sites-enabled && \
+python3 -m pip install setuptools configparser mysqlclient && \
+python3 -m pip install -r /home/ebube/Documents/PythonBackendPractice/requirements.txt

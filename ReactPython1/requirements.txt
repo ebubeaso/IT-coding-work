@@ -1,0 +1,11 @@
+Flask
+Flask-Cors
+PyJWT==2.0.1
+Flask-JWT-Extended
+flask-marshmallow
+Flask-RESTful
+Flask-SQLAlchemy
+Flask-WTF
+bandit
+gunicorn
+requests

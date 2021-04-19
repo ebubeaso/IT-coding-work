@@ -1,0 +1,33 @@
+/* This is going to be the CSS file that will be styling the navbar */
+header {
+    background-color: darkcyan;
+    margin: 1% 4%;
+    border: 3px solid black;
+}
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+nav li {
+    list-style-type: none;
+    margin-right: 20%;
+}
+ul {
+    display: flex;
+}
+nav li a:link, nav li a:visited {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 16pt;
+    font-family: sans-serif;
+}
+.Menu1 {
+    margin-left: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+.Menu2 {
+    margin-right: 4%;
+}

@@ -1,0 +1,54 @@
+/* This CSS file is used for styling the login page */
+.Form-title {
+    font-size: 40pt;
+    text-align: center;
+}
+.the-form, .Token-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 1% 25%;
+    background-color: lightgray;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+.the-form input {
+    margin-right: 5%;
+    margin-left: 1%;
+    width: 300px;
+    padding: 5px 0px;
+    font-size: 16pt;
+}
+.the-form label {
+    margin-top: 2%;
+    margin-left: 10px;
+    font-size: 18pt;
+    font-family: sans-serif;
+    margin-bottom: 2px;
+    margin-right: 25%;
+}
+#the-form #submit-login, .the-form #submit-token {
+    margin-right: 5%;
+    margin-top: 2%;
+    width: 180px;
+    background-color: darkcyan;
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-size: 16pt;
+    cursor: pointer;
+    padding: 10px 0px;
+}
+.Auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+.Auth #token {
+    width: 300px;
+    margin-left: 30%;
+    padding: 10px;
+}
