@@ -1,0 +1,11 @@
+svg {
+    margin-left: 30%;
+}
+path.line-plot {
+    stroke-width: 4pt;
+}
+.Title {
+    text-align: center;
+    font-size: 42pt;
+    font-family: monospace;
+}
