@@ -1,0 +1,20 @@
+/* This CSS styling is for the header */
+header {
+    width: 100%;
+    background-color: darkcyan;
+    display: flex;
+    flex-direction: column;
+}
+nav li {
+    list-style-type: none;
+    margin-right: 6%;
+}
+ul {
+    display: flex;
+}
+li a:link, li a:visited {
+    font-size: 16pt;
+    color: white;
+    font-family: sans-serif;
+    text-decoration: none;
+}
