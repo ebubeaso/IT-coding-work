@@ -1,0 +1,8 @@
+FROM alpine:latest
+
+RUN apk update && apk add --no-cache mariadb mariadb-common mariadb-client openrc \
+nano openssh openssl mariadb-dev && rc-update add mariadb default && mkdir -p /home/usage/Documents \
+&& chown -R mysql:mysql /var/lib/mysql
+COPY usage.sql /home/usage/Documents/
+COPY setupMariaDB.sh /home/usage/Documents/
+COPY my.cnf /etc/my.cnf
