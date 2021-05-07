@@ -34,7 +34,7 @@
     font-size: 28pt;
     font-style: italic;
 }
-#submit {
+#submit, #play {
     background-color: green;
     font-size: 34pt;
     font-family: 'Tangerine', 'sans-serif';
@@ -45,4 +45,7 @@
     border-radius: 20px;
     width: 200px;
     margin-bottom: 15px;
+}
+#play {
+    margin: 0 46%;
 }

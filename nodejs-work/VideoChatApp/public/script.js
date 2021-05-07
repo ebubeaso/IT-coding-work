@@ -52,6 +52,9 @@ socket.on("user-disconnected", user => {
 // function for to use the video stream
 function setVideoStream(vid, stream) {
     vid.srcObject = stream; //This will allow us to play the video
+    if (navigator.userAgent.includes("iPhone")) {
+        vid.autoplay = true;
+    }
     vid.addEventListener('loadedmetadata', () => {
         /* This event listener waits for the video metadata to load
         and then it will play the video on the screen */
