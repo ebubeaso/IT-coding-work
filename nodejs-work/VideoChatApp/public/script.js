@@ -3,7 +3,7 @@ const socket = io('/');
 console.log(ROOM_ID);
 
 //make the peer (for connecting to the peer server)
-const peer = new Peer( undefined, {host: '/', port: 9001, secure: true} );
+const peer = new Peer( undefined, {path: "/peerjs", host: '/', port: 5000} );
 peer.on('open', uid => {
     socket.emit("join-room", ROOM_ID, uid);
     console.log("Entered room!!", ROOM_ID, uid);
@@ -52,13 +52,28 @@ socket.on("user-disconnected", user => {
 // function for to use the video stream
 function setVideoStream(vid, stream) {
     vid.srcObject = stream; //This will allow us to play the video
-    vid.addEventListener('loadedmetadata', () => {
-        /* This event listener waits for the video metadata to load
-        and then it will play the video on the screen */
-        vid.play();
-    })
-    // add this video to the video grid
-    videoGrid.append(vid)
+    if (navigator.userAgent.includes("iPhone")) {
+        vid.autoplay = true;
+        let playButton = document.createElement("button").setAttribute("id", "play");
+        playButton.appendChild(document.createTextNode("Click to play video"));
+        let startVid = document.getElementById("play");
+        startVid.addEventListener('click', () => {
+            /* This event listener waits for the video metadata to load
+            and then it will play the video on the screen */
+            vid.play();
+        })
+        // add this video to the video grid
+        videoGrid.append(vid)
+    } else {
+        vid.addEventListener('loadeddata', () => {
+            /* This event listener waits for the video metadata to load
+            and then it will play the video on the screen */
+            vid.play();
+        })
+        // add this video to the video grid
+        videoGrid.append(vid)
+    }
+    
 };
 
 // function for connecting users to the stream

@@ -6,17 +6,14 @@ const https = require("https");
 const theSocket = require("socket.io");
 const bodyParser = require("body-parser");
 const path = require("path");
-const port = 9900;
+const port = 5000;
 const { v4: uuidV4 } = require("uuid");
 // This is going to verify the room access key
 const crypto = require("crypto");
 const fs = require("fs");
 
-// make the peer server
-// const { ExpressPeerServer } = require('peer');
-// var peerServer = ExpressPeerServer({path: '/', port: 9001});
-
 const app = express();
+
 // this pulls in the hashed version of the secret phrase to use for the room
 const secretWord = fs.readFileSync("./encryptedAccess.txt", {encoding: "utf-8"});
 /* 
@@ -39,6 +36,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// make the https server and have it fall in line with express
+var server = https.createServer({
+    key: fs.readFileSync("ssl/nodetest.key"),
+    cert: fs.readFileSync("ssl/videocert.crt"),
+    ca: fs.readFileSync("ssl/ca-test.pem"),
+    rejectUnauthorized: false
+}, app);
 // setup the API route
 app.get("/", (req, res) => {
     res.render("index");
@@ -60,13 +64,6 @@ app.get("/:room", (req, res) => {
     res.render("room", { roomID: req.params.room })
 })
 
-// make the https server and have it fall in line with express
-var server = https.createServer({
-    key: fs.readFileSync("ssl/nodetest.key"),
-    cert: fs.readFileSync("ssl/videocert.crt"),
-    ca: fs.readFileSync("ssl/ca-test.pem"),
-    rejectUnauthorized: false
-}, app);
 server.listen(port, "0.0.0.0", (error) => {
     if (error) throw error;
     console.log("The chat server is now online!");
