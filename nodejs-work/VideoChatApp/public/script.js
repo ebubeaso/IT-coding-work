@@ -3,7 +3,7 @@ const socket = io('/');
 console.log(ROOM_ID);
 
 //make the peer (for connecting to the peer server)
-const peer = new Peer( undefined, {path: "/peerjs", host: '/', port: 5000} );
+const peer = new Peer( undefined, {host: '10.0.0.192', port: 5000, path: "/peerjs"} );
 peer.on('open', uid => {
     socket.emit("join-room", ROOM_ID, uid);
     console.log("Entered room!!", ROOM_ID, uid);
@@ -18,7 +18,6 @@ const videoGrid = document.getElementById("video-grid");
 var chatVideo = document.createElement("video");
 chatVideo.muted = "true";
 // connect to video
-var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true
@@ -37,6 +36,7 @@ navigator.mediaDevices.getUserMedia({
 
     // connect to other users in room
     socket.on("user-connected", user => {
+        alert("User "+ user + " has disconnected");
         console.log("other user: " + user);
         connectNewClient(user, stream);
     });
@@ -45,35 +45,20 @@ navigator.mediaDevices.getUserMedia({
 // handle the user disconnect
 socket.on("user-disconnected", user => {
     // cleanly disconnects the user of a given user ID
-    // if (allClients[user]) allClients[user].close();
     alert("User "+ user + " has disconnected");
 })
 
 // function for to use the video stream
 function setVideoStream(vid, stream) {
     vid.srcObject = stream; //This will allow us to play the video
-    if (navigator.userAgent.includes("iPhone")) {
-        vid.autoplay = true;
-        let playButton = document.createElement("button").setAttribute("id", "play");
-        playButton.appendChild(document.createTextNode("Click to play video"));
-        let startVid = document.getElementById("play");
+    let startVid = document.getElementById("play");
         startVid.addEventListener('click', () => {
             /* This event listener waits for the video metadata to load
             and then it will play the video on the screen */
             vid.play();
+            // add this video to the video grid
+            videoGrid.append(vid);
         })
-        // add this video to the video grid
-        videoGrid.append(vid)
-    } else {
-        vid.addEventListener('loadeddata', () => {
-            /* This event listener waits for the video metadata to load
-            and then it will play the video on the screen */
-            vid.play();
-        })
-        // add this video to the video grid
-        videoGrid.append(vid)
-    }
-    
 };
 
 // function for connecting users to the stream

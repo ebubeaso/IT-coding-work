@@ -13,6 +13,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 
 const app = express();
+const ExpressPeerServer = require('peer').ExpressPeerServer;
 
 // this pulls in the hashed version of the secret phrase to use for the room
 const secretWord = fs.readFileSync("./encryptedAccess.txt", {encoding: "utf-8"});
@@ -43,6 +44,8 @@ var server = https.createServer({
     ca: fs.readFileSync("ssl/ca-test.pem"),
     rejectUnauthorized: false
 }, app);
+// use the peerjs
+app.use('/peerjs', ExpressPeerServer(server, {debug: true}));
 // setup the API route
 app.get("/", (req, res) => {
     res.render("index");
