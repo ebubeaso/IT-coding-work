@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 // this variable is what is going to receive the fetch API query results
 var result: any = "";
 export var queryUrl: string = "";
-export const AccessCode: React.FC = () => {
+export const AccessCode: React.FC | any = () => {
     // my state management variables
     var [clientId, setClientId] = useState("");
     var [secret, setSecret] = useState("");
@@ -71,10 +71,10 @@ export const AccessCode: React.FC = () => {
             </div>
         </div>
     )}
-    return login ? <RestToken/> : <h1 className="Title">Loading, please wait...</h1>
+    return login ? <RestToken /> : <h1 className="Title">Loading, please wait...</h1>
 }
 
-export const RestToken: React.FC = () => {
+export const RestToken: React.FC | any = () => {
     const authenticated: JSX.Element = (
         <p className="Paragraph">
             You can now use the search feature! Go to the Search page and
@@ -100,4 +100,8 @@ export const RestToken: React.FC = () => {
             </p>
         </div>
     )
+}
+
+function e(e: any): any {
+    throw new Error('Function not implemented.');
 }
