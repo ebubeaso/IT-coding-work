@@ -1,0 +1,32 @@
+header {
+    padding: 1%;
+    background: linear-gradient(to right, darkcyan, navy);
+    width: 100%;
+    animation: slide 2s forwards;
+    -webkit-animation: slide 2s forwards;
+    -moz-animation: slide 2s forwards;
+    -o-animation: slide 2s forwards;
+}
+#header-div {
+    width: 98%;
+}
+nav li {
+    list-style-type: none;
+    margin-right: 50%;
+}
+nav li a:link, nav li a:visited {
+    font-size: 20pt;
+    text-decoration: none;
+    color: whitesmoke;
+}
+ul, ul div {
+    display: flex;
+}
+#nav2 {
+    margin-left: 75vw;
+}
+@media screen and (min-width: 500px) and (max-width: 800px){
+    div #nav2 {
+        margin-left: 60vw;
+    }
+}

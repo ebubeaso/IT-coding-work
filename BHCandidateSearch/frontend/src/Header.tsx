@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Link, Route } from 'react-router-dom';
+import { Home, Login, SearchPage } from './App';
 
 export const Header: React.FC = () => {
     return (
@@ -20,9 +21,9 @@ export const Header: React.FC = () => {
         </header>
         </div>
         <Switch>
-            <Route exact path="/"></Route>
-            <Route path="/search"></Route>
-            <Route path="/login"></Route>
+            <Route exact path="/"><Home/></Route>
+            <Route path="/search"><SearchPage/></Route>
+            <Route path="/login"><Login/></Route>
         </Switch>
         </BrowserRouter>
     )

@@ -986,7 +986,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/history.js":3,"./cjs/history.min.js":4,"_process":50}],6:[function(require,module,exports){
+},{"./cjs/history.js":3,"./cjs/history.min.js":4,"_process":52}],6:[function(require,module,exports){
 'use strict';
 
 var reactIs = require('react-is');
@@ -1266,7 +1266,7 @@ function createReactContext(defaultValue, calculateChangedBits) {
   };
 }var index = React__default['default'].createContext || createReactContext;module.exports=index;
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"@babel/runtime/helpers/inheritsLoose":1,"_process":50,"prop-types":14,"react":32,"tiny-warning":44}],9:[function(require,module,exports){
+},{"@babel/runtime/helpers/inheritsLoose":1,"_process":52,"prop-types":14,"react":32,"tiny-warning":44}],9:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -1892,7 +1892,7 @@ checkPropTypes.resetWarningCache = function() {
 module.exports = checkPropTypes;
 
 }).call(this)}).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":15,"_process":50}],12:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":15,"_process":52}],12:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -2553,7 +2553,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 };
 
 }).call(this)}).call(this,require('_process'))
-},{"./checkPropTypes":11,"./lib/ReactPropTypesSecret":15,"_process":50,"object-assign":9,"react-is":21}],14:[function(require,module,exports){
+},{"./checkPropTypes":11,"./lib/ReactPropTypesSecret":15,"_process":52,"object-assign":9,"react-is":21}],14:[function(require,module,exports){
 (function (process){(function (){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -2576,7 +2576,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./factoryWithThrowingShims":12,"./factoryWithTypeCheckers":13,"_process":50,"react-is":21}],15:[function(require,module,exports){
+},{"./factoryWithThrowingShims":12,"./factoryWithTypeCheckers":13,"_process":52,"react-is":21}],15:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -28856,7 +28856,7 @@ exports.version = ReactVersion;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":50,"object-assign":9,"react":32,"scheduler":41,"scheduler/tracing":42}],17:[function(require,module,exports){
+},{"_process":52,"object-assign":9,"react":32,"scheduler":41,"scheduler/tracing":42}],17:[function(require,module,exports){
 /** @license React v17.0.2
  * react-dom.production.min.js
  *
@@ -29197,7 +29197,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":16,"./cjs/react-dom.production.min.js":17,"_process":50}],19:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":16,"./cjs/react-dom.production.min.js":17,"_process":52}],19:[function(require,module,exports){
 (function (process){(function (){
 /** @license React v16.13.1
  * react-is.development.js
@@ -29382,7 +29382,7 @@ exports.typeOf = typeOf;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":50}],20:[function(require,module,exports){
+},{"_process":52}],20:[function(require,module,exports){
 /** @license React v16.13.1
  * react-is.production.min.js
  *
@@ -29410,7 +29410,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react-is.development.js":19,"./cjs/react-is.production.min.js":20,"_process":50}],22:[function(require,module,exports){
+},{"./cjs/react-is.development.js":19,"./cjs/react-is.production.min.js":20,"_process":52}],22:[function(require,module,exports){
 'use strict';
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
@@ -29870,7 +29870,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react-router-dom.js":22,"./cjs/react-router-dom.min.js":23,"_process":50}],25:[function(require,module,exports){
+},{"./cjs/react-router-dom.js":22,"./cjs/react-router-dom.min.js":23,"_process":52}],25:[function(require,module,exports){
 'use strict';
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
@@ -30712,7 +30712,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react-router.js":25,"./cjs/react-router.min.js":26,"_process":50}],28:[function(require,module,exports){
+},{"./cjs/react-router.js":25,"./cjs/react-router.min.js":26,"_process":52}],28:[function(require,module,exports){
 (function (process){(function (){
 /** @license React v17.0.2
  * react-jsx-runtime.development.js
@@ -31937,7 +31937,7 @@ exports.jsxs = jsxs;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":50,"object-assign":9,"react":32}],29:[function(require,module,exports){
+},{"_process":52,"object-assign":9,"react":32}],29:[function(require,module,exports){
 /** @license React v17.0.2
  * react-jsx-runtime.production.min.js
  *
@@ -34286,7 +34286,7 @@ exports.version = ReactVersion;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":50,"object-assign":9}],31:[function(require,module,exports){
+},{"_process":52,"object-assign":9}],31:[function(require,module,exports){
 /** @license React v17.0.2
  * react.production.min.js
  *
@@ -34322,7 +34322,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react.development.js":30,"./cjs/react.production.min.js":31,"_process":50}],33:[function(require,module,exports){
+},{"./cjs/react.development.js":30,"./cjs/react.production.min.js":31,"_process":52}],33:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -34333,7 +34333,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react-jsx-runtime.development.js":28,"./cjs/react-jsx-runtime.production.min.js":29,"_process":50}],34:[function(require,module,exports){
+},{"./cjs/react-jsx-runtime.development.js":28,"./cjs/react-jsx-runtime.production.min.js":29,"_process":52}],34:[function(require,module,exports){
 'use strict';
 
 function isAbsolute(pathname) {
@@ -34426,7 +34426,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/resolve-pathname.js":34,"./cjs/resolve-pathname.min.js":35,"_process":50}],37:[function(require,module,exports){
+},{"./cjs/resolve-pathname.js":34,"./cjs/resolve-pathname.min.js":35,"_process":52}],37:[function(require,module,exports){
 (function (process){(function (){
 /** @license React v0.20.2
  * scheduler-tracing.development.js
@@ -34777,7 +34777,7 @@ exports.unstable_wrap = unstable_wrap;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":50}],38:[function(require,module,exports){
+},{"_process":52}],38:[function(require,module,exports){
 /** @license React v0.20.2
  * scheduler-tracing.production.min.js
  *
@@ -35438,7 +35438,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":50}],40:[function(require,module,exports){
+},{"_process":52}],40:[function(require,module,exports){
 /** @license React v0.20.2
  * scheduler.production.min.js
  *
@@ -35471,7 +35471,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/scheduler.development.js":39,"./cjs/scheduler.production.min.js":40,"_process":50}],42:[function(require,module,exports){
+},{"./cjs/scheduler.development.js":39,"./cjs/scheduler.production.min.js":40,"_process":52}],42:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -35482,7 +35482,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/scheduler-tracing.development.js":37,"./cjs/scheduler-tracing.production.min.js":38,"_process":50}],43:[function(require,module,exports){
+},{"./cjs/scheduler-tracing.development.js":37,"./cjs/scheduler-tracing.production.min.js":38,"_process":52}],43:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -35501,7 +35501,7 @@ function invariant(condition, message) {
 exports.default = invariant;
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":50}],44:[function(require,module,exports){
+},{"_process":52}],44:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -35527,7 +35527,7 @@ function warning(condition, message) {
 module.exports = warning;
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":50}],45:[function(require,module,exports){
+},{"_process":52}],45:[function(require,module,exports){
 'use strict';
 
 function valueOf(obj) {
@@ -35581,23 +35581,159 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/value-equal.js":45,"./cjs/value-equal.min.js":46,"_process":50}],48:[function(require,module,exports){
+},{"./cjs/value-equal.js":45,"./cjs/value-equal.min.js":46,"_process":52}],48:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BetweenDateSearch = exports.SingleDateSearch = exports.SearchPage = exports.Login = exports.Home = void 0;
+const jsx_runtime_1 = require("react/jsx-runtime");
+// this is where the main components will lie in
+const react_1 = require("react");
+const LoginPages_1 = require("./LoginPages");
+const Home = () => {
+    return (jsx_runtime_1.jsxs("div", Object.assign({ className: "Content" }, { children: [jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "Bullhorn Candidate Date Added Search" }), void 0),
+            jsx_runtime_1.jsx("h3", Object.assign({ className: "Subtitle" }, { children: "The web app to search for candidates by date" }), void 0),
+            jsx_runtime_1.jsx("br", {}, void 0),
+            jsx_runtime_1.jsx("h2", Object.assign({ className: "Reason" }, { children: "Purpose of this web application" }), void 0),
+            jsx_runtime_1.jsx("p", Object.assign({ className: "Paragraph" }, { children: "This web application is used to interact with the Bullhorn REST API through a simple web interface. I know how daunting it is to write API calls to Bullhorn through API clients like Postman or even SOAPui, but writing what you are looking for on a web interface is so much easier!" }), void 0),
+            jsx_runtime_1.jsx("p", Object.assign({ className: "Paragraph" }, { children: "It has the simple functionality of searching for candidates that were added into your Bullhorn environment either on a specific date or between two different dates; the choice is yours!" }), void 0),
+            jsx_runtime_1.jsx("p", Object.assign({ className: "Paragraph" }, { children: "However, you will need to login first before you can use this, as it requires you to enter a Bullhorn REST token to use the date filtering feature. Click on \"Login\" on the navbar to get started!" }), void 0)] }), void 0));
+};
+exports.Home = Home;
+const Login = () => {
+    /*
+    This component will handle the login. First, the user will have to enter in
+    their login info (client ID, username, password)
+     */
+    return jsx_runtime_1.jsx(LoginPages_1.AccessCode, {}, void 0);
+};
+exports.Login = Login;
+const SearchPage = () => {
+    let [dateOption, setDateOption] = react_1.useState("");
+    if (dateOption === "Single") {
+        return (jsx_runtime_1.jsxs("div", { children: [jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "The Date Added Search" }), void 0),
+                jsx_runtime_1.jsx("h3", Object.assign({ className: "Subtitle" }, { children: "Click an option below to start searching for candidates" }), void 0),
+                jsx_runtime_1.jsxs("div", Object.assign({ className: "SearchDiv" }, { children: [jsx_runtime_1.jsxs("form", Object.assign({ className: "DateSearch" }, { children: [jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "date-option", className: "FormLabel" }, { children: "Date Option" }), void 0),
+                                jsx_runtime_1.jsxs("select", Object.assign({ id: "date-option", name: "date-option", onChange: (e) => setDateOption(e.target.value) }, { children: [jsx_runtime_1.jsx("option", Object.assign({ value: "Select" }, { children: "- Select -" }), void 0),
+                                        jsx_runtime_1.jsx("option", Object.assign({ value: "Single" }, { children: "Single Date" }), void 0),
+                                        jsx_runtime_1.jsx("option", Object.assign({ value: "Between" }, { children: "Between Dates" }), void 0)] }), void 0),
+                                jsx_runtime_1.jsx("br", {}, void 0)] }), void 0),
+                        jsx_runtime_1.jsx(exports.SingleDateSearch, {}, void 0)] }), void 0)] }, void 0));
+    }
+    else if (dateOption === "Between") {
+        return (jsx_runtime_1.jsxs("div", { children: [jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "The Date Added Search" }), void 0),
+                jsx_runtime_1.jsx("h3", Object.assign({ className: "Subtitle" }, { children: "Click an option below to start searching for candidates" }), void 0),
+                jsx_runtime_1.jsxs("div", Object.assign({ className: "SearchDiv" }, { children: [jsx_runtime_1.jsxs("form", Object.assign({ className: "DateSearch" }, { children: [jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "date-option", className: "FormLabel" }, { children: "Date Option" }), void 0),
+                                jsx_runtime_1.jsxs("select", Object.assign({ id: "date-option", name: "date-option", onChange: (e) => setDateOption(e.target.value) }, { children: [jsx_runtime_1.jsx("option", Object.assign({ value: "Select" }, { children: "- Select -" }), void 0),
+                                        jsx_runtime_1.jsx("option", Object.assign({ value: "Single" }, { children: "Single Date" }), void 0),
+                                        jsx_runtime_1.jsx("option", Object.assign({ value: "Between" }, { children: "Between Dates" }), void 0)] }), void 0),
+                                jsx_runtime_1.jsx("br", {}, void 0)] }), void 0),
+                        jsx_runtime_1.jsx(exports.BetweenDateSearch, {}, void 0)] }), void 0)] }, void 0));
+    }
+    return (jsx_runtime_1.jsxs("div", { children: [jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "The Date Added Search" }), void 0),
+            jsx_runtime_1.jsx("h3", Object.assign({ className: "Subtitle" }, { children: "Click an option below to start searching for candidates" }), void 0),
+            jsx_runtime_1.jsx("div", Object.assign({ className: "SearchDiv" }, { children: jsx_runtime_1.jsxs("form", Object.assign({ className: "DateSearch" }, { children: [jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "date-option", className: "FormLabel" }, { children: "Date Option" }), void 0),
+                        jsx_runtime_1.jsxs("select", Object.assign({ id: "date-option", name: "date-option", onChange: (e) => setDateOption(e.target.value) }, { children: [jsx_runtime_1.jsx("option", Object.assign({ value: "Select" }, { children: "- Select -" }), void 0),
+                                jsx_runtime_1.jsx("option", Object.assign({ value: "Single" }, { children: "Single Date" }), void 0),
+                                jsx_runtime_1.jsx("option", Object.assign({ value: "Between" }, { children: "Between Dates" }), void 0)] }), void 0),
+                        jsx_runtime_1.jsx("br", {}, void 0)] }), void 0) }), void 0)] }, void 0));
+};
+exports.SearchPage = SearchPage;
+const SingleDateSearch = () => {
+    let [singleDate, setSingleDate] = react_1.useState("");
+    let [restToken, setRestToken] = react_1.useState("");
+    let [searchData, setSearchData] = react_1.useState([]);
+    const singleSearch = () => {
+        // check to see if you are using the correct Bullhorn rest token
+        let userInput = { date: singleDate, url: LoginPages_1.queryUrl, token: restToken };
+        fetch("http://10.0.0.31:5555/search/single", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(userInput)
+        }).then(response => response.json())
+            .then(data => {
+            let result = data;
+            setSearchData(result["data"]);
+        }).catch(err => {
+            console.log(err);
+        });
+        return;
+    };
+    let showTable = (jsx_runtime_1.jsxs("div", Object.assign({ className: "MyTable" }, { children: [jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "Search Results" }), void 0),
+            jsx_runtime_1.jsxs("table", { children: [jsx_runtime_1.jsx("thead", { children: jsx_runtime_1.jsxs("tr", { children: [jsx_runtime_1.jsx("th", { children: "First Name" }, void 0),
+                                jsx_runtime_1.jsx("th", { children: "Last Name" }, void 0),
+                                jsx_runtime_1.jsx("th", { children: "Status" }, void 0),
+                                jsx_runtime_1.jsx("th", { children: "Email Address" }, void 0)] }, void 0) }, void 0),
+                    jsx_runtime_1.jsx("tbody", { children: searchData.map((search) => (jsx_runtime_1.jsxs("tr", { children: [jsx_runtime_1.jsx("td", { children: search.firstName }, void 0),
+                                jsx_runtime_1.jsx("td", { children: search.lastName }, void 0),
+                                jsx_runtime_1.jsx("td", { children: search.status }, void 0),
+                                jsx_runtime_1.jsx("td", { children: search.email }, void 0)] }, search.id))) }, void 0)] }, void 0)] }), void 0));
+    return (jsx_runtime_1.jsx("div", { children: jsx_runtime_1.jsxs("div", Object.assign({ className: "DateDiv" }, { children: [jsx_runtime_1.jsxs("form", Object.assign({ className: "DateSearch" }, { children: [jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "single-date", className: "FormLabel" }, { children: "Date" }), void 0),
+                        jsx_runtime_1.jsx("input", { type: "date", id: "single-date", name: "single-date", value: singleDate, onChange: (e) => setSingleDate(e.target.value) }, void 0),
+                        jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "token-single", className: "FormLabel" }, { children: "Bullhorn Rest Token" }), void 0),
+                        jsx_runtime_1.jsx("input", { type: "text", id: "token-single", name: "token-single", value: restToken, onChange: (e) => setRestToken(e.target.value) }, void 0)] }), void 0),
+                jsx_runtime_1.jsx("button", Object.assign({ id: "single-search", onClick: singleSearch }, { children: "Search" }), void 0), (searchData.length > 0) ? showTable : null] }), void 0) }, void 0));
+};
+exports.SingleDateSearch = SingleDateSearch;
+const BetweenDateSearch = () => {
+    let [betweenDate1, setBetweenDate1] = react_1.useState("");
+    let [betweenDate2, setBetweenDate2] = react_1.useState("");
+    let [restToken, setRestToken] = react_1.useState("");
+    let [searchResult, setSearchResult] = react_1.useState([]);
+    const betweenSearch = () => {
+        // check to see if you are using the correct Bullhorn rest token
+        let userInput = { date1: betweenDate1, date2: betweenDate2,
+            url: LoginPages_1.queryUrl, token: restToken };
+        fetch("http://10.0.0.31:5555/search/between", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(userInput)
+        }).then(response => response.json())
+            .then(data => {
+            let result = data;
+            setSearchResult(result["data"]);
+        }).catch(err => {
+            console.log(err);
+        });
+        return;
+    };
+    let resultTable = (jsx_runtime_1.jsxs("div", Object.assign({ className: "MyTable" }, { children: [jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "Search Results" }), void 0),
+            jsx_runtime_1.jsxs("table", { children: [jsx_runtime_1.jsx("thead", { children: jsx_runtime_1.jsxs("tr", { children: [jsx_runtime_1.jsx("th", { children: "First Name" }, void 0),
+                                jsx_runtime_1.jsx("th", { children: "Last Name" }, void 0),
+                                jsx_runtime_1.jsx("th", { children: "Status" }, void 0),
+                                jsx_runtime_1.jsx("th", { children: "Email Address" }, void 0)] }, void 0) }, void 0),
+                    jsx_runtime_1.jsx("tbody", { children: searchResult.map((search) => (jsx_runtime_1.jsxs("tr", { children: [jsx_runtime_1.jsx("td", { children: search.firstName }, void 0),
+                                jsx_runtime_1.jsx("td", { children: search.lastName }, void 0),
+                                jsx_runtime_1.jsx("td", { children: search.status }, void 0),
+                                jsx_runtime_1.jsx("td", { children: search.email }, void 0)] }, search.id))) }, void 0)] }, void 0)] }), void 0));
+    return (jsx_runtime_1.jsx("div", { children: jsx_runtime_1.jsxs("div", Object.assign({ className: "DateDiv" }, { children: [jsx_runtime_1.jsxs("form", Object.assign({ className: "DateSearch" }, { children: [jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "from-date", className: "FormLabel" }, { children: "From" }), void 0),
+                        jsx_runtime_1.jsx("input", { type: "date", name: "from-date", id: "from-date", onChange: (e) => setBetweenDate1(e.target.value) }, void 0),
+                        jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "to-date", className: "FormLabel" }, { children: "To" }), void 0),
+                        jsx_runtime_1.jsx("input", { type: "date", name: "to-date", id: "to-date", onChange: (e) => setBetweenDate2(e.target.value) }, void 0),
+                        jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "token-between", className: "FormLabel" }, { children: "Bullhorn Rest Token" }), void 0),
+                        jsx_runtime_1.jsx("input", { type: "text", id: "token-between", name: "token-between", value: restToken, onChange: (e) => setRestToken(e.target.value) }, void 0),
+                        jsx_runtime_1.jsx("br", {}, void 0)] }), void 0),
+                jsx_runtime_1.jsx("button", Object.assign({ id: "single-search", onClick: betweenSearch }, { children: "Search" }), void 0), (searchResult.length > 0) ? resultTable : null] }), void 0) }, void 0));
+};
+exports.BetweenDateSearch = BetweenDateSearch;
+
+},{"./LoginPages":51,"react":32,"react/jsx-runtime":33}],49:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Header = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_router_dom_1 = require("react-router-dom");
+const App_1 = require("./App");
 const Header = () => {
     return (jsx_runtime_1.jsxs(react_router_dom_1.BrowserRouter, { children: [jsx_runtime_1.jsx("div", Object.assign({ id: "header-div" }, { children: jsx_runtime_1.jsx("header", { children: jsx_runtime_1.jsx("nav", { children: jsx_runtime_1.jsxs("ul", { children: [jsx_runtime_1.jsxs("div", Object.assign({ id: "nav1" }, { children: [jsx_runtime_1.jsx("li", { children: jsx_runtime_1.jsx(react_router_dom_1.Link, Object.assign({ to: "/" }, { children: "Home" }), void 0) }, void 0),
                                         jsx_runtime_1.jsx("li", { children: jsx_runtime_1.jsx(react_router_dom_1.Link, Object.assign({ to: "/search" }, { children: "Search" }), void 0) }, void 0)] }), void 0),
                                 jsx_runtime_1.jsx("div", Object.assign({ id: "nav2" }, { children: jsx_runtime_1.jsx("li", { children: jsx_runtime_1.jsx(react_router_dom_1.Link, Object.assign({ to: "/login" }, { children: "Login" }), void 0) }, void 0) }), void 0)] }, void 0) }, void 0) }, void 0) }), void 0),
-            jsx_runtime_1.jsxs(react_router_dom_1.Switch, { children: [jsx_runtime_1.jsx(react_router_dom_1.Route, { exact: true, path: "/" }, void 0),
-                    jsx_runtime_1.jsx(react_router_dom_1.Route, { path: "/search" }, void 0),
-                    jsx_runtime_1.jsx(react_router_dom_1.Route, { path: "/login" }, void 0)] }, void 0)] }, void 0));
+            jsx_runtime_1.jsxs(react_router_dom_1.Switch, { children: [jsx_runtime_1.jsx(react_router_dom_1.Route, Object.assign({ exact: true, path: "/" }, { children: jsx_runtime_1.jsx(App_1.Home, {}, void 0) }), void 0),
+                    jsx_runtime_1.jsx(react_router_dom_1.Route, Object.assign({ path: "/search" }, { children: jsx_runtime_1.jsx(App_1.SearchPage, {}, void 0) }), void 0),
+                    jsx_runtime_1.jsx(react_router_dom_1.Route, Object.assign({ path: "/login" }, { children: jsx_runtime_1.jsx(App_1.Login, {}, void 0) }), void 0)] }, void 0)] }, void 0));
 };
 exports.Header = Header;
 
-},{"react-router-dom":24,"react/jsx-runtime":33}],49:[function(require,module,exports){
+},{"./App":48,"react-router-dom":24,"react/jsx-runtime":33}],50:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -35613,7 +35749,83 @@ const Main = () => {
 exports.Main = Main;
 react_dom_1.default.render(jsx_runtime_1.jsx(exports.Main, {}, void 0), document.getElementById("main"));
 
-},{"./Header":48,"react-dom":18,"react/jsx-runtime":33}],50:[function(require,module,exports){
+},{"./Header":49,"react-dom":18,"react/jsx-runtime":33}],51:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RestToken = exports.AccessCode = exports.queryUrl = void 0;
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = require("react");
+// this variable is what is going to receive the fetch API query results
+var result = "";
+exports.queryUrl = "";
+const AccessCode = () => {
+    // my state management variables
+    var [clientId, setClientId] = react_1.useState("");
+    var [secret, setSecret] = react_1.useState("");
+    var [user, setUser] = react_1.useState("");
+    var [passwd, setPasswd] = react_1.useState("");
+    var [login, setLogin] = react_1.useState("");
+    // this function makes the API query for the Bullhorn API authentication
+    const getCode = () => {
+        if (clientId == "" || secret == "" || user == "" || passwd == "") {
+            alert("Please fill out the login form completely.");
+            return;
+        }
+        console.log(clientId);
+        let content = { clientID: clientId, clientSecret: secret, username: user, password: passwd };
+        let link = "http://10.0.0.31:5555/authenticate";
+        setLogin(false);
+        fetch(link, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(content)
+        }).then(response => {
+            if (response.status !== 200) {
+                alert("Please enter in valid credentials");
+                return;
+            }
+            return response.json();
+        }).then(data => {
+            result = data;
+            exports.queryUrl = result["restUrl"];
+            console.log(exports.queryUrl);
+            setLogin(true);
+        }).catch(err => {
+            alert(err);
+            setLogin("");
+        });
+        return result;
+    };
+    if (login === "") {
+        return (jsx_runtime_1.jsxs("div", Object.assign({ className: "Content" }, { children: [jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "Login to Use Web App" }), void 0),
+                jsx_runtime_1.jsx("h3", Object.assign({ className: "Subtitle" }, { children: "Authenticate below with your API credentials" }), void 0),
+                jsx_runtime_1.jsxs("div", Object.assign({ className: "LoginDiv" }, { children: [jsx_runtime_1.jsxs("form", Object.assign({ className: "Login" }, { children: [jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "clientID", className: "FormLabel" }, { children: "Client ID" }), void 0),
+                                jsx_runtime_1.jsx("input", { type: "text", name: "clientID", id: "clientID", value: clientId, onChange: (e) => setClientId(e.target.value) }, void 0),
+                                jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "clientSecret", className: "FormLabel" }, { children: "Client Secret" }), void 0),
+                                jsx_runtime_1.jsx("input", { type: "text", name: "clienSecret", id: "clientSecret", value: secret, onChange: (e) => setSecret(e.target.value) }, void 0),
+                                jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "username", className: "FormLabel" }, { children: "Username" }), void 0),
+                                jsx_runtime_1.jsx("input", { type: "text", name: "username", id: "username", value: user, onChange: (e) => setUser(e.target.value) }, void 0),
+                                jsx_runtime_1.jsx("label", Object.assign({ htmlFor: "password", className: "FormLabel" }, { children: "Password" }), void 0),
+                                jsx_runtime_1.jsx("input", { type: "password", name: "password", id: "password", value: passwd, onChange: (e) => setPasswd(e.target.value) }, void 0)] }), void 0),
+                        jsx_runtime_1.jsx("button", Object.assign({ id: "submit-login", onClick: () => { setTimeout(getCode, 200); } }, { children: "Login" }), void 0)] }), void 0)] }), void 0));
+    }
+    return login ? jsx_runtime_1.jsx(exports.RestToken, {}, void 0) : jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "Loading, please wait..." }), void 0);
+};
+exports.AccessCode = AccessCode;
+const RestToken = () => {
+    const authenticated = (jsx_runtime_1.jsx("p", Object.assign({ className: "Paragraph" }, { children: "You can now use the search feature! Go to the Search page and use this Bullhorn Rest Token to prove you are authorized to run this web application." }), void 0));
+    const notAuthenticated = (jsx_runtime_1.jsx("p", Object.assign({ className: "Paragraph" }, { children: "Sorry, but the information that you entered was not correct. Please try again and login with the correct information." }), void 0));
+    return (jsx_runtime_1.jsxs("div", Object.assign({ className: "Content" }, { children: [(result["BhRestToken"]) ? jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "Authentication Successful" }), void 0) : jsx_runtime_1.jsx("h1", Object.assign({ className: "Title" }, { children: "Authentication Failed" }), void 0),
+            (result["BhRestToken"]) ? jsx_runtime_1.jsx("h3", Object.assign({ className: "Subtitle" }, { children: "Here is your Bullhorn Rest Token" }), void 0) : null, (result["BhRestToken"]) ? authenticated : notAuthenticated, jsx_runtime_1.jsxs("p", Object.assign({ className: "Paragraph" }, { children: ["Bullhorn RestToken: ", (result["BhRestToken"]) ? result["BhRestToken"] : null] }), void 0)] }), void 0));
+};
+exports.RestToken = RestToken;
+function e(e) {
+    throw new Error('Function not implemented.');
+}
+
+},{"react":32,"react/jsx-runtime":33}],52:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -35799,4 +36011,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[49]);
+},{}]},{},[50]);

@@ -69,3 +69,6 @@ const RestToken = () => {
             (result["BhRestToken"]) ? jsx_runtime_1.jsx("h3", Object.assign({ className: "Subtitle" }, { children: "Here is your Bullhorn Rest Token" }), void 0) : null, (result["BhRestToken"]) ? authenticated : notAuthenticated, jsx_runtime_1.jsxs("p", Object.assign({ className: "Paragraph" }, { children: ["Bullhorn RestToken: ", (result["BhRestToken"]) ? result["BhRestToken"] : null] }), void 0)] }), void 0));
 };
 exports.RestToken = RestToken;
+function e(e) {
+    throw new Error('Function not implemented.');
+}
