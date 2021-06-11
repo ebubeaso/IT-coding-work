@@ -49,7 +49,49 @@ header {
     padding-left: 1%;
     padding-bottom: 1%;
     padding-top: 1%;
+    margin-top: 0;
     position: absolute;
+}
+.SlideUp {
+    animation: slide 1s forwards;
+    -webkit-animation: slide 1s forwards;
+    -moz-animation:  slide 1s forwards;
+}
+.SlideDown {
+    animation: slideOut 1s forwards;
+    -webkit-animation: slideOut 1s forwards;
+    -moz-animation:  slideOut 1s forwards;
+}
+.SlideDown a:link, .SlideDown a:visited, .None a:link, .None a:visited {
+    display: none;
+}
+.None {
+    height: 0;
+    opacity: 0;
+}
+@keyframes slide {
+    0% {height: 0; opacity: 0;}
+    100% {height: 15%; opacity: 1;}
+}
+@-moz-keyframes slide {
+    0% {height: 0; opacity: 0;}
+    100% {height: 15%; opacity: 1;}
+}
+@-o-keyframes slide {
+    0% {height: 0; opacity: 0;}
+    100% {height: 15%; opacity: 1;}
+}
+@keyframes slideOut {
+    0% {height: 15%; opacity: 1;}
+    100% {height: 0; opacity: 0;}
+}
+@-moz-keyframes slideOut {
+    0% {height: 15%; opacity: 1;}
+    100% {height: 0; opacity: 0;}
+}
+@-o-keyframes slideOut {
+    0% {height: 15%; opacity: 1;}
+    100% {height: 0; opacity: 0;}
 }
 @media screen and (min-width: 1280px) and (max-width: 1500px) {
     .Option {
