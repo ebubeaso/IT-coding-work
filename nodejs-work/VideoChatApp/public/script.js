@@ -3,7 +3,7 @@ const socket = io('/');
 console.log(ROOM_ID);
 
 //make the peer (for connecting to the peer server)
-const peer = new Peer( undefined, {host: '10.0.0.192', port: 5000, path: "/peerjs"} );
+const peer = new Peer( undefined, {host: '192.168.1.102', port: 5000, path: "/peerjs"} );
 peer.on('open', uid => {
     socket.emit("join-room", ROOM_ID, uid);
     console.log("Entered room!!", ROOM_ID, uid);
@@ -36,7 +36,7 @@ navigator.mediaDevices.getUserMedia({
 
     // connect to other users in room
     socket.on("user-connected", user => {
-        alert("User "+ user + " has disconnected");
+        alert("User "+ user + " has connected");
         console.log("other user: " + user);
         connectNewClient(user, stream);
     });

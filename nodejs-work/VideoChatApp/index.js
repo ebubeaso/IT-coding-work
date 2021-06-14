@@ -3,6 +3,7 @@
 const cors = require("cors");
 const express = require("express");
 const https = require("https");
+const http = require("http");
 const theSocket = require("socket.io");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -38,12 +39,13 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // make the https server and have it fall in line with express
-var server = https.createServer({
-    key: fs.readFileSync("ssl/nodetest.key"),
-    cert: fs.readFileSync("ssl/videocert.crt"),
-    ca: fs.readFileSync("ssl/ca-test.pem"),
-    rejectUnauthorized: false
-}, app);
+// var server = https.createServer({
+//     key: fs.readFileSync("ssl/nodetest.key"),
+//     cert: fs.readFileSync("ssl/videocert.crt"),
+//     ca: fs.readFileSync("ssl/ca-test.pem"),
+//     rejectUnauthorized: false
+// }, app);
+var server = http.createServer(app);
 // use the peerjs
 app.use('/peerjs', ExpressPeerServer(server, {debug: true}));
 // setup the API route
