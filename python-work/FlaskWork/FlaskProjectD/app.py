@@ -29,5 +29,9 @@ db.init_app(app)
 # This is the header that we will use for rendering HTML
 the_header = {'Content Type': 'text/html'}
 
+@app.route("/")
+def index():
+    return render_template("index.html")
+
 if __name__ == "__main__":
     app.run()
