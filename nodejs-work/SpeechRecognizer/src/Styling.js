@@ -19,7 +19,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Subtitle = exports.Title = void 0;
+exports.Response = exports.SpeakButton = exports.Paragraph = exports.TheHeader = exports.Subtitle = exports.Title = void 0;
 const styled_components_1 = __importStar(require("styled-components"));
 // These are variables that have CSS values multiple components will use
 const textAlignment = styled_components_1.css `
@@ -30,6 +30,9 @@ const fontFamily = styled_components_1.css `
 `;
 const mainTextColor = styled_components_1.css `
     color: maroon;
+`;
+const flexDisplay = styled_components_1.css `
+    display: flex;
 `;
 exports.Title = styled_components_1.default.h1 `
     ${textAlignment};
@@ -42,4 +45,33 @@ exports.Subtitle = styled_components_1.default.h2 `
     ${fontFamily};
     font-size: 30pt;
     ${mainTextColor}
+`;
+exports.TheHeader = styled_components_1.default.header `
+    padding: 1%;
+    ${flexDisplay};
+    flex-direction: column;
+    width:100%;
+    margin-left: -10px;
+    background: linear-gradient(to left, navy, steelblue);
+`;
+exports.Paragraph = styled_components_1.default.p `
+    ${fontFamily};
+    ${mainTextColor};
+    font-size: 16pt;
+    margin: 1% 15%;
+`;
+exports.SpeakButton = styled_components_1.default.button `
+    background-color: darkcyan;
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-size: 18pt;
+    padding: 1%;
+    margin: 1% 33%;
+`;
+exports.Response = styled_components_1.default.p `
+    ${fontFamily};
+    ${mainTextColor};
+    font-size: 16pt;
+    margin: 1% 15%;
 `;

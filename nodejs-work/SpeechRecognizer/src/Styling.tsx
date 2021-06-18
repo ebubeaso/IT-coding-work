@@ -1,5 +1,4 @@
 import styled, {css} from 'styled-components';
-
 // These are variables that have CSS values multiple components will use
 const textAlignment = css`
     text-align: center;
@@ -10,7 +9,9 @@ const fontFamily = css`
 const mainTextColor = css`
     color: maroon;
 `;
-
+const flexDisplay = css`
+    display: flex;
+`;
 export const Title = styled.h1`
     ${textAlignment};
     ${fontFamily};
@@ -22,4 +23,33 @@ export const Subtitle = styled.h2`
     ${fontFamily};
     font-size: 30pt;
     ${mainTextColor}
+`;
+export const TheHeader = styled.header`
+    padding: 1%;
+    ${flexDisplay};
+    flex-direction: column;
+    width:100%;
+    margin-left: -10px;
+    background: linear-gradient(to left, navy, steelblue);
+`;
+export const Paragraph = styled.p`
+    ${fontFamily};
+    ${mainTextColor};
+    font-size: 16pt;
+    margin: 1% 15%;
+`;
+export const SpeakButton = styled.button`
+    background-color: darkcyan;
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    font-size: 18pt;
+    padding: 1%;
+    margin: 1% 33%;
+`;
+export const Response = styled.p`
+    ${fontFamily};
+    ${mainTextColor};
+    font-size: 16pt;
+    margin: 1% 15%;
 `;
