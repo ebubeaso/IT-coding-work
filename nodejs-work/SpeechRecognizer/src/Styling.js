@@ -58,7 +58,8 @@ exports.Paragraph = styled_components_1.default.p `
     ${fontFamily};
     ${mainTextColor};
     font-size: 16pt;
-    margin: 1% 15%;
+    margin: 1% 0%;
+    text-align: center;
 `;
 exports.SpeakButton = styled_components_1.default.button `
     background-color: darkcyan;
@@ -67,7 +68,7 @@ exports.SpeakButton = styled_components_1.default.button `
     border-radius: 20px;
     font-size: 18pt;
     padding: 1%;
-    margin: 1% 33%;
+    margin: 1% 45%;
 `;
 exports.Response = styled_components_1.default.p `
     ${fontFamily};

@@ -36,7 +36,8 @@ export const Paragraph = styled.p`
     ${fontFamily};
     ${mainTextColor};
     font-size: 16pt;
-    margin: 1% 15%;
+    margin: 1% 0%;
+    text-align: center;
 `;
 export const SpeakButton = styled.button`
     background-color: darkcyan;
@@ -45,7 +46,7 @@ export const SpeakButton = styled.button`
     border-radius: 20px;
     font-size: 18pt;
     padding: 1%;
-    margin: 1% 33%;
+    margin: 1% 45%;
 `;
 export const Response = styled.p`
     ${fontFamily};
