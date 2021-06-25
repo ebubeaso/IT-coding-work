@@ -16,7 +16,7 @@ app.use(express.json());
 
 // make the MariaDB connection parameters
 const params = {
-    host: "10.0.0.192",
+    host: "192.168.1.102",
     port: 33606,
     user: 'usageapp',
     password: process.env.PI_DB_PASS,

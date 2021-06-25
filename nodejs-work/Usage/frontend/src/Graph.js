@@ -8,7 +8,7 @@ const margins = { "top": 20, "left": 20, "bottom": 20, "right": 20 };
 export const XboxGraph = () => {
     // set up the useEffect hook
     useEffect(() => {
-        fetch("http://10.0.0.31:9900/usage").then(response => { return response.json(); })
+        fetch("http://192.168.1.103:9900/usage").then(response => { return response.json(); })
             .then(data => {
             let result = data;
             // set up d3 and the constants
@@ -92,7 +92,7 @@ export const XboxGraph = () => {
 // the phone graph
 export const Phone = () => {
     useEffect(() => {
-        fetch("http://10.0.0.31:9900/phone").then(response => { return response.json(); })
+        fetch("http://192.168.1.103:9900/phone").then(response => { return response.json(); })
             .then(data => {
             let theData = data;
             console.log(theData);
