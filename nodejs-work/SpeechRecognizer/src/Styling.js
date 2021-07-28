@@ -73,6 +73,6 @@ exports.SpeakButton = styled_components_1.default.button `
 exports.Response = styled_components_1.default.p `
     ${fontFamily};
     ${mainTextColor};
-    font-size: 16pt;
-    margin: 1% 15%;
+    font-size: 24pt;
+    margin: 1% 35%;
 `;

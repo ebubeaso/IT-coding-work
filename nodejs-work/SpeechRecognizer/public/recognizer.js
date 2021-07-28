@@ -26,6 +26,10 @@ speakButton.addEventListener("click", () => {
 // get the voice results
 recognizer.onresult = (event) => {
     let result = event.results[0][0].transcript;
-    voiceResponse.textContent = "You said ";
-    voiceResponse.textContent += result;
+    if (result == "hey computer do you love me") {
+        voiceResponse.textContent = "No I do not"
+    } else {
+        voiceResponse.textContent = "You said ";
+        voiceResponse.textContent += `"${result}"`;
+    }
 };
