@@ -51,6 +51,6 @@ export const SpeakButton = styled.button`
 export const Response = styled.p`
     ${fontFamily};
     ${mainTextColor};
-    font-size: 16pt;
-    margin: 1% 15%;
+    font-size: 24pt;
+    margin: 1% 35%;
 `;
