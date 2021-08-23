@@ -1,0 +1,66 @@
+body {margin: 0;}
+.Title, .Paragraph {
+    font-family: 'Courgette', cursive;
+    color: white;
+}
+.Title {
+    text-align: center;
+    font-size: 48pt;
+    font-weight: normal;
+    text-shadow: -5px 5px 7px black;
+    padding-top: 10%;
+}
+.Section1 {
+    background-color: darkred;
+    margin-top: -3%;
+    height: 90vh;
+}
+.Section2 {
+    background-color: darkgoldenrod;
+    height: 80vh;
+    padding-top: 5%;
+}
+.Wave1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.Wave1 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 167px;
+    transform: rotateY(180deg);
+}
+
+.Wave1 .ShapeFill {
+    fill: #110101;
+}
+* {
+    animation: fade 1s forwards;
+    -webkit-animation: fade 1s forwards;
+    -moz-animation: fade 1s forwards;
+    -o-animation: fade 1s forwards;
+}
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@-moz-keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@-webkit-keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@-o-keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+
+}
