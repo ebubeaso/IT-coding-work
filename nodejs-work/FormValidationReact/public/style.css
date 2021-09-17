@@ -1,0 +1,38 @@
+body {margin: 0%;}
+h1, p, input, label, button {font-family: 'Courier New', monospace;}
+h1 {text-align: center;}
+input, button, label {font-size: 16pt;}
+.FormLabel {margin-top: 1%; margin-left: 15%}
+input {width: 20%;}
+.Title {
+    font-size: 46pt;
+    animation: slide 1s forwards;
+    -moz-animation: slide 1s forwards;
+    -o-animation: slide 1s forwards;
+    -webkit-animation: slide 1s forwards;
+}
+.Paragraph {
+    margin: 1% 26%;
+    font-size: 18pt;
+    animation: fade 2s forwards;
+    -moz-animation: fade 2s forwards;
+    -o-animation: fade 2s forwards;
+    -webkit-animation: fade 2s forwards;
+}
+.Form {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    padding: 1%;
+    width: 45%;
+    margin: 0% auto;
+    border: 2px solid black;
+}
+@keyframes slide {
+    0% {width: 0%;}
+    100% {width: 100%;}
+}
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
