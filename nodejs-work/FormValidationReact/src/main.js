@@ -26356,7 +26356,7 @@ exports.version = ReactVersion;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":16,"object-assign":1,"react":7,"scheduler":12,"scheduler/tracing":13}],3:[function(require,module,exports){
+},{"_process":17,"object-assign":1,"react":7,"scheduler":12,"scheduler/tracing":13}],3:[function(require,module,exports){
 /** @license React v17.0.2
  * react-dom.production.min.js
  *
@@ -26697,7 +26697,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":2,"./cjs/react-dom.production.min.js":3,"_process":16}],5:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":2,"./cjs/react-dom.production.min.js":3,"_process":17}],5:[function(require,module,exports){
 (function (process){(function (){
 /** @license React v17.0.2
  * react.development.js
@@ -29034,7 +29034,7 @@ exports.version = ReactVersion;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":16,"object-assign":1}],6:[function(require,module,exports){
+},{"_process":17,"object-assign":1}],6:[function(require,module,exports){
 /** @license React v17.0.2
  * react.production.min.js
  *
@@ -29070,7 +29070,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/react.development.js":5,"./cjs/react.production.min.js":6,"_process":16}],8:[function(require,module,exports){
+},{"./cjs/react.development.js":5,"./cjs/react.production.min.js":6,"_process":17}],8:[function(require,module,exports){
 (function (process){(function (){
 /** @license React v0.20.2
  * scheduler-tracing.development.js
@@ -29421,7 +29421,7 @@ exports.unstable_wrap = unstable_wrap;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":16}],9:[function(require,module,exports){
+},{"_process":17}],9:[function(require,module,exports){
 /** @license React v0.20.2
  * scheduler-tracing.production.min.js
  *
@@ -30082,7 +30082,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":16}],11:[function(require,module,exports){
+},{"_process":17}],11:[function(require,module,exports){
 /** @license React v0.20.2
  * scheduler.production.min.js
  *
@@ -30115,7 +30115,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/scheduler.development.js":10,"./cjs/scheduler.production.min.js":11,"_process":16}],13:[function(require,module,exports){
+},{"./cjs/scheduler.development.js":10,"./cjs/scheduler.production.min.js":11,"_process":17}],13:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -30126,7 +30126,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this)}).call(this,require('_process'))
-},{"./cjs/scheduler-tracing.development.js":8,"./cjs/scheduler-tracing.production.min.js":9,"_process":16}],14:[function(require,module,exports){
+},{"./cjs/scheduler-tracing.development.js":8,"./cjs/scheduler-tracing.production.min.js":9,"_process":17}],14:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -30142,25 +30142,143 @@ const Main = () => {
 
 },{"./Form":15,"react":7,"react-dom":4}],15:[function(require,module,exports){
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
+const react_1 = __importStar(require("react"));
+const formValidator_1 = __importDefault(require("./formValidator"));
 const Form = () => {
+    // this is my custom react hook (validate = function to check form validity)
+    const useForm = (validate) => {
+        // set the initial state for the form
+        var [theInputs, setInputs] = (0, react_1.useState)({
+            firstname: "", lastname: "", username: "", password: "", confirm: ""
+        });
+        // set the initial state of the form error messages
+        var [errors, setErrors] = (0, react_1.useState)({
+            firstname: "", lastname: "", username: "", password: "", confirm: ""
+        });
+        // catch any changes happening on the form
+        const changes = (e) => {
+            // destructuring the name and value from e.target (looks cleaner)
+            // this is the same as e.target.name and e.target.value
+            var { name, value } = e.target; // The target element event
+            setInputs({ ...theInputs, [name]: value });
+        };
+        // recognize the form submission (checks if the form is valid)
+        const formSubmission = () => {
+            setErrors(validate(theInputs));
+            let valid = "";
+            // gets the input values and puts them to an array
+            let formInputs = Object.values(theInputs);
+            // gets the form errors and puts them into an array
+            let errorInputs = Object.values(errors);
+            for (let val of errorInputs) {
+                // looks for these error keywords in the errorInputs
+                if (val.includes("Please") || val.includes("Password")) {
+                    valid = false;
+                }
+            }
+            if (formInputs.includes("") == false && theInputs.password == theInputs.confirm) {
+                // double check password (for a capital letter, a number and for a special character)
+                if (theInputs.password.length >= 8 && /[A-Z]/.test(theInputs.password) &&
+                    /[\! || \? || \@ || \$ || \% || \*]/.test(theInputs.password)
+                    && /\d/.test(theInputs.password)) {
+                    valid = true;
+                }
+            }
+            ;
+            if (valid) {
+                alert("Your form submittal was a success!!");
+                window.location.reload();
+            }
+        };
+        return { changes, theInputs, errors, formSubmission };
+    };
+    // pull in the custom hook below
+    const { changes, theInputs, errors, formSubmission } = useForm(formValidator_1.default);
     return (react_1.default.createElement("div", null,
         react_1.default.createElement("h1", { className: "Title" }, "Form Validation Practice"),
         react_1.default.createElement("p", { className: "Paragraph" }, "I am making this React page to get a better hang of doing form validation in my web applications. This is good for making signup forms or for getting specific information from the user and ensuring that the information provided from the client/user complies with what the signup form is looking for."),
-        react_1.default.createElement("form", { className: "Form" },
-            react_1.default.createElement("label", { htmlFor: "firstname", className: "FormLabel" }, "First Name"),
-            react_1.default.createElement("label", { htmlFor: "lastname", className: "FormLabel" }, "Last Name"),
-            react_1.default.createElement("label", { htmlFor: "username", className: "FormLabel" }, "Username"),
-            react_1.default.createElement("label", { htmlFor: "password", className: "FormLabel" }, "Password"),
-            react_1.default.createElement("label", { htmlFor: "confirm", className: "FormLabel" }, "Confirm Password"))));
+        react_1.default.createElement("div", { className: "FormDiv" },
+            react_1.default.createElement("form", { className: "Form" },
+                errors.firstname && react_1.default.createElement("p", { className: "Invalid" }, errors.firstname),
+                react_1.default.createElement("label", { htmlFor: "firstname", className: "FormLabel" }, "First Name"),
+                react_1.default.createElement("input", { id: "firstname", type: "text", name: "firstname", className: "FormInput", value: theInputs.firstname, onChange: changes }),
+                errors.lastname && react_1.default.createElement("p", { className: "Invalid" }, errors.lastname),
+                react_1.default.createElement("label", { htmlFor: "lastname", className: "FormLabel" }, "Last Name"),
+                react_1.default.createElement("input", { id: "lastname", type: "text", name: "lastname", className: "FormInput", value: theInputs.lastname, onChange: changes }),
+                errors.username && react_1.default.createElement("p", { className: "Invalid" }, errors.username),
+                react_1.default.createElement("label", { htmlFor: "username", className: "FormLabel" }, "Username"),
+                react_1.default.createElement("input", { id: "username", type: "text", name: "username", className: "FormInput", value: theInputs.username, onChange: changes }),
+                errors.password && react_1.default.createElement("p", { className: "Invalid" }, errors.password),
+                react_1.default.createElement("label", { htmlFor: "password", className: "FormLabel" }, "Password"),
+                react_1.default.createElement("input", { id: "password", type: "password", name: "password", className: "FormInput", value: theInputs.password, onChange: changes }),
+                errors.confirm && react_1.default.createElement("p", { className: "Invalid" }, errors.confirm),
+                react_1.default.createElement("label", { htmlFor: "confirm", className: "FormLabel" }, "Confirm Password"),
+                react_1.default.createElement("input", { id: "confirm", type: "password", name: "confirm", className: "FormInput", value: theInputs.confirm, onChange: changes })),
+            react_1.default.createElement("button", { className: "SubmitButton", id: "submit", onClick: formSubmission }, "Register!"))));
 };
 exports.default = Form;
 
-},{"react":7}],16:[function(require,module,exports){
+},{"./formValidator":16,"react":7}],16:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+// this file will use the setup for form validation when I make the custom hook
+function validCheck(values) {
+    let formErrors = {
+        firstname: "", lastname: "", username: "", password: "", confirm: ""
+    };
+    // Now to check the form validation
+    if (values.firstname.length == 0) {
+        formErrors.firstname = "* Please enter in your first name";
+    }
+    if (values.lastname.length == 0) {
+        formErrors.lastname = "* Please enter in your last name";
+    }
+    if (values.username.length == 0) {
+        formErrors.username = "* Please enter in a username";
+    }
+    if (values.password.length < 8 || !/[A-Z]/.test(values.password) ||
+        !/[\! || \? || \@ || \$ || \% || \*]/.test(values.password)
+        || !/\d/.test(values.password)) {
+        formErrors.password = "* Invalid password: Your password needs to be:\n";
+        formErrors.password += "- At least 8 characters long\n";
+        formErrors.password += "- Have at least one capital letter\n";
+        formErrors.password += "- At least one number\n";
+        formErrors.password += "- At least one special character (!, ?, @, $, %, *)";
+    }
+    if (values.confirm.length == 0) {
+        formErrors.confirm = "Please enter data below";
+    }
+    if (values.confirm != values.password) {
+        formErrors.confirm = "The passwords do not match";
+    }
+    return formErrors;
+}
+exports.default = validCheck;
+
+},{}],17:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
