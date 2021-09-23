@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+h1 {
+    font-size: 50pt;
+    text-align: center;
+}
+p {margin: 1% 15%; width: 70%;}
+p, a {font-size: 18pt;}
+header {width: 100%;}
+ul {display: flex; margin-left: 5%;}
+nav li {list-style-type: none; margin-right: 5%;}
+a:link, a:visited {color: whitesmoke; text-decoration: none;}
+body {margin: 0%; background-color: azure;}
+h1, p, a:link, a:visited {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
+}
+nav {
+    background-color: black;
+    margin: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
