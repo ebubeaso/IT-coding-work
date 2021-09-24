@@ -22,9 +22,49 @@ import { AsoInterface } from "./interfaces";
             little too seriously!). Did I also mention that I am a certified pot-head and
             a good fighter? I'm chill as long as you make sure to not get on my bad side.
         </p>
+        <h2>More Info on Hailey</h2>
+        <ul class="main">
+            <li class="info">Full Name: {{moreInfo.fullName | uppercase}}</li>
+            <li class="info">Age: {{moreInfo.age}}</li>
+            <li class="info">Favorite Color: {{moreInfo.favColor | lowercase}}</li>
+            <li class="info">Favorite Food: {{moreInfo.favFood}}</li>
+            <li class="info">Interests:
+                <ul class="sublist">
+                    <li *ngFor="let like of moreInfo.likes">{{like}}</li>
+                </ul>
+            </li>
+            <br/>
+            <li class="info">Dislikes:
+                <ul class="sublist">
+                    <li *ngFor="let dislike of moreInfo.dislikes">{{dislike}}</li>
+                </ul>
+            </li>
+            <br/>
+            <li class="info">My Passions:
+                <ul class="sublist">
+                    <li *ngFor="let passion of moreInfo.passions">{{passion}}</li>
+                </ul>
+            </li>
+        </ul>
     `
 })
 export class HaileyComponent implements OnInit {
+    // use the aso interface here
+    moreInfo: AsoInterface = {
+        fullName: "Hailey Elizabeth Aso", 
+        age: 21, 
+        favColor: "Black",
+        favFood: "Ice Cream", 
+        likes: ["Her husband", "Her cats (Nyx and Jojo)", "Wicca", "History",
+        "Music (mainly heavy metal)", "smoking", "cooking", "writing", "Wicca", 
+        "Long conversations", "Playing video games", "Fighting", "Debating", 
+        "Traveling", "Reading", "Anime"], 
+        dislikes: ["Ignorant people", "Rude people", "Not being listened to",
+        "Poor management", "Immature people", "People", "Bills", "Stress", 
+        "Shonen anime"],
+        passions: ["Writing poems", "Writing stories", "Cooking", "Debating", 
+        "Wrestling", "Wicca", "Spiritualism"]
+    }
     constructor() {}
     ngOnInit(): void {
 
