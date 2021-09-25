@@ -5,23 +5,25 @@ import { AsoInterface } from "./interfaces";
     template: `
         <h1>Ebube's Page</h1>
         <p>
-            Hello! My name is Ebube Aso and I am a tech-nerd dancer! My two favorite 
-            hobbies are dancing and learning/playing with different technologies. I really 
-            love to learn and I am a student at heart. I like to spend my days either 
-            smoothing out my grooves and flow to music or configuring cloud environments or 
-            creating interesting web applications in my home lab. Did I mention that I have 
-            a home lab? Yes, it has taken me months to put it together and I am really proud 
-            of it! If I had the choice, I would LOOOOVE to have my own data center one day.
+            My name is Ebube Aso. I am twenty-two years old and I'm currently living my dream life. 
+            I'm married to my amazing wife, Hailey. She's a real sweetheart and loves me unconditionally. 
+            She supports me in all of my projects, even when they take up most of my time. However, 
+            I always make time for her, letting her know I love her, or just cuddling on her bad days. 
+            She's a true rockstar! I also have two adorable yet, very differnt cats, Nyx and Jojo. Nyx 
+            is definetly more of a mommy's girl. She stills shows me love though. Jojo though, definetly 
+            a daddy's girl. No doubt what so ever, they're basically my children at this point. Currently, 
+            I'm a DevOps Engineer, aka my dream job. I feel super accomplished to be in that position at 
+            my age, but the best part is I did it in seven months. From tech support to DevOps in seven months! 
+            I am the only one to do that! Which is pretty awesome. Most certainly not something many people can 
+            claim. It's a unique situation for a pretty unique indvidual.
         </p>
         <p>
-            I am happily married to my wonderful and lovely wife Hailey. I think that she
-            is an amazing woman and I love her so much, even on days when it is hard for 
-            her to love herself. I would do anything for my sweetheart and my two rascal 
-            cats. I am a family man who has a lot of love and care for his family. In addition, 
-            I know how to speak French and I love being able to solve problems, especially with 
-            technology (there are times where I have to remind myself to get off the computer 
-            since I am so caught up in what I am doing). Overall, I am an ambitious, creative, goofy,
-            nerdy and an overall genuine dude who takes a lot of pride in his work and passions!
+            My hobbies are very differnt from each other but I really do love them both the same. Dance is my 
+            experssion. I use it as an outlet for my emotions. It's really just my free version of therapy. It's 
+            also another for of exercise to keep my sexy dad bod up to par. My wife enjoys my manly strength so 
+            gotta upkeep it somehow. Tech is what stimulates my craving to always being doing something. Always 
+            learning something new, building new computers or websites. It also helps me show off my skills at work.
+            Seriously though, I use technology for myself to pursue a fulfilling life.
         </p>
         <h2>More Info on Ebube</h2>
         <ul class="main">
