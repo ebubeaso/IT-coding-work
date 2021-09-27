@@ -55,6 +55,8 @@ const TheGraph = () => {
             }
         }, [delay]);
     }
-    return (jsx_runtime_1.jsx("div", Object.assign({ className: "Linechart" }, { children: jsx_runtime_1.jsxs(recharts_1.LineChart, Object.assign({ width: 750, height: 600, data: graph }, { children: [jsx_runtime_1.jsx(recharts_1.XAxis, Object.assign({ dataKey: "Time", height: 50, tick: customXAxisTick }, { children: jsx_runtime_1.jsx(recharts_1.Label, { value: "Time", offset: 0, position: "insideBottomRight" }, void 0) }), void 0), jsx_runtime_1.jsx(recharts_1.YAxis, { label: { value: "Response Time (milliseconds)", angle: -90, position: "insideLeft" } }, void 0), jsx_runtime_1.jsx(recharts_1.Line, { type: "monotone", dataKey: "TheData", stroke: "black" }, void 0)] }), void 0) }), void 0));
+    return (jsx_runtime_1.jsx("div", Object.assign({ className: "Linechart" }, { children: jsx_runtime_1.jsxs(recharts_1.LineChart, Object.assign({ width: 750, height: 600, data: graph }, { children: [jsx_runtime_1.jsx(recharts_1.XAxis, Object.assign({ dataKey: "Time", height: 50, tick: customXAxisTick }, { children: jsx_runtime_1.jsx(recharts_1.Label, { value: "Time", offset: 0, position: "insideBottomRight" }, void 0) }), void 0),
+                jsx_runtime_1.jsx(recharts_1.YAxis, { label: { value: "Response Time (milliseconds)", angle: -90, position: "insideLeft" } }, void 0),
+                jsx_runtime_1.jsx(recharts_1.Line, { type: "monotone", dataKey: "TheData", stroke: "black" }, void 0)] }), void 0) }), void 0));
 };
 exports.TheGraph = TheGraph;
