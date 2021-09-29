@@ -35,7 +35,10 @@ def parse_ping(server):
 # This is a function for parsing HTTP requests
 def parse_http(server, port):
     # get the http response
-    response = requests.get(f"http://{server}:{port}")
+    if port == 443 or port == "443":
+        response = requests.get(f"https://{server}:{port}")
+    else:
+        response = requests.get(f"http://{server}:{port}")
     # convert the elapsed time into milliseconds and round to one decimal place
     response_time = round(response.elapsed.total_seconds() * 1000, 1)
     return response_time

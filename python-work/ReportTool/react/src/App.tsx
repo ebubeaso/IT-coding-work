@@ -2,7 +2,7 @@ import React from 'react';
 import {io} from "socket.io-client";
 import 'regenerator-runtime/runtime';
 import { TheGraph } from './Graph';
-const endpoint = "http://localhost:5000";
+const endpoint = "http://localhost:5001";
 export var dataArray: Array<any> | any[] = [];
 export var myData: any = "";
 export var request: any;
