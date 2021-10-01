@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
     entry: ["./src/main.ts", "./src/polyfills.ts"],
     watch: true,
-    mode: production,
+    mode: "production",
     module: {
         rules: [
             {
@@ -17,7 +17,6 @@ module.exports = {
     output: {
         filename: "script.js",
         path: path.resolve(__dirname, "dist"),
-        clean: true,
     },
     devServer: {
         static: {

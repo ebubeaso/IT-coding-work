@@ -2,8 +2,8 @@ const path = require("path");
 // configure the bundler
 module.exports = {
     entry: ["./src/main.ts", "./src/polyfills.ts"],
-    watch: true,
-    mode: production,
+    watch: false,
+    mode: "production",
     module: {
         rules: [
             {
@@ -17,6 +17,6 @@ module.exports = {
     output: {
         filename: "script.js",
         path: path.resolve(__dirname, "dist"),
-        clean: true,
+        clean: false
     }
 }

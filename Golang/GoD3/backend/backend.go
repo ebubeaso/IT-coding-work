@@ -67,6 +67,8 @@ func getData(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		result, err := dbConnection()
 		if err == nil {
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+			w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(result)
 		}
