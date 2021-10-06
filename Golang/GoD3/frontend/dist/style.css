@@ -11,3 +11,17 @@ p#graph {
     height: 65vh;
     width: 80%;
 }
+.tooltip {
+    pointer-events: none;
+}
+@media screen and (max-width: 600px) {
+    .title {font-size: 30pt;}
+    .rectangles {
+        transform: translate(30px, -10px);
+    }
+    g.x-axis g.tick text {
+        transform: rotate(-30deg) translate(-20px,-2px);
+        font-size: 7pt;
+    }
+    .x-label {font-size: 8pt;}
+}

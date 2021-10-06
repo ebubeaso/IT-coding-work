@@ -1,5 +1,5 @@
 // This is the main component
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import axios from "axios";
 import * as d3 from 'd3';
 // root componenet
@@ -10,6 +10,7 @@ import * as d3 from 'd3';
     <router-outlet></router-outlet>
     `,
     styles: [],
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class App {}
 
@@ -25,7 +26,7 @@ export class App {}
 export class GraphComponent implements OnInit {
     constructor() {}
     ngOnInit(): void {
-        axios.get("http://shadowblaze.aso.net:9900/cars", 
+        axios.get("http://car-preferences.herokuapp.com/cars", 
         {headers: {"Content-Type": "application/json"}})
             .then(response => {
                 let result: any[] = response.data;
@@ -72,19 +73,35 @@ export class GraphComponent implements OnInit {
                     // y-label
                     svg.append("text").attr("class", "y-label").attr("text-anchor", "middle")
                         .attr("transform", "rotate(-90)").attr("x", `-${svgHeight/2}`)
-                        .attr("y", (margins/2)).text("# of People who Like Them (Thousands)")
+                        .attr("y", (margins - 5)).text("# of People who Like Them (Thousands)")
+                    // setup a tooltip
+                    let theTooltip = d3.select("#graph").append("div").attr("class", "tooltip")
+                        .attr("text-anchor", "middle").style("font-size", "8pt").style("color", "white")
+                        .style("visibility", "hidden").style("background-color", "rgba(0,0,0,0.6)")
+                        .style("padding", "1%").style("position", "absolute")
                     // setup the rectangles
-                    let rectangles = svg.append("g")
+                    let rectangles = svg.append("g").attr("class", "rectangles")
                         .attr("transform", `translate(${graphHeight/9}, -${margins/2})`)
                     // making a color scale for the rectangles
                     var colorScale = d3.scaleOrdinal().domain(result.map(d => d.CarType))
                         .range(["red", "gold", "black", "purple", "orange", "darkcyan", "green", "blue"])
                     rectangles.selectAll("rect").data(result)
                         .join("rect").attr("x", (d):any => {return xScale(d.CarType)})
-                        .attr("y", (d):any => {return yScale(0)})
+                        .attr("y", () => {return yScale(0)})
                         .attr("width", (xScale.bandwidth()/2))
-                        .attr("height", (d):any => {return graphHeight - yScale(0)})
+                        .attr("height", () => {return graphHeight - yScale(0)})
                         .attr("fill", (d):any => colorScale(d))
+                        .on("mouseover", (d:MouseEvent | any) => {
+                            console.log(d)
+                            theTooltip.html(`CarType: ${d.target.__data__.CarType}\n 
+                            Likes: ${d.target.__data__.Likes}`)
+                                .style("visibility", "visible").style( "left", `${(d.pageX) + 10}px` )
+                                .style("z-index", 10).style( "top", `${(d.pageY) - 30}px` )
+                            d3.select(d.target).style("cursor", "pointer")
+                        }).on("mouseout", (d:any) => {
+                            theTooltip.text("").style("visibility", "hidden")
+                            d3.select(d.target).style("cursor", "none")
+                        })
                     // add animation
                     svg.selectAll("rect").transition().duration(1000)
                         .attr("y", (d:any):any => {return yScale(d.Likes)})
