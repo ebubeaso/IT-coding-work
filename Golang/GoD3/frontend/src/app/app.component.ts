@@ -26,7 +26,7 @@ export class App {}
 export class GraphComponent implements OnInit {
     constructor() {}
     ngOnInit(): void {
-        axios.get("http://car-preferences.herokuapp.com/cars", 
+        axios.get("http://shadowblaze.aso.net:9900/cars", 
         {headers: {"Content-Type": "application/json"}})
             .then(response => {
                 let result: any[] = response.data;

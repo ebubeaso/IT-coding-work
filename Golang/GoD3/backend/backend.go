@@ -46,9 +46,9 @@ func handleRequests() {
 	http.HandleFunc("/cars", getData)
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/", fs)
-	fmt.Println("The Golang App Server is listening on port 80..")
+	fmt.Println("The Golang App Server is listening on port 9900..")
 	// run the web server, ensuring no errors happen
-	err := http.ListenAndServe(":80", nil)
+	err := http.ListenAndServe(":9900", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
