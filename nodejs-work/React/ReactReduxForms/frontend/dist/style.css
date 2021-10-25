@@ -1,0 +1,91 @@
+body {margin: 0; background-color: lightskyblue;}
+h1, p, input, label, button, a:link, a:visited {font-family: 'Courier New', monospace;}
+header {width: 100%;}
+ul {display: flex;}
+input, button, label, button, .Paragraph {font-size: 18pt;}
+.FormLabel {margin-top: 2%; margin-left: 1%}
+.FormInput, .Invalid {margin-left: 1%; padding: 2%;}
+.Nav1, .Nav2 {display: flex;}
+.Nav2 {margin-left: 55%;}
+.Nav1 {margin-left: 10%;}
+.Title {
+    font-size: 46pt;
+    font-weight: normal;
+    text-align: center;
+    animation: slide 1s forwards;
+    color: darkblue;
+    -moz-animation: slide 1s forwards;
+    -o-animation: slide 1s forwards;
+    -webkit-animation: slide 1s forwards;
+}
+.Invalid {
+    color: red; 
+    margin-bottom: -1%;
+    width: 65%;
+    font-size: 12pt;
+}
+a:link, a:visited {
+    color: white;
+    font-size: 20pt;
+    text-decoration: none;
+}
+.Paragraph {
+    margin: 1% 26%;
+    animation: fade 2s forwards;
+    -moz-animation: fade 2s forwards;
+    -o-animation: fade 2s forwards;
+    -webkit-animation: fade 2s forwards;
+}
+.Form {
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    padding: 1%;
+    margin: 0% auto;
+}
+.FormDiv {
+    background-color: lightgray;
+    padding: 1%;
+    border: 2px solid black;
+    width: 45%;
+    margin: 1% 25%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+nav {
+    background-color: black;
+    margin: 0%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+nav li {
+    list-style-type: none;
+    margin-right: 40%;
+}
+button {
+    margin: 1% 32%;
+    padding: 2%;
+    width: 20%;
+}
+button:hover {
+    background-color: green;
+    color: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+@keyframes slide {
+    0% {width: 0%;}
+    100% {width: 100%;}
+}
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@media screen and (max-width: 1500px) {
+    button {
+        margin: 1% 26%;
+        padding: 2%;
+        width: 25%;
+    }
+}
