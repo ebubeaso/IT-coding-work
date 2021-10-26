@@ -1,15 +1,20 @@
 
-import { createSlice } from "@reduxjs/toolkit";
-export var login = createSlice({
+import { createSlice} from "@reduxjs/toolkit";
+import type { RootState } from "./Store"
+// make the interface
+interface AuthState {
+    value: {username: string, password: string}
+}
+var initialState: AuthState = {value: {username: "", password: ""}}
+export var loginSlice = createSlice({
     name: "login",
-    initialState: {
-        value: {usename: "", password: ""}
-    },
+    initialState,
     reducers: {
         signIn: (state, action) => {
             state.value = action.payload;
         }
     }
 })
-export const {signIn} = login.actions;
-export default login.reducer;
+export const {signIn} = loginSlice.actions;
+export const getAuth = (state: RootState) => state.login.value;
+export default loginSlice.reducer;

@@ -1,8 +1,7 @@
 import React from 'react';
 import { HashRouter, Switch, Route, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import { Home, Data, Login, Register } from './Pages';
-
+// setup the client-side router
 export const Header: React.FC = () => {
     return (
         <div>
@@ -11,7 +10,7 @@ export const Header: React.FC = () => {
             <nav>
              <ul>
                  <div className="Nav1">
-                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/">Home Page</Link></li>
                     <li><Link to="/data">Data</Link></li>
                  </div>
                 <div className="Nav2">

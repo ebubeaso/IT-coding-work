@@ -1,7 +1,7 @@
 // This is the development configuration
 const path = require("path");
 module.exports = {
-    entry: "./src/Index.tsx",
+    entry: ["regenerator-runtime/runtime.js", "./src/Index.tsx"],
     watch: true,
     mode: "development",
     module: {
