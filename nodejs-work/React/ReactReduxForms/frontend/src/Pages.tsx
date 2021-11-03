@@ -2,6 +2,7 @@ import React from 'react';
 // import {TypedUseSelectorHook, useSelector, useDispatch} from 'react-redux';
 import { useAppSelector, useAppDispatch } from './Store';
 import { signIn } from './LoginRedux';
+import { addUser } from './RegisterRedux';
 import 'regenerator-runtime/runtime';
 export const Home: React.FC = () => {
     return (
@@ -56,15 +57,73 @@ export const Login: React.FC = () => {
     )
 }
 export const Register: React.FC = () => {
-    //var registered = useSelector((state: any) => state.registration.value)
-    return (
-        <div>
-            <h1 className="Title">Sign Up for Free!</h1>
-            <div className="FormDiv">
-                <form className="Form">
+    var newUser = useAppSelector((state: any) => state.registration.value)
+    const dispatch = useAppDispatch();
+    interface validInfo {
+        validFirstName: boolean | string, validLastName: boolean | string,
+        validUsername: boolean | string, validEmail: boolean | string,
+        validPassword: boolean | string, validConfirm: boolean | string
+    }
+    let valid: boolean | string = "";
+    var validated: validInfo = {
+        validFirstName: "", validLastName: "", validUsername: "", 
+        validEmail: "", validPassword: "", validConfirm: ""
+    }
+    React.useEffect(() => {
+        let valid = validateSignup();
+    })
+    const validateSignup = ():boolean => {
+        if (newUser.firstName == "") {
 
-                </form>
-            </div>
+        }
+        return true
+    }
+    // the initial variables (not using useState)
+    var firstname = ""; var lastname = ""; var username = ""; 
+    var password = ""; var confirmation = ""; var email = "";
+    return (
+    <div>
+        <h1 className="Title">Sign Up for Free!</h1>
+        <div className="FormDiv">
+            <form className="Form">
+                {(valid) ? null : <p className="Invalid"></p>}
+                <label htmlFor="first-name" className="FormLabel">First Name</label>
+                <input type="text" name="first-name" id="first-name"
+                    className="FormInput" placeholder="Enter your first name"
+                    onChange={(e) => {firstname = e.target.value}} />
+                
+                {(valid) ? null : <p className="Invalid"></p>}
+                <label htmlFor="last-name" className="FormLabel">Last Name</label>
+                <input type="text" name="last-name" id="last-name"
+                    className="FormInput" placeholder="Enter your first name"
+                    onChange={(e) => {lastname = e.target.value}} />
+
+                {(valid) ? null : <p className="Invalid"></p>}  
+                <label htmlFor="username" className="FormLabel">Username</label>
+                <input type="text" name="username" id="username"
+                    className="FormInput" placeholder="Enter your first name"
+                    onChange={(e) => {username = e.target.value}} />
+
+                {(valid) ? null : <p className="Invalid"></p>}
+                <label htmlFor="email" className="FormLabel">Email Address</label>
+                <input type="text" name="email" id="email"
+                    className="FormInput" placeholder="Enter your first name"
+                    onChange={(e) => {email = e.target.value}} />
+
+                {(valid) ? null : <p className="Invalid"></p>}
+                <label htmlFor="password" className="FormLabel">Password</label>
+                <input type="text" name="password" id="password"
+                    className="FormInput" placeholder="Enter your first name"
+                    onChange={(e) => {password = e.target.value}} />
+
+                {(valid) ? null : <p className="Invalid"></p>}
+                <p className="Invalid"></p>    
+                <label htmlFor="confirm" className="FormLabel">Confirm Password</label>      
+                <input type="text" name="confirm" id="confirm"
+                    className="FormInput" placeholder="Enter your first name"
+                    onChange={(e) => {confirmation = e.target.value}} />
+            </form>
         </div>
+    </div>
     )
 }
