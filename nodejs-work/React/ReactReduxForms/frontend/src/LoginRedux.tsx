@@ -15,6 +15,8 @@ export var loginSlice = createSlice({
         }
     }
 })
+// export the name of the reducer function & map it to the slice's actions
 export const {signIn} = loginSlice.actions;
+
 export const getAuth = (state: RootState) => state.login.value;
 export default loginSlice.reducer;

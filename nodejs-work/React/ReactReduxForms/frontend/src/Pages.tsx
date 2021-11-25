@@ -24,8 +24,9 @@ export const Login: React.FC = () => {
             auth();
         }
     })
+    // useAppSelector gets the initial state 
     var authenticated = useAppSelector((state: any) => state.login.value);
-    const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch(); // sends the dispatch to update Redux state
     var user = ""; var passwd = "";
     const auth = () => {
         if (authenticated.username != "" && authenticated.password != "") {
@@ -123,6 +124,10 @@ export const Register: React.FC = () => {
                     className="FormInput" placeholder="Enter your first name"
                     onChange={(e) => {confirmation = e.target.value}} />
             </form>
+            <button className="Submit" onClick={() => {
+            let newData = {...newUser, firstName: firstname, lastName: lastname,
+                username: username, password: password, confirmPassword: confirmation}; 
+            dispatch(addUser(newData));}}>Register!</button>
         </div>
     </div>
     )
