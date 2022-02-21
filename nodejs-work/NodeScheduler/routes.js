@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     res.json({Message: "Howdy potna! I am letting you know you're all good!"})
 });
 router.post("/schedule/new", (req, res) => {
-    job();
+    console.log(job());
     res.json({Message: "Job sent!"})
 })
 // export it as a module
