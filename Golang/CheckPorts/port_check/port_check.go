@@ -19,11 +19,10 @@ func CheckPortConnection(host string, port string) {
 	// set the connection timeout (represented in nanoseconds, MANDATORY)
 	var timeout time.Duration = 10000000000 // 10 billion nanoseconds = 10 seconds
 	// try the connection
-	connection, err := net.DialTimeout("tcp",
-		net.JoinHostPort(host, port), timeout)
+	connection, err := net.DialTimeout("tcp", net.JoinHostPort(host, port), timeout)
 	// if the connection fails
 	if err != nil {
-		log.Fatal("Could not connect:", err)
+		log.Fatal("Could not connect, here is why:\n", err)
 	}
 	// if the connection passes
 	if connection != nil {
